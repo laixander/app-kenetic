@@ -19,16 +19,16 @@ const trendDirection = computed(() =>
     ]">
     <!-- <UCard> -->
         <!-- Adjust vertical alignment based on hasDetails -->
-        <div :class="['flex justify-between', hasDetails ? 'items-start' : 'items-center']">
+        <div :class="['flex justify-between', hasDetails ? 'items-center' : 'items-start']">
             <div>
                 <h4 :class="['text-toned', hasDetails ? 'font-semibold' : 'text-sm']">{{ label }}</h4>
 
                 <!-- Increase top margin if hasDetails -->
-                <p :class="['text-2xl text-highlighted font-bold', hasDetails ? 'mt-8' : 'mt-1']">{{ count }}</p>
+                <p :class="['text-3xl text-highlighted font-bold', hasDetails ? 'my-3' : 'mt-1']">{{ count }}</p>
 
                 <!-- Optional trend section -->
                 <div v-if="hasDetails">
-                    <div class="flex items-center space-x-1 text-xs mt-1">
+                    <div v-if="trendValue" class="flex items-center space-x-1 text-xs mt-1">
                         <UIcon :name="trendDirection === 'up' ? 'i-lucide-trending-up' : 'i-lucide-trending-down'"
                             :class="[
                                 'size-4 shrink-0',
@@ -37,9 +37,9 @@ const trendDirection = computed(() =>
                         <span :class="trendDirection === 'up' ? 'text-success' : 'text-error'">
                             {{ trendValue }}
                         </span>
-                        <span class="text-muted">from last month</span>
+                        <span class="text-muted">this month</span>
                     </div>
-                    <p class="text-xs text-muted">{{ trendDescription }}</p>
+                    <p v-if="trendDescription" class="text-xs text-muted">{{ trendDescription }}</p>
                 </div>
             </div>
 
@@ -53,24 +53,25 @@ const trendDirection = computed(() =>
                 hasDetails && color === 'purple' && 'bg-purple/10'
             ]"> -->
             <div :class="[
-                'rounded-full p-3',
-                color === 'warning' && 'bg-warning/10',
-                color === 'secondary' && 'bg-secondary/10',
-                color === 'success' && 'bg-success/10',
-                color === 'info' && 'bg-info/10',
-                color === 'error' && 'bg-error/10',
-                color === 'purple' && 'bg-purple/10',
-                color === 'pink' && 'bg-pink/10'
+                'rounded-xl p-3',
+                color === 'warning' && 'bg-warning',
+                color === 'secondary' && 'bg-secondary',
+                color === 'success' && 'bg-success',
+                color === 'info' && 'bg-info',
+                color === 'error' && 'bg-error',
+                color === 'purple' && 'bg-purple',
+                color === 'pink' && 'bg-pink'
             ]">
                 <!-- <UIcon :name="icon" :class="[
                     'shrink-0 flex',
                     hasDetails ? 'size-5' : 'size-6',
                     `text-${color}`
                 ]" /> -->
-                <UIcon :name="icon" :class="[
+                <!-- <UIcon :name="icon" :class="[
                     'shrink-0 flex size-5',
                     `text-${color}`
-                ]" />
+                ]" /> -->
+                <UIcon :name="icon" class="shrink-0 flex size-5 text-white" />
             </div>
         </div>
     </UCard>

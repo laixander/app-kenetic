@@ -15,7 +15,7 @@ const uiNavConfig = {
     <div class="h-16 shrink-0 flex justify-center items-center gap-1.5 px-2 lg:border-b lg:border-default">
         <UButton color="neutral" variant="link"
             :avatar="{
-                alt: 'Human Resource',
+                alt: 'Human Kenetics',
                 size: 'lg',
                 ui: {
                     root: 'rounded-xl bg-primary',
@@ -25,7 +25,7 @@ const uiNavConfig = {
             :class="collapsed ? '' : 'w-full'" 
         >
             <span v-if="!collapsed">
-                Human Resource
+                Human Kenetics
             </span>
         </UButton>
         <!-- if USlideover is active, don't hide this button, otherwise hide it -->

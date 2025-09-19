@@ -2,93 +2,57 @@
 import { partnerActivities } from '~/data'
 </script>
 <template>
-    <UContainer>
-        <Page>
-            <Block>
-                <div class="lg:flex items-center justify-between lg:space-y-0 space-y-4">
-                    <div class="flex items-center gap-2">
-                        <UIcon name="i-lucide-cloud-sun" class="size-10 text-amber-500 shrink-0" />
-                        <div class="grid gap-0.5">
-                            <span class="font-bold text-xl text-highlighted">Good morning, Jane Copper!</span>
-                            <span class="text-sm text-muted">Here's what's happening with your team today.</span>
-                        </div>
-                    </div>
-                    <div class="lg:flex items-center gap-10 lg:space-y-0 space-y-4">
-                        <div class="flex items-center gap-2">
-                            <UIcon name="i-lucide-building" class="size-6 text-rose-400 shrink-0" />
-                            <div class="grid">
-                                <span class="font-semibold text-xs text-highlighted">Site Reporting:</span>
-                                <span class="text-sm text-muted">Rufino Branch, Makati City</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <UIcon name="i-lucide-calendar-days" class="size-6 text-teal-400 shrink-0" />
-                            <div class="grid">
-                                <span class="font-semibold text-xs text-highlighted">Schedule Today:</span>
-                                <span class="text-sm text-muted flex items-center gap-2">8:00 AM - 5:00 PM <UBadge label="Regular" color="primary" size="sm" variant="soft" /></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Block>
-
+    <div class="relative min-h-screen">
+        <div class="absolute h-45 inset-0 bg-gradient-to-r from-indigo-400 to-blue-400 dark:from-indigo-900 dark:to-blue-900"></div>
+        <Page title="Dashboard" description="Advanced analytics for sports performance, talent identification, and fitness assessment" inverted>
             <Grid :lg="4" :gap="4">
                 <StatCard
-                    label="Today’s Time"
-                    count="09:00 AM"
-                    icon="i-lucide-calendar-clock"
+                    label="Total Athletes"
+                    count="24"
+                    icon="i-lucide-users"
                     color="secondary"
                     hasDetails
-                    trendValue="8h 30m"
-                    trendDescription="Regular shift"
-                    useGradient
+                    trendValue="+12%"
                 />
                 <StatCard
-                    label="Leave Credits"
-                    count="12"
-                    icon="i-lucide-umbrella"
+                    label="Top Performers"
+                    count="18"
+                    icon="i-lucide-medal"
                     color="success"
                     hasDetails
-                    trendValue="-1"
-                    trendDescription="After applying sick leave"
-                    useGradient
+                    trendDescription="Above 90% fitness"
                 />
                 <StatCard
-                    label="Overtime Hours"
-                    count="14h"
-                    icon="i-lucide-hourglass"
+                    label="Need Attention"
+                    count="5"
+                    icon="i-lucide-clipboard-signature"
                     color="warning"
                     hasDetails
-                    trendValue="+2h"
-                    trendDescription="From last week’s report"
-                    useGradient
+                    trendValue="-2%"
                 />
                 <StatCard
-                    label="Avg. Performance"
-                    count="87%"
-                    icon="i-lucide-bar-chart-3"
-                    color="purple"
+                    label="Avg Fitness Level"
+                    count="89%"
+                    icon="i-lucide-target"
+                    color="error"
                     hasDetails
-                    trendValue="+5%"
-                    trendDescription="Improved compared to last evaluation"
-                    useGradient
+                    trendValue="+3.1%"
                 />
             </Grid>
 
             <Grid :lg="2" :gap="4">
                 <Block
-                    title="Recent Activity"
-                    description="A quick overview of your latest actions and updates."
+                    title="Performance Metrics Overview"
+                    description="Concise insights into fitness metrics for tracking student athletic growth"
                 >
-                    <UTimeline color="info" size="3xs" :default-value="0" :items="partnerActivities" class="w-96" :ui="{indicator: 'mt-0.5 w-2.5 h-2.5'}">
-                        <template #indicator="{ item }">
-                            <span></span>
-                        </template>
-                        <!-- Custom title slot for "proposal" -->
-                        <template #title="{ item }">
-                            <div>{{ item.title }}</div>
-                        </template>
-                    </UTimeline>
+                    <Grid :lg="3" :gap="0.5" class="rounded-lg overflow-hidden">
+                        <div class="bg-muted p-4">Hello</div>
+                        <div class="bg-muted p-4">Hello</div>
+                        <div class="bg-muted p-4">Hello</div>
+                        <div class="bg-muted p-4">Hello</div>
+                        <div class="bg-muted p-4">Hello</div>
+                        <div class="bg-muted p-4">Hello</div>
+                    </Grid>
                 </Block>
                 <Block
                     title="Upcoming Events"
@@ -97,5 +61,5 @@ import { partnerActivities } from '~/data'
                 </Block>
             </Grid>
         </Page>
-    </UContainer>
+    </div>
 </template>

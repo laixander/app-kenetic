@@ -16,12 +16,12 @@ defineProps<PageProps>()
             class="relative flex flex-col gap-5 lg:flex-row lg:items-center">
             <div :class="['flex-1 space-y-1', alignCenter ? 'text-center' : undefined]">
                 <slot name="title">
-                    <div class="text-2xl text-pretty font-bold text-highlighted">
+                    <div :class="['text-2xl text-pretty font-bold', inverted ? 'text-white' : 'text-highlighted']">
                         {{ title }}
                     </div>
                 </slot>
                 <slot name="description">
-                    <div class="text-sm text-pretty text-muted">
+                    <div :class="['text-sm text-pretty', inverted ? 'text-white' : 'text-muted']">
                         {{ description }}
                     </div>
                 </slot>

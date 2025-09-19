@@ -5,29 +5,26 @@ export const navigationMenuItemsByRole: Record<string, NavigationMenuItem[]> = {
         [
             { label: 'MAIN NAVIGATION', type: 'label' },
             { label: 'Dashboard', icon: 'i-lucide-pie-chart', to: '/dashboard' },
-            { label: 'Inbox', icon: 'i-lucide-inbox', to: '/inbox'  },
-            { label: 'Menu 3', icon: 'i-lucide-git-branch',  },
-            { label: 'Menu 4', icon: 'i-lucide-users',  },
-            { label: 'Menu 5', icon: 'i-lucide-file-text',  },
-            { label: 'Menu 6', icon: 'i-lucide-folder-open',  },
-            { label: 'Menu 7', icon: 'i-lucide-clipboard-check',  },
-            { label: 'Menu 8', icon: 'i-lucide-chart-column',  },
-            { label: 'Menu 9', icon: 'i-lucide-user-plus',  }
+            { label: 'Athlete Management', icon: 'i-lucide-git-branch',  },
+            { label: 'Talent Identification', icon: 'i-lucide-users',  },
+            { label: 'Campus Fitness', icon: 'i-lucide-file-text',  },
+            { label: 'Data Collection', icon: 'i-lucide-folder-open',  },
+            { label: 'Benchmarking', icon: 'i-lucide-clipboard-check',  },
+            { label: 'Team Management', icon: 'i-lucide-chart-column',  },
+            { label: 'Reports & Analytics', icon: 'i-lucide-user-plus',  },
+            { label: 'Inbox', icon: 'i-lucide-inbox', to: '/inbox'  }
         ]
     ],
     'Head': [
         [
             { label: 'MAIN NAVIGATION', type: 'label' },
-            { label: 'Menu 1', icon: 'i-lucide-folder-open', to: '/dashboard'  },
-            { label: 'Menu 2', icon: 'i-lucide-chart-column',  }
+            { label: 'Dashboard', icon: 'i-lucide-folder-open', to: '/dashboard'  },
         ]
     ],
     'Administrator': [
         [
             { label: 'MAIN NAVIGATION', type: 'label' },
-            { label: 'Menu 3', icon: 'i-lucide-pie-chart',  },
-            { label: 'Menu 4', icon: 'i-lucide-bell',  },
-            { label: 'Menu 5', icon: 'i-lucide-settings',  }
+            { label: 'Dashboard', icon: 'i-lucide-folder-open', to: '/dashboard'  },
         ]
     ]
 }

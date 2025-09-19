@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     modules: ['@nuxt/ui', '@nuxtjs/color-mode', '@nuxt/fonts'],
     app: {
         head: {
-            title: 'HRIS Applications',
+            title: 'Human Kinetics Analysis System',
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },

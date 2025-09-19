@@ -7,7 +7,7 @@ definePageMeta({
     <div class="fixed inset-0 flex justify-center items-center bg-gray-50 dark:bg-gray-950">
         <UCard>
             <header class="space-y-2">
-                <div class="font-semibold text-xl text-highlighted text-center">Login</div>
+                <div class="font-semibold text-xl text-highlighted text-center">HKAS Login</div>
                 <div class="text-sm text-muted text-center">Enter your credentials to access your account</div>
             </header>
             <main class="space-y-4 mt-10">

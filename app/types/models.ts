@@ -32,6 +32,7 @@ export interface PageProps {
     description?: string
     alignCenter?: boolean
     toolbarClass?: string
+    inverted?: boolean
 }
 
 export interface BlockProps {
@@ -51,7 +52,7 @@ export interface StepperLayoutProps {
 
 export interface StatCardProps {
     label: string
-    count: number
+    count: string | number
     color: ColorType
     icon: string
     hasDetails?: boolean

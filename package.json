@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "clean": "rm -rf .nuxt .output dist node_modules .vite",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

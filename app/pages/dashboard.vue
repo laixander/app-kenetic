@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { partnerActivities } from '~/data'
 </script>
 <template>
     <div class="relative min-h-screen">

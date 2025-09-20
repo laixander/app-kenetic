@@ -54,13 +54,13 @@ const trendDirection = computed(() =>
             ]"> -->
             <div :class="[
                 'rounded-xl p-3',
-                color === 'warning' && 'bg-warning',
-                color === 'secondary' && 'bg-secondary',
-                color === 'success' && 'bg-success',
-                color === 'info' && 'bg-info',
-                color === 'error' && 'bg-error',
-                color === 'purple' && 'bg-purple',
-                color === 'pink' && 'bg-pink'
+                color === 'warning' && 'bg-warning dark:bg-warning-950',
+                color === 'secondary' && 'bg-secondary dark:bg-secondary-950',
+                color === 'success' && 'bg-success dark:bg-success-950',
+                color === 'info' && 'bg-info dark:bg-info-950',
+                color === 'error' && 'bg-error dark:bg-error-950',
+                color === 'purple' && 'bg-purple dark:bg-purple-950',
+                color === 'pink' && 'bg-pink dark:bg-pink-950'
             ]">
                 <!-- <UIcon :name="icon" :class="[
                     'shrink-0 flex',

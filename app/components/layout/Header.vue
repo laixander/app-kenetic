@@ -113,7 +113,7 @@ const drawerOpen = ref(false)
                                 size="lg"
                                 variant="ghost"
                                 color="primary"
-                                @click="closeDrawerAndNavigate('/notifications')"
+                                @click="closeDrawerAndNavigate('/inbox')"
                             >
                                 View all notifications
                             </UButton>

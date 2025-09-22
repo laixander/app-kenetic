@@ -8,13 +8,15 @@ import {
 
 // Cards
 import {
-    statDashboardCards
+    analysis,
+    athletes,
+    statCards,
+    dataStatCards
 } from './cards';
 
 // Lists
 import {
     notificationItems,
-    partnerActivities
 } from './lists';
 
 // Options
@@ -33,6 +35,8 @@ export {
     navigationMenuItemsByRole,
     customTitles,
     notificationItems,
-    statDashboardCards,
-    partnerActivities
+    statCards,
+    analysis,
+    athletes,
+    dataStatCards
 };

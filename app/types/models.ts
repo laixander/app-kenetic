@@ -41,6 +41,7 @@ export interface BlockProps {
     showDivider?: boolean        // Optional: shows divider if true
     noBodyPadding?: boolean      // Optional: removes body padding if true
     icon?: string
+    iconColor?: ColorType
 }
 
 export interface StepperLayoutProps {

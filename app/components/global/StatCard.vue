@@ -15,53 +15,57 @@ const trendDirection = computed(() =>
         useGradient && color === 'secondary' && 'from-secondary/10',
         useGradient && color === 'success' && 'from-success/10',
         useGradient && color === 'error' && 'from-error/10',
-        useGradient && color === 'purple' && 'from-purple/10'
+        useGradient && color === 'purple' && 'from-purple/10',
+        useGradient && color === 'pink' && 'from-pink/10',
+        useGradient && color === 'orange' && 'from-orange/10'
     ]">
     <!-- <UCard> -->
         <!-- Adjust vertical alignment based on hasDetails -->
-        <div :class="['flex justify-between', hasDetails ? 'items-center' : 'items-start']">
-            <div>
-                <h4 :class="['text-toned', hasDetails ? 'font-semibold' : 'text-sm']">{{ label }}</h4>
+        <!-- <div :class="['flex justify-between', hasDetails ? 'items-center' : 'items-start']"> -->
+            <div class="flex justify-between items-center">
+                <div>
+                    <h4 :class="['text-toned', hasDetails ? 'font-semibold' : 'text-sm']">{{ label }}</h4>
 
-                <!-- Increase top margin if hasDetails -->
-                <p :class="['text-3xl text-highlighted font-bold', hasDetails ? 'my-3' : 'mt-1']">{{ count }}</p>
+                    <!-- Increase top margin if hasDetails -->
+                    <p :class="['text-3xl text-highlighted font-bold', hasDetails ? 'my-3' : 'mt-1']">{{ count }}</p>
 
-                <!-- Optional trend section -->
-                <div v-if="hasDetails">
-                    <div v-if="trendValue" class="flex items-center space-x-1 text-xs mt-1">
-                        <UIcon :name="trendDirection === 'up' ? 'i-lucide-trending-up' : 'i-lucide-trending-down'"
-                            :class="[
-                                'size-4 shrink-0',
-                                trendDirection === 'up' ? 'text-success' : 'text-error'
-                            ]" />
-                        <span :class="trendDirection === 'up' ? 'text-success' : 'text-error'">
-                            {{ trendValue }}
-                        </span>
-                        <span class="text-muted">this month</span>
+                    <!-- Optional trend section -->
+                    <div v-if="hasDetails">
+                        <div v-if="trendValue" class="flex items-center space-x-1 text-xs mt-1">
+                            <UIcon :name="trendDirection === 'up' ? 'i-lucide-trending-up' : 'i-lucide-trending-down'"
+                                :class="[
+                                    'size-4 shrink-0',
+                                    trendDirection === 'up' ? 'text-success' : 'text-error'
+                                ]" />
+                            <span :class="trendDirection === 'up' ? 'text-success' : 'text-error'">
+                                {{ trendValue }}
+                            </span>
+                            <span class="text-muted">this month</span>
+                        </div>
+                        <p v-if="trendDescription" class="text-xs text-muted">{{ trendDescription }}</p>
                     </div>
-                    <p v-if="trendDescription" class="text-xs text-muted">{{ trendDescription }}</p>
                 </div>
-            </div>
 
-            <!-- Only show background if hasDetails -->
-            <!-- <div :class="[
-                hasDetails ? 'rounded-full p-3' : '',
-                hasDetails && color === 'warning' && 'bg-warning/10',
-                hasDetails && color === 'secondary' && 'bg-secondary/10',
-                hasDetails && color === 'success' && 'bg-success/10',
-                hasDetails && color === 'error' && 'bg-error/10',
-                hasDetails && color === 'purple' && 'bg-purple/10'
-            ]"> -->
-            <div :class="[
-                'rounded-xl p-3',
-                color === 'warning' && 'bg-warning dark:bg-warning-950',
-                color === 'secondary' && 'bg-secondary dark:bg-secondary-950',
-                color === 'success' && 'bg-success dark:bg-success-950',
-                color === 'info' && 'bg-info dark:bg-info-950',
-                color === 'error' && 'bg-error dark:bg-error-950',
-                color === 'purple' && 'bg-purple dark:bg-purple-950',
-                color === 'pink' && 'bg-pink dark:bg-pink-950'
-            ]">
+                <!-- Only show background if hasDetails -->
+                <!-- <div :class="[
+                    hasDetails ? 'rounded-full p-3' : '',
+                    hasDetails && color === 'warning' && 'bg-warning/10',
+                    hasDetails && color === 'secondary' && 'bg-secondary/10',
+                    hasDetails && color === 'success' && 'bg-success/10',
+                    hasDetails && color === 'error' && 'bg-error/10',
+                    hasDetails && color === 'purple' && 'bg-purple/10'
+                ]"> -->
+                <div :class="[
+                    'rounded-xl p-3',
+                    color === 'warning' && 'bg-warning dark:bg-warning-950',
+                    color === 'secondary' && 'bg-secondary dark:bg-secondary-950',
+                    color === 'success' && 'bg-success dark:bg-success-950',
+                    color === 'info' && 'bg-info dark:bg-info-950',
+                    color === 'error' && 'bg-error dark:bg-error-950',
+                    color === 'purple' && 'bg-purple dark:bg-purple-950',
+                    color === 'pink' && 'bg-pink dark:bg-pink-950',
+                    color === 'orange' && 'bg-orange dark:bg-orange-950'
+                ]">
                 <!-- <UIcon :name="icon" :class="[
                     'shrink-0 flex',
                     hasDetails ? 'size-5' : 'size-6',

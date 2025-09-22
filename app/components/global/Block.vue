@@ -16,7 +16,8 @@ const uiCardConfig = {
         <template #header v-if="title || description || icon || $slots.actions || $slots.title || $slots.description">
             <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center">
                 <div class="flex items-center gap-4 w-full">
-                    <UBadge v-if="icon" :icon="icon" variant="soft" color="neutral" size="xl" class="rounded-full p-2.5" />
+                    <UIcon v-if="icon" :name="icon" class="size-7" :class="`text-${props.iconColor || 'primary'}`" />
+                    <!-- <UBadge v-if="icon" :icon="icon" variant="soft" color="neutral" size="xl" class="rounded-full p-2.5" /> -->
                     <div class="flex-1 space-y-0.5">
                         <div class="text-pretty font-semibold text-highlighted">
                             <slot name="title">

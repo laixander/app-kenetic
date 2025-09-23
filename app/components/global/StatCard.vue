@@ -27,7 +27,11 @@ const trendDirection = computed(() =>
                     <h4 :class="['text-toned', hasDetails ? 'font-semibold' : 'text-sm']">{{ label }}</h4>
 
                     <!-- Increase top margin if hasDetails -->
-                    <p :class="['text-3xl text-highlighted font-bold', hasDetails ? 'my-3' : 'mt-1']">{{ count }}</p>
+                    <p :class="[
+                    countSize || 'text-3xl',
+                    'text-highlighted font-bold',
+                    hasDetails ? 'my-3' : 'mt-1'
+                    ]">{{ count }}</p>
 
                     <!-- Optional trend section -->
                     <div v-if="hasDetails">

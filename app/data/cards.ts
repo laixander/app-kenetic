@@ -168,3 +168,101 @@ export const dataStatCards: StatCardProps[] = [
     color: 'success',
   }
 ]
+
+import type { InfoCardProps } from '~/types/features'
+import { version } from 'vue'
+
+export const infoCards: InfoCardProps[] = [
+  {
+    color: 'blue',
+    icon: 'i-lucide-ruler',
+    title: 'Physical Assessment',
+    description: 'Body measurements, biometric data, and physical condition',
+    timestamp: '15 mins'
+  },
+  {
+    color: 'green',
+    icon: 'i-lucide-trophy',
+    title: 'Skill Assessment',
+    description: 'Sport-specific skills, technique evaluation, and proficiency tests',
+    timestamp: '2 hrs'
+  },
+  {
+    color: 'purple',
+    icon: 'i-lucide-activity',
+    title: 'Performance Test',
+    description: 'Speed, strength, endurance, and power measurements',
+    timestamp: '2 hrs'
+  },
+  {
+    color: 'orange',
+    icon: 'i-lucide-heart',
+    title: 'Wellness Survey',
+    description: 'Sleep, stress, motivation, and overall wellbeing assessment',
+    timestamp: '2 hrs'
+  },
+  {
+    color: 'pink',
+    icon: 'i-lucide-info',
+    title: 'Injury Assessment',
+    description: 'Injury history, pain levels, and rehabilitation progress',
+    timestamp: '2 hrs'
+  }
+]
+
+export const partners = [
+  {
+    id: 1,
+    icon: 'i-lucide-webcam',
+    description: { title: 'AI Sports Analysis Camera', details: 'Video Analysis' },
+    tags: ['Movement Efficiency', 'Technique Rating', 'Injury Prevention', 'Real-time Tracking'],
+    highlights: { status: 'Connected', signal: 90, battery: 80 },
+    lastSynced: '2 hours ago',
+    version: '2.1.0'
+  },
+  {
+    id: 2,
+    icon: 'i-lucide-camera',
+    description: { title: 'High-Speed Motion Camera Pro', details: 'Video Analysis' },
+    tags: ['Motion Capture', 'Biomechanics'],
+    highlights: { status: 'Calibrating', signal: 50, battery: 45 },
+    lastSynced: '2 hours ago',
+    version: '1.4.2'
+  },
+  {
+    id: 3,
+    icon: 'i-lucide-activity',
+    description: { title: 'Heart Rate Monitor Set', details: 'Wearable' },
+    tags: ['Data Sync', 'Team Dashboard', 'AI Insights'],
+    highlights: { status: 'Disconnected', signal: 10, battery: 15 },
+    lastSynced: '2 hours ago',
+    version: '3.0.1'
+  },
+  {
+    id: 4,
+    icon: 'i-lucide-heart',
+    description: { title: 'VO2 Max Analyzer', details: 'Cardio' },
+    tags: ['Real-time Tracking', 'GPS Data', 'Speed Analysis', 'Stamina Score'],
+    highlights: { status: 'Connected', signal: 50, battery: 10 },
+    lastSynced: '2 hours ago',
+    version: '4.5.3'
+  },
+  {
+    id: 5,
+    icon: 'i-lucide-activity',
+    description: { title: 'Heart Rate Monitor Set', details: 'Wearable' },
+    tags: ['Heart Rate', 'VO2 Max', 'Sleep Monitoring'],
+    highlights: { status: 'Disconnected', signal: 50, battery: 45 },
+    lastSynced: '2 hours ago',
+    version: '3.0.1'
+  },
+  {
+    id: 6,
+    icon: 'i-lucide-video',
+    description: { title: 'AI Sports Analysis Camera', details: 'Video Analysis' },
+    tags: ['Form Correction', 'Workout Guidance'],
+    highlights: { status: 'Connected', signal: 90, battery: 80 },
+    lastSynced: '2 hours ago',
+    version: '2.1.0'
+  },
+];

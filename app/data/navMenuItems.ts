@@ -28,3 +28,41 @@ export const navigationMenuItemsByRole: Record<string, NavigationMenuItem[]> = {
         ]
     ]
 }
+
+import type { TabItem } from '~/types/ui'
+
+export const formBuilderTabs: TabItem[] = [
+    {
+        label: 'Fields',
+        icon: 'i-lucide-text-cursor-input',
+        to: '/data-collection/form-builder'
+    },
+    {
+        label: 'Preview',
+        icon: 'i-lucide-file-text',
+        to: '/data-collection/form-builder/preview'
+    },
+    {
+        label: 'Settings',
+        icon: 'i-lucide-settings',
+        to: '/data-collection/form-builder/settings'
+    }
+]
+
+export const dataCollectionTabs: TabItem[] = [
+    {
+        label: 'Assessment Forms',
+        icon: 'i-lucide-clipboard-list',
+        to: '/data-collection'
+    },
+    {
+        label: 'Device Management',
+        icon: 'i-lucide-monitor-cog',
+        to: '/data-collection/device-management'
+    },
+    {
+        label: 'Live Data',
+        icon: 'i-lucide-webcam',
+        to: '/data-collection/live-data'
+    }
+]

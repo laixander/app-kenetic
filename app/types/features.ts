@@ -31,10 +31,11 @@ export interface AthleteTableProps {
   athletes: Athlete[]
 }
 
-export interface DataCollectionFormCardProps {
-  icon?: string
-  title: string
-  description: string
-  duration?: string
-  color?: 'blue' | 'green' | 'violet' | 'orange' | 'pink'
+export interface InfoCardProps {
+  color: string;
+  icon: string; 
+  title: string;
+  description: string;
+  timestamp?: string;
+  actions?: { label: string; icon?: string; click?: () => void }[]
 }

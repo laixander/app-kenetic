@@ -2,7 +2,7 @@
 import type { CardProps } from '~/types/models'
 
 withDefaults(defineProps<CardProps>(), {
-  layout: () => ['description', 'highlights', 'tags'],
+    layout: () => ['description', 'highlights', 'tags'],
 })
 </script>
 
@@ -48,11 +48,18 @@ withDefaults(defineProps<CardProps>(), {
             <template v-else-if="section === 'tags'">
                 <slot name="tags">
                     <div v-if="tags?.length" class="flex flex-wrap gap-2 mt-4">
-                        <UBadge v-for="(tag, index) in tags" :key="index" :label="tag" variant="soft"
+                        <!-- show first 2 badges -->
+                        <UBadge v-for="(tag, index) in tags.slice(0, 2)" :key="index" :label="tag" variant="soft"
                             color="neutral" />
+                        <!-- show +N if more -->
+                        <UBadge v-if="tags.length > 2" :label="`+${tags.length - 2}`" variant="soft" color="neutral" />
                     </div>
                 </slot>
             </template>
+        </template>
+
+        <template #footer v-if="$slots.footer">
+            <slot name="footer" />
         </template>
     </UCard>
 </template>

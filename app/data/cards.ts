@@ -169,10 +169,9 @@ export const dataStatCards: StatCardProps[] = [
   }
 ]
 
-import type { InfoCardProps } from '~/types/features'
-import { version } from 'vue'
+import type { FormCardProps } from '~/types/features'
 
-export const infoCards: InfoCardProps[] = [
+export const formCards: FormCardProps[] = [
   {
     color: 'blue',
     icon: 'i-lucide-ruler',
@@ -210,7 +209,50 @@ export const infoCards: InfoCardProps[] = [
   }
 ]
 
-export const partners = [
+export const inputCards: FormCardProps[] = [
+  {
+    color: 'gray',
+    icon: 'i-lucide-type',
+    title: 'Full Name',
+    description: 'Enter athlete name and other personal details',
+    tag: 'Text',
+    timestamp: '15 mins'
+  },
+  {
+    color: 'gray',
+    icon: 'i-lucide-ruler',
+    title: 'Height & Weight',
+    description: 'Record physical measurements in numeric format',
+    tag: 'Number',
+    timestamp: '2 hrs'
+  },
+  {
+    color: 'gray',
+    icon: 'i-lucide-calendar',
+    title: 'Date of Birth',
+    description: 'Select athlete’s birth date or competition schedule',
+    tag: 'Date',
+    timestamp: '2 hrs'
+  },
+  {
+    color: 'gray',
+    icon: 'i-lucide-list',
+    title: 'Sport Category',
+    description: 'Choose athlete’s sport type, event, or position',
+    tag: 'Select',
+    timestamp: '2 hrs'
+  },
+  {
+    color: 'gray',
+    icon: 'i-lucide-square-check',
+    title: 'Injury History',
+    description: 'Mark past injuries, medical conditions, or clear status',
+    tag: 'Checkbox',
+    timestamp: '2 hrs'
+  }
+]
+
+export const devices = [
   {
     id: 1,
     icon: 'i-lucide-webcam',

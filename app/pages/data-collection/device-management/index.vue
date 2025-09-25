@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { UIcon, USwitch, UChip, UButton } from '#components';
-import { dataStatCards, dataCollectionTabs, partners } from '~/data';
+import { dataStatCards, dataCollectionTabs, devices } from '~/data';
 import type { CardProps } from '~/types/models'
 
 const props = defineProps<{
@@ -50,7 +50,7 @@ const batteryIcon = (val: number) => {
 // reactive toggle states
 const deviceStatuses = ref<Record<number, boolean>>(
   Object.fromEntries(
-    partners.map(card => [
+    devices.map(card => [
       card.id,
       card.highlights.status === 'Connected'
     ])
@@ -58,7 +58,7 @@ const deviceStatuses = ref<Record<number, boolean>>(
 )
 
 function toggleStatus(id: number, value: boolean) {
-  const card = partners.find(c => c.id === id)
+  const card = devices.find(c => c.id === id)
   if (!card) return
 
   deviceStatuses.value[id] = value
@@ -88,7 +88,7 @@ function toggleStatus(id: number, value: boolean) {
                 </template>
 
                 <Grid :lg="3" :gap="4">
-                    <Card v-for="card in partners" :key="card.id" :icon="card.icon" :title="card.title"
+                    <Card v-for="card in devices" :key="card.id" :icon="card.icon" :title="card.title"
                         :description="card.description" :tags="card.tags" :type="card.type">
                         <template #actions>
                             <USwitch

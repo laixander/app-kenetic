@@ -14,8 +14,9 @@ import {
     athletes,
     statCards,
     dataStatCards,
-    infoCards,
-    partners
+    formCards,
+    inputCards,
+    devices
 } from './cards';
 
 // Lists
@@ -43,8 +44,9 @@ export {
     analysis,
     athletes,
     dataStatCards,
-    infoCards,
+    formCards,
     formBuilderTabs,
     dataCollectionTabs,
-    partners
+    devices,
+    inputCards
 };

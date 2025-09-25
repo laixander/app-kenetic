@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { InfoCardProps } from '~/types/features'
+import type { FormCardProps } from '~/types/features'
 
-defineProps<InfoCardProps>()
+const props = defineProps<FormCardProps>()
 
 const colorMap: Record<string, any> = {
     blue: {
@@ -33,6 +33,12 @@ const colorMap: Record<string, any> = {
         border: 'border border-pink-200 dark:border-pink-800',
         iconBg: 'bg-pink-100 dark:bg-pink-900',
         icon: 'text-pink-600 dark:text-pink-400'
+    },
+    gray: {
+        bg: 'bg-gray-50 dark:bg-gray-800/30',
+        border: 'border border-gray-200 dark:border-gray-800',
+        iconBg: 'bg-gray-200/50 dark:bg-gray-800',
+        icon: 'text-gray-600 dark:text-gray-400'
     }
 }
 </script>
@@ -53,6 +59,13 @@ const colorMap: Record<string, any> = {
 
                 <div class="text-sm text-muted">
                     {{ description }}
+                </div>
+
+                <!-- <div v-if="$slots.tags">
+                    <slot name="tags" /> 
+                </div> -->
+                <div v-if="tag">
+                    <UBadge variant="subtle" color="neutral" :label="tag" />
                 </div>
 
                 <div v-if="timestamp" class="flex justify-start items-center gap-2">

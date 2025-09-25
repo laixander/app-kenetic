@@ -31,11 +31,12 @@ export interface AthleteTableProps {
   athletes: Athlete[]
 }
 
-export interface InfoCardProps {
+export interface FormCardProps {
   color: string;
   icon: string; 
   title: string;
   description: string;
+  tag?: string;
   timestamp?: string;
   actions?: { label: string; icon?: string; click?: () => void }[]
 }

@@ -6,5 +6,5 @@ export interface TabItem {
 
 export interface TabsProps {
   items: TabItem[]
-  color?: 'primary' | 'secondary' | 'success' | 'danger'
+  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'white'
 }

@@ -79,13 +79,15 @@ const colorMap: Record<string, any> = {
 
         <!-- Right section: dropdown actions -->
         <div v-if="actions?.length">
-            <UDropdownMenu :items="actions" 
-            :content="{
-                align: 'start',
-                side: 'bottom',
-                sideOffset: 8   
-            }">
-                <UButton variant="ghost" color="gray" size="xs" icon="i-lucide-more-vertical" />
+            <UDropdownMenu 
+                :items="actions" 
+                :content="{
+                    align: 'start',
+                    side: 'bottom',
+                    sideOffset: 8   
+                }"
+            >
+                <UButton variant="ghost" color="neutral" size="xs" icon="i-lucide-more-vertical" />
             </UDropdownMenu>
         </div>
     </div>

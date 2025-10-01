@@ -143,7 +143,7 @@ export type WorkflowBoardType = {
 import type { DropdownMenuItem } from '@nuxt/ui'
 export type CardLayoutSection = 'description' | 'highlights' | 'tags'
 export interface CardProps {
-    title: string
+    title?: string
     subtitle?: string
     description?: string
     tags?: string[]
@@ -151,4 +151,76 @@ export interface CardProps {
     actions?: DropdownMenuItem[]
     /** Controls the order of body sections */
     layout?: CardLayoutSection[]
+}
+
+
+
+// FORM
+
+export interface FormField {
+  selectedType: 'Text' | 'Textarea' | 'Select' | 'Checkbox' | 'Switch' | 'Radio' | 'File Upload' | 'Slider';
+  inputLabel: string;
+  inputPlaceholder?: string;
+  inputValue: any;
+  isRequired?: boolean;
+  textInputType?: 'text' | 'number' | 'file' | 'date';
+  selectedUnit?: string;
+  selectItems?: string[];
+  checkboxItems?: string[];
+  checkboxOrientation?: 'horizontal' | 'vertical';
+  switchItems?: string[];
+  switchLayout?: 'horizontal' | 'column' | 'vertical'
+  radioItems?: string[];
+  radioOrientation?: 'horizontal' | 'vertical';
+  fileDescription?: string;
+  sliderMin?: number;
+  sliderMax?: number;
+  sliderStep?: number;
+}
+
+export interface FormRow {
+  fields: FormField[];
+}
+
+export interface FormSection {
+  title: string;
+  icon: string;
+  rows: FormRow[];
+}
+
+import type { RadioGroupItem } from '@nuxt/ui'
+
+export interface DynamicFieldProps {
+  selectedType: string
+  inputLabel?: string
+  inputPlaceholder?: string
+  inputValue: any
+  isRequired?: boolean
+
+  // Select
+  selectItems?: string[]
+
+  // Checkbox
+  checkboxItems?: string[]
+  checkboxOrientation?: 'horizontal' | 'vertical'
+
+  // Switch
+  switchItems?: string[]
+  switchLayout?: 'horizontal' | 'column' | 'vertical'
+
+  // Radio
+  radioItems?: RadioGroupItem[]
+  radioOrientation?: 'horizontal' | 'vertical'
+
+  // File Upload
+  fileDescription?: string
+
+  // Slider
+  sliderMin?: number
+  sliderMax?: number
+  sliderStep?: number
+
+  // Text Input Special
+  textInputType?: 'text' | 'number' | 'file' | 'date'
+  selectedUnit?: string
 }

@@ -44,7 +44,7 @@ const colorMap: Record<string, any> = {
 </script>
 
 <template>
-    <div class="w-full p-5 rounded-lg inline-flex justify-between items-start gap-4"
+    <div class="w-full p-4 rounded-lg inline-flex justify-between items-start gap-4"
         :class="[colorMap[color].bg, colorMap[color].border]">
         <!-- Left section -->
         <div class="flex items-start gap-4">

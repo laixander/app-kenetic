@@ -34,6 +34,7 @@ import {
 
 // form
 import {
+    newForm
 } from './form';
 
 export {
@@ -48,5 +49,6 @@ export {
     formBuilderTabs,
     dataCollectionTabs,
     devices,
-    inputCards
+    inputCards,
+    newForm
 };

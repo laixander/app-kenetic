@@ -3,9 +3,7 @@ import { dataStatCards, dataCollectionTabs } from '~/data';
 </script>
 <template>
     <div class="relative min-h-screen">
-        <div
-            class="absolute h-54 inset-0 bg-gradient-to-r from-indigo-400 to-blue-400 dark:from-indigo-900 dark:to-blue-900">
-        </div>
+        <Banner />
         <Page title="Data Collection" description="Collect and manage sports performance data" inverted>
             <Tabs :items="dataCollectionTabs" color="white" />
             

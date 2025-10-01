@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InputListCard from '~/components/feature/DataCollectionFormCard.vue';
+import InputListCard from '~/components/feature/DataCollectionCard.vue';
 import { inputCards as initialCards } from '~/data'
 
 const inputCards = ref([...initialCards])
@@ -35,7 +35,7 @@ const newOption = ref<string>('')
 // Checkbox options
 const checkboxItems = ref<string[]>([])
 const newCheckbox = ref<string>('')
-const checkboxLayout = ref<'horizontal' | 'vertical' | 'column'>('vertical')
+const checkboxOrientation = ref<'horizontal' | 'vertical'>('vertical')
 
 // Switch options
 const switchItems = ref<string[]>([])
@@ -57,33 +57,33 @@ const sliderStep = ref<number>(1)
 
 // Ensure inputValue is numeric when Slider selected and keep it within bounds
 watch(selectedType, (type) => {
-  if (type === 'Checkbox' || type === 'Switch') {
-    inputValue.value = []
-  } else if (type === 'Slider') {
-    // initialize slider value to the middle (or min) as a number
-    const min = Number(sliderMin.value ?? 0)
-    const max = Number(sliderMax.value ?? 100)
-    const mid = Math.floor((min + max) / 2)
-    inputValue.value = Math.max(min, Math.min(max, mid))
-  } else {
-    inputValue.value = ''
-  }
+    if (type === 'Checkbox' || type === 'Switch') {
+        inputValue.value = []
+    } else if (type === 'Slider') {
+        // initialize slider value to the middle (or min) as a number
+        const min = Number(sliderMin.value ?? 0)
+        const max = Number(sliderMax.value ?? 100)
+        const mid = Math.floor((min + max) / 2)
+        inputValue.value = Math.max(min, Math.min(max, mid))
+    } else {
+        inputValue.value = ''
+    }
 })
 
 // Keep slider value within min/max if the bounds change
 watch([sliderMin, sliderMax], () => {
-  if (selectedType.value === 'Slider') {
-    let min = Number(sliderMin.value)
-    let max = Number(sliderMax.value)
-    // if user swapped values, normalize
-    if (min > max) {
-      const tmp = min; min = max; max = tmp
-      sliderMin.value = min; sliderMax.value = max
+    if (selectedType.value === 'Slider') {
+        let min = Number(sliderMin.value)
+        let max = Number(sliderMax.value)
+        // if user swapped values, normalize
+        if (min > max) {
+            const tmp = min; min = max; max = tmp
+            sliderMin.value = min; sliderMax.value = max
+        }
+        // coerce inputValue to number & clamp
+        const val = Number(inputValue.value ?? min)
+        inputValue.value = Math.max(min, Math.min(max, isNaN(val) ? min : val))
     }
-    // coerce inputValue to number & clamp
-    const val = Number(inputValue.value ?? min)
-    inputValue.value = Math.max(min, Math.min(max, isNaN(val) ? min : val))
-  }
 })
 
 // Reset modal state when closed
@@ -100,7 +100,7 @@ watch(open, (val) => {
         newSwitch.value = ''
         radioItems.value = []
         newRadio.value = ''
-        checkboxLayout.value = 'vertical'
+        checkboxOrientation.value = 'vertical'
         switchLayout.value = 'vertical'
         radioOrientation.value = 'vertical'
         fileDescription.value = ''
@@ -139,13 +139,13 @@ function removeCheckbox(index: number) {
 }
 
 // Classes for checkbox layout
-const checkboxLayoutClass = computed(() => {
-    switch (checkboxLayout.value) {
-        case 'horizontal': return 'flex flex-row gap-4'
-        case 'column': return 'grid grid-cols-2 gap-2'
-        default: return 'flex flex-col gap-2'
-    }
-})
+// const checkboxLayoutClass = computed(() => {
+//     switch (checkboxLayout.value) {
+//         case 'horizontal': return 'flex flex-row gap-4'
+//         case 'column': return 'grid grid-cols-2 gap-2'
+//         default: return 'flex flex-col gap-2'
+//     }
+// })
 
 function addSwitch() {
     if (newSwitch.value.trim() !== '') {
@@ -167,57 +167,65 @@ const switchLayoutClass = computed(() => {
 })
 
 function addRadio() {
-  if (newRadio.value.trim() !== '') {
-    radioItems.value.push(newRadio.value.trim())
-    newRadio.value = ''
-  }
+    if (newRadio.value.trim() !== '') {
+        radioItems.value.push(newRadio.value.trim())
+        newRadio.value = ''
+    }
 }
 
 function removeRadio(index: number) {
-  radioItems.value.splice(index, 1)
+    radioItems.value.splice(index, 1)
 }
 
 function addNewInput() {
-  if (!selectedType.value) return
+    if (!selectedType.value) return
 
-  inputCards.value.unshift({
-    color: 'gray',
-    icon: getIconForType(selectedType.value),
-    title: inputLabel.value || selectedType.value,
-    description: buildDescription(),
-    tag: selectedType.value,
-    timestamp: 'Just now'
-  })
+    inputCards.value.unshift({
+        color: 'gray',
+        icon: getIconForType(selectedType.value),
+        title: inputLabel.value || selectedType.value,
+        description: buildDescription(),
+        tag: selectedType.value,
+        timestamp: 'Just now'
+    })
 
-  open.value = false
+    open.value = false
 }
 
 function getIconForType(type: string) {
-  switch (type) {
-    case 'Text': return 'i-lucide-type'
-    case 'Textarea': return 'i-lucide-align-left'
-    case 'Select': return 'i-lucide-list'
-    case 'Checkbox': return 'i-lucide-square-check'
-    case 'Switch': return 'i-lucide-toggle-right'
-    case 'Radio': return 'i-lucide-circle-check'
-    case 'File Upload': return 'i-lucide-upload'
-    case 'Slider': return 'i-lucide-chevrons-left-right-ellipsis'
-    default: return 'i-lucide-text-cursor-input'
-  }
+    switch (type) {
+        case 'Text': return 'i-lucide-type'
+        case 'Textarea': return 'i-lucide-align-left'
+        case 'Select': return 'i-lucide-list'
+        case 'Checkbox': return 'i-lucide-square-check'
+        case 'Switch': return 'i-lucide-toggle-right'
+        case 'Radio': return 'i-lucide-circle-check'
+        case 'File Upload': return 'i-lucide-upload'
+        case 'Slider': return 'i-lucide-chevrons-left-right-ellipsis'
+        default: return 'i-lucide-text-cursor-input'
+    }
 }
 
 function buildDescription() {
-  if (selectedType.value === 'File Upload') {
-    return fileDescription.value || 'Upload files for this field'
-  }
-  if (selectedType.value === 'Select' && selectItems.value.length) {
-    return `Choose from: ${selectItems.value.join(', ')}`
-  }
-  return inputPlaceholder.value || 'Custom input field'
+    if (selectedType.value === 'File Upload') {
+        return fileDescription.value || 'Upload files for this field'
+    }
+    if (selectedType.value === 'Select' && selectItems.value.length) {
+        return `Choose from: ${selectItems.value.join(', ')}`
+    }
+    return inputPlaceholder.value || 'Custom input field'
 }
+
+// Text input type (default is text)
+const textInputType = ref<'text' | 'number' | 'file'>('text')
+
+// Units for number input
+const numberUnits = ['cm', 'kg', 'm', 'lbs'] // sample units
+const selectedUnit = ref('')
 </script>
 <template>
-    <Block icon="i-lucide-text-cursor-input" iconColor="teal" title="Input Fields" description="Manage pre-made input fields">
+    <Block icon="i-lucide-text-cursor-input" iconColor="teal" title="Input Fields"
+        description="Manage preset input fields">
         <template #actions>
             <UButton label="Create Input" icon="i-lucide-plus" variant="outline" color="neutral" size="lg"
                 @click="open = true" />
@@ -230,22 +238,42 @@ function buildDescription() {
             ]" />
         </Grid>
     </Block>
-    <UModal v-model:open="open" title="Create Input" :ui="{ body: 'p-0 sm:p-0', }" class="max-w-4xl w-full">
+    <UModal v-model:open="open" title="Create Input"
+        description="Customize your input by selecting a type, adding labels, placeholders, and options."
+        :ui="{ body: 'p-0 sm:p-0', }" class="max-w-4xl w-full">
         <template #body>
             <div class="flex divide-x divide-default">
                 <div class="grid items-center gap-6 w-full p-4 sm:p-6">
-                     <UAlert
+                    <!-- <UAlert
                         description="Customize your input by selecting a type, adding labels, placeholders, and options. Adjust settings like required fields and layout before previewing on the right."
                         icon="i-lucide-info"
                         variant="soft"
                         color="info"
-                    />
+                    /> -->
                     <!-- Choose which input to render -->
                     <div class="space-y-2">
                         <UFormField label="Choose Input Type">
                             <USelect v-model="selectedType" :items="inputTypes.map((i: { label: any; }) => i.label)"
                                 placeholder="Select input type" class="w-full" />
                         </UFormField>
+                    </div>
+
+
+
+                    <!-- Text options -->
+                    <div v-if="selectedType === 'Text'" class="space-y-3">
+                        <UFormField label="Input Type">
+                            <USelect v-model="textInputType" :items="['text', 'number', 'file']"
+                                placeholder="Select type" class="w-full" />
+                        </UFormField>
+
+                        <!-- Unit Selector (only when number type) -->
+                        <div v-if="textInputType === 'number'" class="space-y-2">
+                            <UFormField label="Unit">
+                                <USelect v-model="selectedUnit" :items="numberUnits" placeholder="Select unit"
+                                    class="w-full" />
+                            </UFormField>
+                        </div>
                     </div>
 
                     <!-- Custom Label -->
@@ -261,7 +289,7 @@ function buildDescription() {
                     </div>
 
                     <!-- Custom Placeholder -->
-                    <div v-if="selectedType && ['Text', 'Textarea', 'Select'].includes(selectedType)">                        
+                    <div v-if="selectedType && ['Text', 'Textarea', 'Select'].includes(selectedType)">
                         <UFormField label="Placeholder">
                             <UInput v-model="inputPlaceholder" placeholder="Enter placeholder" class="w-full" />
                         </UFormField>
@@ -270,7 +298,8 @@ function buildDescription() {
                     <!-- File Upload custom description -->
                     <div v-if="selectedType === 'File Upload'" class="space-y-2">
                         <UFormField label="File Description">
-                            <UInput v-model="fileDescription" placeholder="Enter file upload description" class="w-full" />
+                            <UInput v-model="fileDescription" placeholder="Enter file upload description"
+                                class="w-full" />
                         </UFormField>
                     </div>
 
@@ -311,9 +340,8 @@ function buildDescription() {
                             </li>
                         </ul>
 
-                        <UFormField label="Layout">
-                            <USelect v-model="checkboxLayout" :items="['horizontal', 'vertical', 'column']"
-                                class="w-full" />
+                        <UFormField label="Orientation">
+                            <USelect v-model="checkboxOrientation" :items="['horizontal', 'vertical']" class="w-full" />
                         </UFormField>
                     </div>
 
@@ -353,8 +381,8 @@ function buildDescription() {
                         <ul v-if="radioItems.length" class="space-y-1">
                             <li v-for="(item, index) in radioItems" :key="index"
                                 class="flex items-center justify-between text-sm bg-muted/50 rounded px-2 py-1">
-                            <span>{{ item }}</span>
-                            <UButton color="red" variant="ghost" size="xs" icon="i-lucide-x"
+                                <span>{{ item }}</span>
+                                <UButton color="red" variant="ghost" size="xs" icon="i-lucide-x"
                                     @click="removeRadio(index)" />
                             </li>
                         </ul>
@@ -367,15 +395,18 @@ function buildDescription() {
                     <!-- Slider options -->
                     <div v-if="selectedType === 'Slider'" class="space-y-3">
                         <UFormField label="Minimum Value">
-                            <UInput v-model.number="sliderMin" type="number" placeholder="Enter min value" class="w-full" />
+                            <UInput v-model.number="sliderMin" type="number" placeholder="Enter min value"
+                                class="w-full" />
                         </UFormField>
 
                         <UFormField label="Maximum Value">
-                            <UInput v-model.number="sliderMax" type="number" placeholder="Enter max value" class="w-full" />
+                            <UInput v-model.number="sliderMax" type="number" placeholder="Enter max value"
+                                class="w-full" />
                         </UFormField>
 
                         <UFormField label="Step">
-                            <UInput v-model.number="sliderStep" type="number" placeholder="Enter step value" class="w-full" />
+                            <UInput v-model.number="sliderStep" type="number" placeholder="Enter step value"
+                                class="w-full" />
                         </UFormField>
                     </div>
 
@@ -390,7 +421,8 @@ function buildDescription() {
                 </div>
 
                 <!-- Render the chosen input with custom label -->
-                <div class="relative flex flex-col justify-center items-center w-full p-4 sm:p-6 bg-gray-50 dark:bg-gray-950 min-h-64">
+                <div
+                    class="relative flex flex-col justify-center items-center w-full p-4 sm:p-6 bg-gray-50 dark:bg-gray-950 min-h-64">
                     <div class="absolute top-0 left-0 inset-0 grid min-h-full">
                         <Placeholder />
                     </div>
@@ -407,32 +439,49 @@ function buildDescription() {
 
                     <template v-else>
                         <!-- Text Input -->
-                        <UFormField v-if="selectedType === 'Text'" :label="inputLabel" :required="isRequired" class="w-full">
+                        <!-- <UFormField v-if="selectedType === 'Text'" :label="inputLabel" :required="isRequired" class="w-full">
                             <UInput v-model="inputValue" :placeholder="inputPlaceholder || 'Enter text'"
                                 class="w-full" />
+                        </UFormField> -->
+                        <UFormField v-if="selectedType === 'Text'" :label="inputLabel" :required="isRequired"
+                            class="w-full">
+                            <UInput v-model="inputValue" :placeholder="inputPlaceholder || 'Enter text'"
+                                :type="textInputType" class="w-full"
+                                :ui="textInputType === 'number' ? { trailing: 'pointer-events-none' } : {}">
+                                <template v-if="textInputType === 'number' && selectedUnit" #trailing>
+                                    <div class="text-xs text-muted">{{ selectedUnit }}</div>
+                                </template>
+                            </UInput>
                         </UFormField>
 
                         <!-- Textarea -->
-                        <UFormField v-else-if="selectedType === 'Textarea'" :label="inputLabel" :required="isRequired" class="w-full">
+                        <UFormField v-else-if="selectedType === 'Textarea'" :label="inputLabel" :required="isRequired"
+                            class="w-full">
                             <UTextarea v-model="inputValue" :placeholder="inputPlaceholder || 'Enter details'"
                                 class="w-full" />
                         </UFormField>
 
                         <!-- Select -->
-                        <UFormField v-else-if="selectedType === 'Select'" :label="inputLabel" :required="isRequired" class="w-full">
+                        <UFormField v-else-if="selectedType === 'Select'" :label="inputLabel" :required="isRequired"
+                            class="w-full">
                             <USelect v-model="inputValue" :items="selectItems"
                                 :placeholder="inputPlaceholder || 'Pick an option'" class="w-full" />
                         </UFormField>
 
                         <!-- Checkbox -->
-                        <UFormField v-else-if="selectedType === 'Checkbox'" :label="inputLabel" :required="isRequired" class="w-full">
-                            <div :class="checkboxLayoutClass">
-                                <UCheckbox v-for="(item, index) in checkboxItems" :key="index" :value="item" :label="item" />
-                            </div>
+                        <UFormField v-else-if="selectedType === 'Checkbox'" :label="inputLabel" :required="isRequired"
+                            class="w-full">
+                            <UCheckboxGroup v-model="inputValue" :items="checkboxItems"
+                                :orientation="checkboxOrientation" />
+                            <!-- <div :class="checkboxLayoutClass">
+                                <UCheckbox v-for="(item, index) in checkboxItems" :key="index" :value="item"
+                                    :label="item" />
+                            </div> -->
                         </UFormField>
 
                         <!-- Switch -->
-                        <UFormField v-else-if="selectedType === 'Switch'" :label="inputLabel" :required="isRequired" class="w-full">
+                        <UFormField v-else-if="selectedType === 'Switch'" :label="inputLabel" :required="isRequired"
+                            class="w-full">
                             <div :class="switchLayoutClass">
                                 <USwitch v-for="(item, index) in switchItems" :key="index" v-model="inputValue"
                                     :value="item" :label="item" />
@@ -440,37 +489,30 @@ function buildDescription() {
                         </UFormField>
 
                         <!-- Radio -->
-                        <UFormField v-else-if="selectedType === 'Radio'" :label="inputLabel" :required="isRequired" class="w-full">
+                        <UFormField v-else-if="selectedType === 'Radio'" :label="inputLabel" :required="isRequired"
+                            class="w-full">
                             <URadioGroup v-model="inputValue" :items="radioItems" :orientation="radioOrientation" />
                         </UFormField>
 
                         <!-- File Upload -->
-                        <UFileUpload
-                            v-else-if="selectedType === 'File Upload'"
-                            v-model="inputValue"
+                        <UFileUpload v-else-if="selectedType === 'File Upload'" v-model="inputValue"
                             :label="inputLabel || 'Drop your file here'"
-                            :description="fileDescription || 'SVG, PNG, JPG or GIF (max. 2MB)'"
-                            class="w-full"
-                        />
+                            :description="fileDescription || 'SVG, PNG, JPG or GIF (max. 2MB)'" class="w-full" />
 
                         <!-- Slider -->
-                        <UFormField v-else-if="selectedType === 'Slider'" :label="inputLabel" :hint="`Value: ${inputValue}`" :required="isRequired" class="w-full">
-                            <USlider
-                                v-model="inputValue"
-                                :min="sliderMin"
-                                :max="sliderMax"
-                                :step="sliderStep"
-                                class="w-full"
-                            />
+                        <UFormField v-else-if="selectedType === 'Slider'" :label="inputLabel"
+                            :hint="`Value: ${inputValue}`" :required="isRequired" class="w-full">
+                            <USlider v-model="inputValue" :min="sliderMin" :max="sliderMax" :step="sliderStep"
+                                class="w-full" />
                         </UFormField>
                     </template>
                 </div>
             </div>
         </template>
 
-        <template #footer>
+        <template #footer="{ close }">
             <div class="flex justify-end gap-2 w-full">
-                <UButton color="neutral" variant="ghost" @click="open = false">Cancel</UButton>
+                <UButton color="neutral" variant="ghost" @click="close">Cancel</UButton>
                 <UButton color="primary" @click="addNewInput">Save</UButton>
             </div>
         </template>

@@ -19,7 +19,7 @@ const statusColor = (status: string) => {
         case 'Connected': return 'success'
         case 'Calibrating': return 'warning'
         case 'Disconnected': return 'error'
-        default: return 'gray'
+        default: return 'neutral'
     }
 }
 
@@ -49,30 +49,28 @@ const batteryIcon = (val: number) => {
 
 // reactive toggle states
 const deviceStatuses = ref<Record<number, boolean>>(
-  Object.fromEntries(
-    devices.map(card => [
-      card.id,
-      card.highlights.status === 'Connected'
-    ])
-  )
+    Object.fromEntries(
+        devices.map(card => [
+            card.id,
+            card.highlights.status === 'Connected'
+        ])
+    )
 )
 
 function toggleStatus(id: number, value: boolean) {
-  const card = devices.find(c => c.id === id)
-  if (!card) return
+    const card = devices.find(c => c.id === id)
+    if (!card) return
 
-  deviceStatuses.value[id] = value
+    deviceStatuses.value[id] = value
 
-  // only toggle between Connected/Disconnected
-  card.highlights.status = value ? 'Connected' : 'Disconnected'
+    // only toggle between Connected/Disconnected
+    card.highlights.status = value ? 'Connected' : 'Disconnected'
 }
 </script>
 
 <template>
     <div class="relative overflow-y-auto">
-        <div
-            class="absolute h-54 inset-0 bg-gradient-to-r from-indigo-400 to-blue-400 dark:from-indigo-900 dark:to-blue-900">
-        </div>
+        <Banner />
         <Page title="Data Collection" description="Collect and manage sports performance data" inverted>
             <Tabs :items="dataCollectionTabs" color="white" />
 
@@ -83,28 +81,19 @@ function toggleStatus(id: number, value: boolean) {
             <Block icon="i-lucide-monitor-cog" iconColor="blue" title="Overview"
                 description="Monitor and control connected sports equipment and sensors">
                 <template #actions>
-                    <UButton label="Sync All Devices" icon="i-lucide-refresh-cw" size="lg" variant="outline" color="neutral" @click="console.log('Sync All Devices')" />
+                    <UButton label="Sync All Devices" icon="i-lucide-refresh-cw" size="lg" variant="outline"
+                        color="neutral" @click="console.log('Sync All Devices')" />
                     <UButton label="Add Device" icon="i-lucide-plus" size="lg" to="/data-collection/form-builder" />
                 </template>
 
                 <Grid :lg="3" :gap="4">
-                    <Card v-for="card in devices" :key="card.id" :icon="card.icon" :title="card.title"
-                        :description="card.description" :tags="card.tags" :type="card.type">
+                    <Card v-for="card in devices" :key="card.id" :icon="card.icon" :tags="card.tags">
                         <template #actions>
-                            <USwitch
-                                v-if="card.highlights.status !== 'Calibrating'"
-                                v-model="deviceStatuses[card.id]"
-                                color="neutral"
-                                @update:model-value="(val: any) => toggleStatus(card.id, val)"
-                            />
+                            <USwitch v-if="card.highlights.status !== 'Calibrating'" v-model="deviceStatuses[card.id]"
+                                color="neutral" @update:model-value="(val: any) => toggleStatus(card.id, val)" />
 
                             <!-- Show disabled switch if Calibrating -->
-                            <USwitch
-                                v-else
-                                color="neutral"
-                                :model-value="false"
-                                disabled
-                            />
+                            <USwitch v-else color="neutral" :model-value="false" disabled />
                         </template>
 
                         <template #description>
@@ -117,7 +106,8 @@ function toggleStatus(id: number, value: boolean) {
                         </template>
 
                         <template #highlights>
-                            <div v-if="card.highlights" class="flex justify-between items-center mt-4 py-2 px-4 bg-muted rounded">
+                            <div v-if="card.highlights"
+                                class="flex justify-between items-center mt-4 py-2 px-4 bg-muted rounded">
                                 <!-- Status -->
                                 <div class="flex items-center gap-2">
                                     <UChip size="sm" :color="statusColor(card.highlights.status)" />
@@ -149,7 +139,7 @@ function toggleStatus(id: number, value: boolean) {
                         <template #footer>
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center gap-2">
-                                    <UIcon name="i-lucide-refresh-cw" class="size-4 text-dimmed" /> 
+                                    <UIcon name="i-lucide-refresh-cw" class="size-4 text-dimmed" />
                                     <span class="text-sm text-muted">{{ card.lastSynced }}</span>
                                 </div>
                                 <span class="text-sm text-muted">v{{ card.version }}</span>
@@ -158,7 +148,7 @@ function toggleStatus(id: number, value: boolean) {
                     </Card>
                 </Grid>
             </Block>
-            
+
         </Page>
     </div>
 </template>

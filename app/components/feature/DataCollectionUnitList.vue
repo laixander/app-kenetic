@@ -1,98 +1,29 @@
-<script setup lang="ts">
-import UnitCard from './UnitCard.vue'
-import { ref, reactive, defineProps, defineEmits } from 'vue'
-
-// simple uid generator instead of uuid dependency
-function uid() {
-    return Math.random().toString(36).substring(2, 9)
-}
-
-const showModal = ref(false)
-const editingUnit = ref<null | Record<string, any>>(null)
-
-const units = ref<Array<{ id: string; name: string; symbol?: string; factor: number }>>([
-    { id: uid(), name: 'Meter', symbol: 'm', factor: 1 },
-    { id: uid(), name: 'Kilometer', symbol: 'km', factor: 1000 },
-    { id: uid(), name: 'Centimeter', symbol: 'cm', factor: 0.01 }
-])
-
-const form = reactive({ id: '', name: '', symbol: '', factor: 1 })
-
-function openModalForCreate() {
-    editingUnit.value = null
-    form.id = ''
-    form.name = ''
-    form.symbol = ''
-    form.factor = 1
-    showModal.value = true
-}
-
-function openModalForEdit(unit: any) {
-    editingUnit.value = unit
-    form.id = unit.id
-    form.name = unit.name
-    form.symbol = unit.symbol || ''
-    form.factor = unit.factor
-    showModal.value = true
-}
-
-function onSave() {
-    if (!form.name || String(form.name).trim().length < 1) {
-        alert('Please provide a unit name.')
-        return
-    }
-
-    if (editingUnit.value) {
-        // Immutable update to avoid TS index errors
-        units.value = units.value.map(u =>
-            u.id === form.id
-                ? { ...u, name: form.name.trim(), symbol: form.symbol.trim(), factor: Number(form.factor) }
-                : u
-        )
-    } else {
-        units.value.unshift({
-            id: uid(),
-            name: form.name.trim(),
-            symbol: form.symbol.trim(),
-            factor: Number(form.factor)
-        })
-    }
-
-    showModal.value = false
-}
-
-function deleteUnit(id: string) {
-    if (!confirm('Delete this unit?')) return
-    units.value = units.value.filter(u => u.id !== id)
-}
-</script>
 <template>
     <Block icon="i-lucide-ruler" iconColor="violet" title="Unit Measurement"
         description="Manage preset unit measurement">
         <template #actions>
             <UButton label="Add Unit" icon="i-lucide-plus" variant="outline" color="neutral" size="lg"
-                @click="openModalForCreate" />
+                @click="createNew" />
         </template>
         <Grid :lg="3" :gap="4">
-            <UnitCard v-for="unit in units" :key="unit.id" :unit="unit" @edit="openModalForEdit" @delete="deleteUnit" />
+            <UnitCard v-for="unit in units" :key="unit.id" :unit="unit" @edit="edit(unit)" @delete="deleteRecord(unit)" />
         </Grid>
     </Block>
     <!-- Modal: Create / Edit -->
-    <UModal v-model:open="showModal" :title="editingUnit ? 'Edit Unit' : 'Create Unit'"
-        :description="editingUnit ? 'Update the details of your existing unit.' : 'Define a new measurement unit with name, symbol, and conversion factor.'"
-        class="max-w-xl w-full">
+    <UModal v-model:open="showModal" title="Unit Details"
+        description="Define measurement unit with name, symbol, and conversion factor." class="max-w-xl w-full">
         <template #body>
             <div class="space-y-4">
                 <UFormField label="Unit name" class="w-full">
-                    <UInput v-model="form.name" placeholder="e.g. Meter, Kilogram" class="w-full" />
+                    <UInput v-model="unit.name" placeholder="e.g. Meter, Kilogram" class="w-full" />
                 </UFormField>
 
                 <UFormField label="Symbol (optional)" class="w-full">
-                    <UInput v-model="form.symbol" placeholder="e.g. m, kg" class="w-full" />
+                    <UInput v-model="unit.symbol" placeholder="e.g. m, kg" class="w-full" />
                 </UFormField>
 
                 <UFormField label="Conversion factor (to base unit)" class="w-full">
-                    <UInput v-model="form.factor" type="number" placeholder="e.g. 1, 1000" class="w-full" />
+                    <UInput v-model="unit.conversionFactor" type="number" placeholder="e.g. 1, 1000" class="w-full" />
                 </UFormField>
             </div>
         </template>
@@ -100,9 +31,66 @@ function deleteUnit(id: string) {
         <template #footer="{ close }">
             <div class="flex justify-end gap-2 w-full">
                 <UButton color="neutral" variant="ghost" @click="close">Cancel</UButton>
-                <UButton color="primary" @click="onSave">Save</UButton>
+                <UButton color="primary" @click="save">Save</UButton>
             </div>
         </template>
     </UModal>
 
 </template>
+
+<script setup lang="ts">
+import type { UnitType } from '~/types/models'
+import UnitCard from './UnitCard.vue'
+import { ref, reactive, defineProps, defineEmits } from 'vue'
+
+
+const { create, find, findAll, update, archive } = useAPI()
+
+onMounted(async () => {
+    await init()
+})
+
+const units = ref<Array<UnitType>>()
+
+const init = async () => {
+    let { results } = await findAll<UnitType>("/units", {})
+    units.value = results.value
+}
+
+
+const showModal = ref(false)
+const unit = ref<UnitType>({})
+
+const edit = (rec: UnitType) => {
+    unit.value = JSON.parse(JSON.stringify(rec))
+    showModal.value = true
+}
+
+const createNew = () => {
+    unit.value = {}
+    showModal.value = true
+}
+
+const save = async () => {
+    try {
+        if (!unit.value?.id) {
+            //save
+            await create("/units", unit.value)
+        } else {
+            //update
+            await update("/units", unit.value)
+        }
+        await init();
+    } catch (error) {
+        console.log('error :>> ', error);
+    }
+
+    showModal.value = false
+}
+
+
+const deleteRecord = async(rec:UnitType)=>{
+     await archive("/units", rec)
+     await init()
+}
+</script>

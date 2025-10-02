@@ -224,3 +224,32 @@ export interface DynamicFieldProps {
   textInputType?: 'text' | 'number' | 'file' | 'date'
   selectedUnit?: string
 }
+
+export interface ModelType {
+    id?: number
+    createdById?: number;
+    createdBy?: UserType;
+    updatedById?: number;
+    updatedBy?: UserType;
+    createdAt?: Date;
+    updatedAt?: Date;
+    isActive?: boolean;
+}
+
+export interface UserType extends ModelType {
+    _id?:number
+    username?:string
+    avatar?: string;
+    password?: string;
+    email?: string;
+    status?: string;
+    lastLoggedIn?: Date;
+    invalidAttempt?: number;
+}
+
+export interface UnitType extends ModelType {
+    name?:string
+    description?:string
+    symbol?:string
+    conversionFactor?:number
+}

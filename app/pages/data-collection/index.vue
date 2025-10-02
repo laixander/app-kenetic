@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import FormCard from '~/components/feature/DataCollectionCard.vue';
-import InputList from '~/components/feature/DataCollectionInputList.vue'
-import InputList2 from '~/components/feature/DataCollectionInputList2.vue'
-import UnitList from '~/components/feature/DataCollectionUnitList.vue'
+import InputManagement from '~/components/feature/InputManagement.vue'
+import UnitList from '~/components/feature/UnitManagement.vue'
 import { dataStatCards, formCards, dataCollectionTabs } from '~/data';
 </script>
 <template>
@@ -29,9 +28,7 @@ import { dataStatCards, formCards, dataCollectionTabs } from '~/data';
                 </Grid>
             </Block>
 
-            <InputList />
-
-            <InputList2 />
+            <InputManagement />
 
             <UnitList />
         </Page>

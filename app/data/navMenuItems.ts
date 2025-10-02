@@ -35,6 +35,11 @@ export const formBuilderTabs: TabItem[] = [
     {
         label: 'Fields',
         icon: 'i-lucide-text-cursor-input',
+        to: '/data-collection/fields'
+    },
+    {
+        label: 'Forms',
+        icon: 'i-lucide-text-cursor-input',
         to: '/data-collection/form-builder'
     },
     {

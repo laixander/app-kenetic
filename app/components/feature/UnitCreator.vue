@@ -53,7 +53,7 @@ function onSave() {
 </script>
 
 <template>
-    <UModal v-model:open="localOpen" :title="props.unit ? 'Edit Unit' : 'Create Unit'" :description="props.unit
+    <UModal v-model:open="localOpen" :title="props.unit ? 'Edit Unit' : 'Unit Details'" :description="props.unit
         ? 'Update the details of your existing unit.'
         : 'Define a new measurement unit with name, symbol, and conversion factor.'" class="max-w-xl w-full">
         <template #body>

@@ -2,7 +2,7 @@
 import InputCard from './InputCard.vue'
 import { ref, reactive } from 'vue'
 import { useUnits, type Unit } from '~/composables/useUnits'
-import UnitCreatorModal from './UnitCreatorModal.vue'
+import UnitCreator from './UnitCreator.vue'
 
 const { addUnit, updateUnit } = useUnits()
 const editingUnit = ref<Unit | null>(null)
@@ -170,7 +170,7 @@ watch(optionsText, (val) => {
     <Block icon="i-lucide-text-cursor-input" iconColor="teal" title="Input Fields"
         description="Manage preset input fields">
         <template #actions>
-            <UButton label="Add Unit" icon="i-lucide-plus" variant="outline" color="neutral" size="lg"
+            <UButton label="Add New Field" icon="i-lucide-plus" variant="outline" color="neutral" size="lg"
                 @click="openModalForCreate" />
         </template>
         <Grid :lg="3" :gap="4">
@@ -179,7 +179,7 @@ watch(optionsText, (val) => {
         </Grid>
     </Block>
     <!-- Modal -->
-    <UModal v-model:open="showModal" :title="editingInput ? 'Edit Input' : 'Create Input'"
+    <UModal v-model:open="showModal" :title="editingInput ? 'Edit Input' : 'Input Field Details'"
         :description="editingInput ? 'Update this input field' : 'Define a new input field'"
         :ui="{ body: 'p-0 sm:p-0', }" class="max-w-4xl w-full">
         <template #body>
@@ -223,7 +223,7 @@ watch(optionsText, (val) => {
                             label="New Unit" />
 
                         <!-- Inline Unit Creator Modal -->
-                        <UnitCreatorModal :open="showUnitModal" :unit="editingUnit" @close="showUnitModal = false"
+                        <UnitCreator :open="showUnitModal" :unit="editingUnit" @close="showUnitModal = false"
                             @save="handleSave" />
                     </div>
 

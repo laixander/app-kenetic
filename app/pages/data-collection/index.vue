@@ -8,7 +8,7 @@ import { dataStatCards, formCards, dataCollectionTabs } from '~/data';
     <div class="relative overflow-y-auto">
         <Banner />
         <Page title="Data Collection" description="Collect and manage sports performance data" inverted>
-            <!-- <Tabs :items="dataCollectionTabs" color="white" /> -->
+            <Tabs :items="dataCollectionTabs" color="white" />
 
             <Grid :lg="3" :gap="4">
                 <StatCard v-for="(card, i) in dataStatCards" :key="i" v-bind="card" countSize="text-xl" />

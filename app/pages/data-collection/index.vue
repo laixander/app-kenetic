@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FormCard from '~/components/feature/DataCollectionCard.vue';
 import InputManagement from '~/components/feature/InputManagement.vue'
-import UnitList from '~/components/feature/UnitManagement.vue'
+import UnitManagement from '~/components/feature/UnitManagement.vue'
 import { dataStatCards, formCards, dataCollectionTabs } from '~/data';
 </script>
 <template>
@@ -30,7 +30,7 @@ import { dataStatCards, formCards, dataCollectionTabs } from '~/data';
 
             <InputManagement />
 
-            <UnitList />
+            <UnitManagement />
         </Page>
     </div>
 </template>

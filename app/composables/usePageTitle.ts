@@ -7,31 +7,39 @@ import { notificationItems } from '~/data'
 
 export function usePageTitle() {
   const route = useRoute()
-
-  // bring in notifications composable
   const { notifications } = useNotifications(notificationItems)
 
-  const pageTitle = computed(() => {
+  const pageTitleParts = computed<string[]>(() => {
     const name = String(route.name ?? '')
 
-    // if we're in notification detail
+    // Notifications detail → Inbox › Notification Title
     if (name.startsWith('inbox-id')) {
       const id = Number(route.params.id)
-      const notif = notifications.value.find(n => n.id === id)
-      return notif ? notif.title : 'Inbox'
+      const notif = notifications.value.find((n) => n.id === id)
+      return ['Inbox', notif ? notif.title : '']
     }
 
-    // otherwise fall back to customTitles or route name formatting
-    return (
-      customTitles[name] ||
-      name
-        .replace(/[-._]/g, ' ')
-        .replace(/([a-z])([A-Z])/g, '$1 $2')
-        .replace(/\b\w/g, l => l.toUpperCase())
-    )
+    // Custom title override
+    if (customTitles[name]) {
+      return customTitles[name].split(' › ')
+    }
+
+    // Otherwise build from route.path segments
+    const segments = route.path
+      .split('/')
+      .filter(Boolean) // remove empty
+      .map((seg) =>
+        seg
+          .replace(/[-._]/g, ' ')
+          .replace(/([a-z])([A-Z])/g, '$1 $2')
+          .replace(/\b\w/g, (l) => l.toUpperCase())
+      )
+
+    return segments.length ? segments : ['Home']
   })
 
   return {
-    pageTitle,
+    pageTitleParts,
+    pageTitle: computed(() => pageTitleParts.value.join(' › ')), // fallback string
   }
 }

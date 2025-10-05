@@ -18,7 +18,7 @@ const switchLayoutClass = computed(() => {
 
 <template>
     <!-- Text Input -->
-    <UFormField v-if="props.selectedType === 'Text'" :label="props.inputLabel" :required="props.isRequired"
+    <UFormField v-if="props.selectedType === 'Text'" :label="props.inputLabel" :required="props.isRequired" size="lg"
         class="w-full">
         <UInput v-model="model" :placeholder="props.inputPlaceholder || 'Enter text'"
             :type="props.textInputType || 'text'" class="w-full"
@@ -30,27 +30,27 @@ const switchLayoutClass = computed(() => {
     </UFormField>
 
     <!-- Textarea -->
-    <UFormField v-else-if="props.selectedType === 'Textarea'" :label="props.inputLabel" :required="props.isRequired"
+    <UFormField v-else-if="props.selectedType === 'Textarea'" :label="props.inputLabel" :required="props.isRequired" size="lg"
         class="w-full">
         <UTextarea v-model="model" :placeholder="props.inputPlaceholder || 'Enter details'" class="w-full" />
     </UFormField>
 
     <!-- Select -->
-    <UFormField v-else-if="props.selectedType === 'Select'" :label="props.inputLabel" :required="props.isRequired"
+    <UFormField v-else-if="props.selectedType === 'Select'" :label="props.inputLabel" :required="props.isRequired" size="lg"
         class="w-full">
         <USelect v-model="model" :items="props.selectItems" :placeholder="props.inputPlaceholder || 'Pick an option'"
             class="w-full" />
     </UFormField>
 
     <!-- Checkbox -->
-    <UFormField v-else-if="props.selectedType === 'Checkbox'" :label="props.inputLabel" :required="props.isRequired"
+    <UFormField v-else-if="props.selectedType === 'Checkbox'" :label="props.inputLabel" :required="props.isRequired" size="lg"
         class="w-full">
         <UCheckboxGroup v-model="model" :items="props.checkboxItems"
             :orientation="props.checkboxOrientation || 'vertical'" />
     </UFormField>
 
     <!-- Switch -->
-    <UFormField v-else-if="props.selectedType === 'Switch'" :label="props.inputLabel" :required="props.isRequired"
+    <UFormField v-else-if="props.selectedType === 'Switch'" :label="props.inputLabel" :required="props.isRequired" size="lg"
         class="w-full">
         <div :class="switchLayoutClass">
             <USwitch v-for="(item, index) in props.switchItems" :key="index" :value="item" :label="item" />
@@ -58,13 +58,13 @@ const switchLayoutClass = computed(() => {
     </UFormField>
 
     <!-- Radio -->
-    <UFormField v-else-if="props.selectedType === 'Radio'" :label="props.inputLabel" :required="props.isRequired"
+    <UFormField v-else-if="props.selectedType === 'Radio'" :label="props.inputLabel" :required="props.isRequired" size="lg"
         class="w-full">
         <URadioGroup v-model="model" :items="props.radioItems" :orientation="props.radioOrientation || 'vertical'" />
     </UFormField>
 
     <!-- File Upload -->
-    <UFileUpload v-else-if="props.selectedType === 'File Upload'" v-model="model"
+    <UFileUpload v-else-if="props.selectedType === 'File Upload'" v-model="model" size="lg"
         :label="props.inputLabel || 'Drop your file here'"
         :description="props.fileDescription || 'SVG, PNG, JPG or GIF (max. 2MB)'" class="w-full" />
 

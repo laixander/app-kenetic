@@ -8,7 +8,7 @@ export const navigationMenuItemsByRole: Record<string, NavigationMenuItem[]> = {
             { label: 'Athlete Management', icon: 'i-lucide-git-branch',  },
             { label: 'Talent Identification', icon: 'i-lucide-users',  },
             { label: 'Campus Fitness', icon: 'i-lucide-file-text',  },
-            { label: 'Data Collection', icon: 'i-lucide-folder-open', to: '/data-collection' },
+            { label: 'Assessment Center', icon: 'i-lucide-folder-open', to: '/assessment-center' },
             { label: 'Benchmarking', icon: 'i-lucide-clipboard-check',  },
             { label: 'Team Management', icon: 'i-lucide-chart-column',  },
             { label: 'Reports & Analytics', icon: 'i-lucide-user-plus',  },
@@ -35,39 +35,34 @@ export const formBuilderTabs: TabItem[] = [
     {
         label: 'Fields',
         icon: 'i-lucide-text-cursor-input',
-        to: '/data-collection/fields'
-    },
-    {
-        label: 'Forms',
-        icon: 'i-lucide-text-cursor-input',
-        to: '/data-collection/form-builder'
+        to: '/assessment-center/assessment-forms/form-builder'
     },
     {
         label: 'Preview',
         icon: 'i-lucide-file-text',
-        to: '/data-collection/form-builder/preview'
+        to: '/assessment-center/assessment-forms/form-builder/preview'
     },
     {
         label: 'Settings',
         icon: 'i-lucide-settings',
-        to: '/data-collection/form-builder/settings'
+        to: '/assessment-center/assessment-forms/form-builder/settings'
     }
 ]
 
-export const dataCollectionTabs: TabItem[] = [
+export const assessmentTabs: TabItem[] = [
+    {
+        label: 'Assessment Repository',
+        icon: 'i-lucide-book-marked',
+        to: '/assessment-center'
+    },
     {
         label: 'Assessment Forms',
         icon: 'i-lucide-clipboard-list',
-        to: '/data-collection'
+        to: '/assessment-center/assessment-forms'
     },
     {
-        label: 'Device Management',
-        icon: 'i-lucide-monitor-cog',
-        to: '/data-collection/device-management'
-    },
-    {
-        label: 'Live Data',
-        icon: 'i-lucide-webcam',
-        to: '/data-collection/live-data'
+        label: 'Scheduled Assessments',
+        icon: 'i-lucide-calendar',
+        to: '/assessment-center/scheduled-assessments'
     }
 ]

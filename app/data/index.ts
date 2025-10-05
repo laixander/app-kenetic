@@ -1,7 +1,7 @@
 import {
     navigationMenuItemsByRole,
     formBuilderTabs,
-    dataCollectionTabs
+    assessmentTabs
 } from './navMenuItems';
 
 import {
@@ -47,7 +47,7 @@ export {
     dataStatCards,
     formCards,
     formBuilderTabs,
-    dataCollectionTabs,
+    assessmentTabs,
     devices,
     inputCards,
     newForm

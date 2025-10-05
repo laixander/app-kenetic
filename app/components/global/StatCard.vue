@@ -11,6 +11,7 @@ const trendDirection = computed(() =>
 <template>
     <UCard :class="[
         useGradient && 'bg-gradient-to-tr from-5% to-default',
+        useGradient && color === 'primary' && 'from-primary/10',
         useGradient && color === 'warning' && 'from-warning/10',
         useGradient && color === 'secondary' && 'from-secondary/10',
         useGradient && color === 'success' && 'from-success/10',
@@ -61,6 +62,7 @@ const trendDirection = computed(() =>
                 ]"> -->
                 <div :class="[
                     'rounded-xl p-3',
+                    color === 'primary' && 'bg-primary dark:bg-primary-950',
                     color === 'warning' && 'bg-warning dark:bg-warning-950',
                     color === 'secondary' && 'bg-secondary dark:bg-secondary-950',
                     color === 'success' && 'bg-success dark:bg-success-950',

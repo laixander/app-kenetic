@@ -12,7 +12,7 @@ defineEmits(['toggleSidebar'])
 
 const open = ref(false)
 
-const { pageTitle } = usePageTitle()
+const { pageTitle, pageTitleParts } = usePageTitle()
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const isDesktop = breakpoints.greaterOrEqual('sm')
@@ -39,15 +39,16 @@ import { notificationItems } from '~/data'
 import { useNotifications } from '~/composables/useNotifications'
 const { notifications, handleClick, limitedNotifications, unreadCount } = useNotifications(notificationItems)
 const closeDrawerAndNavigate = (path: string) => {
-  navigateTo(path)
-  useTimeoutFn(() => {
-    drawerOpen.value = false
-  }, 300)
+    navigateTo(path)
+    useTimeoutFn(() => {
+        drawerOpen.value = false
+    }, 300)
 }
 const drawerOpen = ref(false)
 </script>
 <template>
-    <div class="h-16 shrink-0 flex items-center justify-between border-b border-default px-4 sm:px-6 gap-1.5 bg-default">
+    <div
+        class="h-16 shrink-0 flex items-center justify-between border-b border-default px-4 sm:px-6 gap-1.5 bg-default">
         <div class="flex items-center gap-1.5 min-w-0">
             <!-- Sidebar toggle (desktop) -->
             <UButton :icon="collapsed ? 'i-lucide-panel-left-open' : 'i-lucide-panel-left-close'" variant="ghost"
@@ -62,41 +63,30 @@ const drawerOpen = ref(false)
             </USlideover>
 
             <!-- Page title -->
-            <h1 class="flex items-center gap-1.5 font-semibold text-highlighted truncate">
-                {{ pageTitle }}
-            </h1>
+            <div class="flex items-center gap-1.5 text-sm font-semibold text-highlighted truncate">
+                <template v-for="(part, index) in pageTitleParts" :key="index">
+                    <span class="truncate">{{ part }}</span>
+                    <UIcon v-if="index < pageTitleParts.length - 1" name="i-lucide-chevron-right"
+                        class="w-4 h-4 text-muted shrink-0" />
+                </template>
+            </div>
         </div>
 
         <div class="flex items-center shrink-0 gap-3">
             <UDrawer v-model:open="drawerOpen" direction="right" inset>
-                <UChip
-                    v-if="unreadCount > 0"
-                    size="lg"
-                    color="error"
-                    inset
-                >
+                <UChip v-if="unreadCount > 0" size="lg" color="error" inset>
                     <UButton icon="i-lucide-bell" variant="ghost" color="neutral" />
                 </UChip>
 
                 <!-- fallback without chip -->
-                <UButton
-                    v-else
-                    icon="i-lucide-bell"
-                    variant="ghost"
-                    color="neutral"
-                />
+                <UButton v-else icon="i-lucide-bell" variant="ghost" color="neutral" />
                 <template #content>
                     <div class="grid p-4 h-full overflow-auto">
                         <ListGroup class="lg:w-[320px]">
-                            <ListItem
-                                v-for="n in limitedNotifications"
-                                :key="n.id"
-                                :title="n.title"
+                            <ListItem v-for="n in limitedNotifications" :key="n.id" :title="n.title"
                                 :description="typeof n.description === 'string' ? n.description : undefined"
-                                :read="n.read"
-                                @click="handleClick(n.id, () => drawerOpen = false)"
-                                class="cursor-pointer"
-                            >
+                                :read="n.read" @click="handleClick(n.id, () => drawerOpen = false)"
+                                class="cursor-pointer">
                                 <template v-if="typeof n.description === 'object'" #description>
                                     <div class="flex items-center text-xs">
                                         <span class="hidden lg:inline">{{ n.description.name }}</span>
@@ -108,13 +98,8 @@ const drawerOpen = ref(false)
                         </ListGroup>
                         <!-- View All button -->
                         <div v-if="notifications.length > 10" class="mt-auto">
-                            <UButton
-                                block
-                                size="lg"
-                                variant="ghost"
-                                color="primary"
-                                @click="closeDrawerAndNavigate('/inbox')"
-                            >
+                            <UButton block size="lg" variant="ghost" color="primary"
+                                @click="closeDrawerAndNavigate('/inbox')">
                                 View all notifications
                             </UButton>
                         </div>

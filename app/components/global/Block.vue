@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<BlockProps>(), {
 const uiCardConfig = {
     root: `relative w-full ${props.showDivider ? '' : 'divide-none'}`.trim(),
     // root: props.showDivider ? undefined : 'divide-none',
-    body: `h-full space-y-2 ${props.noBodyPadding ? 'p-0 sm:p-0' : undefined}`.trim(),
+    body: `h-full space-y-2 ${props.noBodyPadding ? 'p-0 sm:p-0' : ''}`.trim(),
 }
 </script>
 <template>

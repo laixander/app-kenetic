@@ -150,22 +150,22 @@ export const statCards: StatCardProps[] = [
 
 export const dataStatCards: StatCardProps[] = [
   {
-    label: 'Data Points',
+    label: 'Total Assessment',
     count: 24,
-    icon: 'i-lucide-database',
-    color: 'orange',
+    icon: 'i-lucide-file-text',
+    color: 'primary',
   },
   {
-    label: 'Athletes Tested',
-    count: 123,
-    icon: 'i-lucide-users',
-    color: 'secondary',
-  },
-  {
-    label: 'Connected Devices',
-    count: 12,
-    icon: 'i-lucide-webcam',
+    label: 'Completed',
+    count: "1,247",
+    icon: 'i-lucide-circle-check-big',
     color: 'success',
+  },
+  {
+    label: 'This Week',
+    count: 18,
+    icon: 'i-lucide-clock',
+    color: 'orange',
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-  <div :class="gridClass">
+  <div :class="[gridClass, props.class]">
     <slot />
   </div>
 </template>
@@ -17,6 +17,7 @@ const props = defineProps({
   gap: { type: Number, default: 4 },
   gapX: Number,
   gapY: Number,
+  class: { type: [String, Array, Object], default: '' }
 })
 
 const gridClass = computed(() => {

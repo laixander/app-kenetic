@@ -409,7 +409,7 @@ const selectedUnit = ref('')
 <template>
     <Page title="Form Builder" description="Create and customize data collection forms for sports assessments">
         <template #toolbar>
-            <UButton label="Back to Forms" icon="i-lucide-arrow-left" variant="ghost" to="/data-collection" />
+            <UButton label="Back to Forms" icon="i-lucide-arrow-left" variant="ghost" to="/assessment-center/assessment-forms" />
         </template>
         <template #actions>
             <Tabs :items="formBuilderTabs" />
@@ -526,19 +526,19 @@ const selectedUnit = ref('')
                 </div>
 
                 <!-- Add Row Button -->
-                <UButton label="Add Row Field" icon="i-lucide-plus" variant="outline" color="neutral"
+                <UButton label="Add Row Field" icon="i-lucide-plus" variant="outline" color="neutral" size="lg"
                     @click="addRow(section.id)" />
 
                 <USeparator />
             </div>
 
             <!-- Add Section Button -->
-            <UButton label="Add Section" icon="i-lucide-plus" color="neutral" @click="addSection" />
+            <UButton label="Add Section" icon="i-lucide-plus" color="neutral" size="lg" @click="addSection" />
 
             <!-- Field Modal -->
             <UModal v-model:open="showModal" :title="modalFieldId ? 'Edit Field' : 'Add Field'"
                 :class="[selectedFieldType === 'Custom Field' ? 'max-w-4xl' : 'max-w-lg', 'w-full']"
-                :ui="{ body: 'p-0 sm:p-0', }">
+                :ui="{ body: 'p-0 sm:p-0', footer: 'grid lg:flex lg:justify-end' }">
                 <template #body>
                     <!-- <h3 class="text-lg font-medium">
                             {{ modalFieldId ? 'Edit Field' : 'Add Field' }}
@@ -547,7 +547,7 @@ const selectedUnit = ref('')
                     <!-- Radio Group -->
                     <div class="p-4 sm:p-6 border-b border-default space-y-4">
                         <URadioGroup v-model="selectedFieldType" orientation="horizontal" indicator="end"
-                            variant="table" size="sm" :ui="{ item: 'w-full' }" :items="items" />
+                            variant="table" :ui="{ item: 'w-full' }" :items="items" />
 
                         <UAlert v-if="selectedFieldType === 'Custom Field'"
                             description="Customize your input by selecting a type, adding labels, placeholders, and options."
@@ -566,11 +566,11 @@ const selectedUnit = ref('')
                             class="justify-center" @click="addField" /> -->
 
                     <div v-if="selectedFieldType === 'Custom Field'" class="space-y-4">
-                        <div class="flex divide-x divide-default">
+                        <div class="lg:flex divide-y lg:divide-y-0 lg:divide-x divide-default">
                             <div class="grid items-center gap-6 w-full p-4 sm:p-6">
                                 <!-- Choose which input to render -->
                                 <div class="space-y-2">
-                                    <UFormField label="Choose Input Type">
+                                    <UFormField label="Choose Input Type" size="lg">
                                         <USelect v-model="selectedType"
                                             :items="inputTypes.map((i: { label: any; }) => i.label)"
                                             placeholder="Select input type" class="w-full" />
@@ -581,14 +581,14 @@ const selectedUnit = ref('')
 
                                 <!-- Text options -->
                                 <div v-if="selectedType === 'Text'" class="space-y-3">
-                                    <UFormField label="Input Type">
+                                    <UFormField label="Input Type" size="lg">
                                         <USelect v-model="textInputType" :items="['text', 'number', 'file']"
                                             placeholder="Select type" class="w-full" />
                                     </UFormField>
 
                                     <!-- Unit Selector (only when number type) -->
                                     <div v-if="textInputType === 'number'" class="space-y-2">
-                                        <UFormField label="Unit">
+                                        <UFormField label="Unit" size="lg">
                                             <USelect v-model="selectedUnit" :items="numberUnits"
                                                 placeholder="Select unit" class="w-full" />
                                         </UFormField>
@@ -597,7 +597,7 @@ const selectedUnit = ref('')
 
                                 <!-- Custom Label -->
                                 <div v-if="selectedType" class="space-y-2">
-                                    <UFormField label="Label">
+                                    <UFormField label="Label" size="lg">
                                         <UInput v-model="inputLabel" placeholder="Enter label" class="w-full" />
                                     </UFormField>
                                 </div>
@@ -609,7 +609,7 @@ const selectedUnit = ref('')
 
                                 <!-- Custom Placeholder -->
                                 <div v-if="selectedType && ['Text', 'Textarea', 'Select'].includes(selectedType)">
-                                    <UFormField label="Placeholder">
+                                    <UFormField label="Placeholder" size="lg">
                                         <UInput v-model="inputPlaceholder" placeholder="Enter placeholder"
                                             class="w-full" />
                                     </UFormField>
@@ -617,7 +617,7 @@ const selectedUnit = ref('')
 
                                 <!-- File Upload custom description -->
                                 <div v-if="selectedType === 'File Upload'" class="space-y-2">
-                                    <UFormField label="File Description">
+                                    <UFormField label="File Description" size="lg">
                                         <UInput v-model="fileDescription" placeholder="Enter file upload description"
                                             class="w-full" />
                                     </UFormField>
@@ -625,7 +625,7 @@ const selectedUnit = ref('')
 
                                 <!-- Select options -->
                                 <div v-if="selectedType === 'Select'" class="space-y-3">
-                                    <UFormField label="Custom Options">
+                                    <UFormField label="Custom Options" size="lg">
                                         <div class="flex gap-2">
                                             <UInput v-model="newOption" placeholder="Add option" class="flex-1" />
                                             <UButton color="primary" @click="addOption">Add</UButton>
@@ -644,7 +644,7 @@ const selectedUnit = ref('')
 
                                 <!-- Checkbox options -->
                                 <div v-if="selectedType === 'Checkbox'" class="space-y-3">
-                                    <UFormField label="Checkbox Options">
+                                    <UFormField label="Checkbox Options" size="lg">
                                         <div class="flex gap-2">
                                             <UInput v-model="newCheckbox" placeholder="Add checkbox option"
                                                 class="flex-1" />
@@ -663,13 +663,13 @@ const selectedUnit = ref('')
 
                                     <UFormField label="Layout">
                                         <USelect v-model="checkboxLayout" :items="['horizontal', 'vertical', 'column']"
-                                            class="w-full" />
+                                            class="w-full" size="lg" />
                                     </UFormField>
                                 </div>
 
                                 <!-- Switch options -->
                                 <div v-if="selectedType === 'Switch'" class="space-y-3">
-                                    <UFormField label="Switch Options">
+                                    <UFormField label="Switch Options" size="lg">
                                         <div class="flex gap-2">
                                             <UInput v-model="newSwitch" placeholder="Add switch option"
                                                 class="flex-1" />
@@ -688,13 +688,13 @@ const selectedUnit = ref('')
 
                                     <UFormField label="Layout">
                                         <USelect v-model="switchLayout" :items="['horizontal', 'vertical', 'column']"
-                                            class="w-full" />
+                                            class="w-full" size="lg" />
                                     </UFormField>
                                 </div>
 
                                 <!-- Radio options -->
                                 <div v-if="selectedType === 'Radio'" class="space-y-3">
-                                    <UFormField label="Radio Options">
+                                    <UFormField label="Radio Options" size="lg">
                                         <div class="flex gap-2">
                                             <UInput v-model="newRadio" placeholder="Add radio option" class="flex-1" />
                                             <UButton color="primary" @click="addRadio">Add</UButton>
@@ -711,7 +711,7 @@ const selectedUnit = ref('')
                                     </ul>
 
                                     <UFormField label="Orientation">
-                                        <USelect v-model="radioOrientation" :items="['horizontal', 'vertical']" />
+                                        <USelect v-model="radioOrientation" :items="['horizontal', 'vertical']" class="w-full" size="lg" />
                                     </UFormField>
                                 </div>
 
@@ -719,17 +719,17 @@ const selectedUnit = ref('')
                                 <div v-if="selectedType === 'Slider'" class="space-y-3">
                                     <UFormField label="Minimum Value">
                                         <UInput v-model.number="sliderMin" type="number" placeholder="Enter min value"
-                                            class="w-full" />
+                                            class="w-full" size="lg" />
                                     </UFormField>
 
                                     <UFormField label="Maximum Value">
                                         <UInput v-model.number="sliderMax" type="number" placeholder="Enter max value"
-                                            class="w-full" />
+                                            class="w-full" size="lg" />
                                     </UFormField>
 
                                     <UFormField label="Step">
                                         <UInput v-model.number="sliderStep" type="number" placeholder="Enter step value"
-                                            class="w-full" />
+                                            class="w-full" size="lg" />
                                     </UFormField>
                                 </div>
 
@@ -738,7 +738,7 @@ const selectedUnit = ref('')
                                 <!-- Description -->
                                 <div v-if="selectedType" class="space-y-2">
                                     <UFormField label="Description" help="This will only show on the card list">
-                                        <UTextarea placeholder="Enter input description" class="w-full" />
+                                        <UTextarea placeholder="Enter input description" class="w-full" size="lg" />
                                     </UFormField>
                                 </div>
                             </div>
@@ -768,7 +768,7 @@ const selectedUnit = ref('')
                                 class="w-full" />
                         </UFormField> -->
                                     <UFormField v-if="selectedType === 'Text'" :label="inputLabel"
-                                        :required="isRequired" class="w-full">
+                                        :required="isRequired" class="w-full" size="lg">
                                         <UInput v-model="inputValue" :placeholder="inputPlaceholder || 'Enter text'"
                                             :type="textInputType" class="w-full"
                                             :ui="textInputType === 'number' ? { trailing: 'pointer-events-none' } : {}">
@@ -780,21 +780,21 @@ const selectedUnit = ref('')
 
                                     <!-- Textarea -->
                                     <UFormField v-else-if="selectedType === 'Textarea'" :label="inputLabel"
-                                        :required="isRequired" class="w-full">
+                                        :required="isRequired" class="w-full" size="lg">
                                         <UTextarea v-model="inputValue"
                                             :placeholder="inputPlaceholder || 'Enter details'" class="w-full" />
                                     </UFormField>
 
                                     <!-- Select -->
                                     <UFormField v-else-if="selectedType === 'Select'" :label="inputLabel"
-                                        :required="isRequired" class="w-full">
+                                        :required="isRequired" class="w-full" size="lg">
                                         <USelect v-model="inputValue" :items="selectItems"
                                             :placeholder="inputPlaceholder || 'Pick an option'" class="w-full" />
                                     </UFormField>
 
                                     <!-- Checkbox -->
                                     <UFormField v-else-if="selectedType === 'Checkbox'" :label="inputLabel"
-                                        :required="isRequired" class="w-full">
+                                        :required="isRequired" class="w-full" size="lg">
                                         <div :class="checkboxLayoutClass">
                                             <UCheckbox v-for="(item, index) in checkboxItems" :key="index" :value="item"
                                                 :label="item" />
@@ -803,7 +803,7 @@ const selectedUnit = ref('')
 
                                     <!-- Switch -->
                                     <UFormField v-else-if="selectedType === 'Switch'" :label="inputLabel"
-                                        :required="isRequired" class="w-full">
+                                        :required="isRequired" class="w-full" size="lg">
                                         <div :class="switchLayoutClass">
                                             <USwitch v-for="(item, index) in switchItems" :key="index"
                                                 v-model="inputValue" :value="item" :label="item" />
@@ -812,7 +812,7 @@ const selectedUnit = ref('')
 
                                     <!-- Radio -->
                                     <UFormField v-else-if="selectedType === 'Radio'" :label="inputLabel"
-                                        :required="isRequired" class="w-full">
+                                        :required="isRequired" class="w-full" size="lg">
                                         <URadioGroup v-model="inputValue" :items="radioItems"
                                             :orientation="radioOrientation" />
                                     </UFormField>
@@ -836,15 +836,8 @@ const selectedUnit = ref('')
 
                 </template>
                 <template #footer>
-                    <!-- Actions -->
-                    <div class="flex gap-2 justify-end">
-                        <!-- Cancel -->
-                        <UButton label="Cancel" variant="ghost" color="neutral" @click="showModal = false" />
-
-                        <!-- Confirm -->
-                        <UButton :label="modalFieldId ? 'Save Field' : 'Add Field'" color="primary" size="lg"
-                            :disabled="selectedFieldType === 'Preset Field' && !selectedPreset" @click="addField" />
-                    </div>
+                    <UButton :label="modalFieldId ? 'Save Field' : 'Add Field'" color="primary" size="lg" :disabled="selectedFieldType === 'Preset Field' && !selectedPreset" @click="addField" class="justify-center w-full lg:order-2 lg:w-auto" />
+                    <UButton label="Cancel" variant="ghost" color="neutral" @click="showModal = false" class="justify-center w-full lg:order-1 lg:w-auto" />
                 </template>
             </UModal>
         </Block>

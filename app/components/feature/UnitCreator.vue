@@ -55,7 +55,7 @@ function onSave() {
 <template>
     <UModal v-model:open="localOpen" :title="props.unit ? 'Edit Unit' : 'Unit Details'" :description="props.unit
         ? 'Update the details of your existing unit.'
-        : 'Define a new measurement unit with name, symbol, and conversion factor.'" class="max-w-xl w-full">
+        : 'Define a new measurement unit with name, symbol, and conversion factor.'" :ui="{ footer: 'grid lg:flex lg:justify-end' }" class="max-w-xl w-full">
         <template #body>
             <div class="space-y-4">
                 <UFormField label="Unit name" class="w-full">
@@ -73,10 +73,8 @@ function onSave() {
         </template>
 
         <template #footer>
-            <div class="flex justify-end gap-2 w-full">
-                <UButton color="neutral" variant="ghost" @click="localOpen = false">Cancel</UButton>
-                <UButton color="primary" @click="onSave">Save</UButton>
-            </div>
+                <UButton label="Save" color="primary" size="lg" @click="onSave" class="justify-center w-full lg:order-2 lg:w-auto" />
+                <UButton label="Cancel" color="neutral" variant="ghost" size="lg" @click="localOpen = false" class="justify-center w-full lg:order-1 lg:w-auto" />
         </template>
     </UModal>
 </template>

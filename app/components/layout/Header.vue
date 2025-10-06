@@ -12,7 +12,11 @@ defineEmits(['toggleSidebar'])
 
 const open = ref(false)
 
-const { pageTitle, pageTitleParts } = usePageTitle()
+const { pageTitleParts } = usePageTitle()
+interface BreadcrumbItem {
+  label: string
+  to?: string
+}
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const isDesktop = breakpoints.greaterOrEqual('sm')
@@ -45,6 +49,25 @@ const closeDrawerAndNavigate = (path: string) => {
     }, 300)
 }
 const drawerOpen = ref(false)
+
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => {
+  const segments = route.path.split('/').filter(Boolean)
+  const items: BreadcrumbItem[] = []
+
+  let accumulated = ''
+  for (let i = 0; i < pageTitleParts.value.length; i++) {
+    accumulated += '/' + (segments[i] || '')
+
+    const label = pageTitleParts.value[i] || 'Untitled'
+
+    items.push({
+      label,
+      to: i < pageTitleParts.value.length - 1 ? accumulated : undefined,
+    })
+  }
+
+  return items
+})
 </script>
 <template>
     <div
@@ -64,11 +87,16 @@ const drawerOpen = ref(false)
 
             <!-- Page title -->
             <div class="flex items-center gap-1.5 text-sm font-semibold text-highlighted truncate">
-                <template v-for="(part, index) in pageTitleParts" :key="index">
+                <!-- <template v-for="(part, index) in pageTitleParts" :key="index">
                     <span class="truncate">{{ part }}</span>
                     <UIcon v-if="index < pageTitleParts.length - 1" name="i-lucide-chevron-right"
                         class="w-4 h-4 text-muted shrink-0" />
-                </template>
+                </template> -->
+                <UBreadcrumb
+                    :items="breadcrumbItems"
+                    divider="i-lucide-chevron-right"
+                    class="text-highlighted truncate"
+                />
             </div>
         </div>
 

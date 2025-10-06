@@ -12,7 +12,7 @@
             <Block icon="i-lucide-clipboard-list" iconColor="blue" title="Data Forms"
                 description="Choose the type of assessment you want to complete">
                 <template #actions>
-                    <UButton label="Add New Form" icon="i-lucide-plus" size="lg" to="/assessment-center/assessment-forms/form-builder" />
+                    <UButton label="Add New Form" icon="i-lucide-plus" size="lg" to="/assessment-center/assessment-forms/form-builder" class="justify-center w-full" />
                 </template>
                 <Grid :lg="3" :gap="4">
                     <FormCard v-for="(card, index) in formCards" :key="index" v-bind="card" :actions="[

@@ -4,7 +4,7 @@
             <UButton label="Back to Assessments" icon="i-lucide-arrow-left" variant="ghost" to="/assessment-center" />
         </template>
         <Block title="Assessment Overview">
-            <Grid :lg="4">
+            <Grid :md="2" :lg="4">
                 <ListProfile profile-photo="https://randomuser.me/api/portraits/women/44.jpg"
                     profile-name="Sarah Johnson" profile-description="Athlete" />
                 <ListIcon v-for="(item, idx) in items" :key="idx" v-bind="item" styledIcon />
@@ -34,6 +34,7 @@ type Result = {
     performance: string
 }
 
+// Info Data
 const items = [
     {
         label: 'Physical Assessment',
@@ -51,6 +52,8 @@ const items = [
         icon: 'i-lucide-user',
     },
 ]
+
+// Stat Data
 const cards = [
     {
         title: 'Overall Score',
@@ -71,6 +74,8 @@ const cards = [
         subtitle: '87/100 points',
     },
 ]
+
+// Table Data
 const data = ref<Result[]>([
     {
         metric: 'VO2 Max',
@@ -102,6 +107,8 @@ const data = ref<Result[]>([
     }
 
 ])
+
+// Table Setting
 const columns: TableColumn<Result>[] = [
     {
         accessorKey: 'metric',

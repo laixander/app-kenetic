@@ -171,7 +171,7 @@ watch(optionsText, (val) => {
         description="Manage preset input fields">
         <template #actions>
             <UButton label="Add New Field" icon="i-lucide-plus" variant="outline" color="neutral" size="lg"
-                @click="openModalForCreate" />
+                @click="openModalForCreate" class="justify-center w-full" />
         </template>
         <Grid :lg="3" :gap="4">
             <InputCard v-for="input in inputs" :key="input.id" :input="input" @edit="openModalForEdit"
@@ -181,27 +181,27 @@ watch(optionsText, (val) => {
     <!-- Modal -->
     <UModal v-model:open="showModal" :title="editingInput ? 'Edit Input' : 'Input Field Details'"
         :description="editingInput ? 'Update this input field' : 'Define a new input field'"
-        :ui="{ body: 'p-0 sm:p-0', }" class="max-w-4xl w-full">
+        :ui="{ body: 'p-0 sm:p-0', footer: 'grid lg:flex lg:justify-end' }" class="max-w-4xl w-full">
         <template #body>
-            <div class="flex divide-x divide-default">
+            <div class="lg:flex divide-y lg:divide-y-0 lg:divide-x divide-default">
                 <!-- Left Form -->
                 <div class="w-full space-y-4 p-4 sm:p-6">
                     <UFormField label="Input Type">
                         <USelect v-model="form.type"
                             :items="['Text', 'Number', 'Textarea', 'Select', 'Checkbox', 'Radio', 'Switch', 'File Upload', 'Slider']"
-                            placeholder="Select type" class="w-full" />
+                            placeholder="Select type" size="lg" class="w-full" />
                     </UFormField>
 
                     <!-- Common -->
-                    <UFormField label="Label" class="w-full">
+                    <UFormField label="Label" size="lg" class="w-full">
                         <UInput v-model="form.label" placeholder="Field label" class="w-full" />
                     </UFormField>
 
-                    <UFormField label="Description" class="w-full">
+                    <UFormField label="Description" size="lg" class="w-full">
                         <UTextarea v-model="form.description" placeholder="Helper text..." class="w-full" />
                     </UFormField>
 
-                    <UFormField label="Placeholder" v-if="['Text', 'Number', 'Textarea', 'Select'].includes(form.type)"
+                    <UFormField label="Placeholder" size="lg" v-if="['Text', 'Number', 'Textarea', 'Select'].includes(form.type)"
                         class="w-full">
                         <UInput v-model="form.placeholder" placeholder="Placeholder text" class="w-full" />
                     </UFormField>
@@ -213,14 +213,14 @@ watch(optionsText, (val) => {
                         </UFormField>
                     </div> -->
                     <div v-if="form.type === 'Number'" class="flex items-end gap-2">
-                        <UFormField label="Unit" class="w-full">
+                        <UFormField label="Unit" size="lg" class="w-full">
                             <USelect v-model="form.unit"
                                 :items="units.map(u => ({ label: `${u.name} (${u.symbol})`, value: u.symbol }))"
                                 placeholder="Select unit" class="w-full" />
                         </UFormField>
                         <!-- Add Unit button -->
                         <UButton icon="i-lucide-plus" @click="showUnitModal = true" variant="outline" color="neutral"
-                            label="New Unit" />
+                            label="New Unit" size="lg" />
 
                         <!-- Inline Unit Creator Modal -->
                         <UnitCreator :open="showUnitModal" :unit="editingUnit" @close="showUnitModal = false"
@@ -228,20 +228,20 @@ watch(optionsText, (val) => {
                     </div>
 
                     <!-- Options (for Select, Radio, Checkbox) -->
-                    <UFormField v-if="['Select', 'Radio', 'Checkbox'].includes(form.type)" label="Options"
+                    <UFormField v-if="['Select', 'Radio', 'Checkbox'].includes(form.type)" label="Options" size="lg"
                         class="w-full">
                         <UTextarea v-model="optionsText" placeholder="One option per line" class="w-full" />
                     </UFormField>
 
                     <!-- Slider specific -->
                     <div v-if="form.type === 'Slider'" class="grid grid-cols-3 gap-2">
-                        <UFormField label="Min">
+                        <UFormField label="Min" size="lg">
                             <UInput type="number" v-model.number="form.min" />
                         </UFormField>
-                        <UFormField label="Max">
+                        <UFormField label="Max" size="lg">
                             <UInput type="number" v-model.number="form.max" />
                         </UFormField>
-                        <UFormField label="Step">
+                        <UFormField label="Step" size="lg">
                             <UInput type="number" v-model.number="form.step" />
                         </UFormField>
                     </div>
@@ -257,7 +257,7 @@ watch(optionsText, (val) => {
                     <!-- Live Preview -->
                     <div class="w-full max-w-md space-y-4">
                         <template v-if="form.type">
-                            <UFormField :label="form.label || 'Untitled Field'" :description="form.description">
+                            <UFormField :label="form.label || 'Untitled Field'" :description="form.description" size="lg">
                                 <!-- Text -->
                                 <UInput v-if="form.type === 'Text'"
                                     :placeholder="form.placeholder || 'Type something...'" />
@@ -329,10 +329,8 @@ watch(optionsText, (val) => {
 
 
         <template #footer>
-            <div class="flex justify-end gap-2 mt-2">
-                <UButton color="neutral" variant="ghost" @click="onCancel">Cancel</UButton>
-                <UButton color="primary" @click="onSave">Save</UButton>
-            </div>
+            <UButton label="Save" icon="i-lucide-save" size="lg" @click="onSave" class="justify-center w-full lg:order-2 lg:w-auto" />
+            <UButton label="Cancel" color="neutral" variant="ghost" size="lg" @click="onCancel" class="justify-center w-full lg:order-1 lg:w-auto" />
         </template>
     </UModal>
 </template>

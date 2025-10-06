@@ -7,8 +7,8 @@
             <Tabs :items="formBuilderTabs" />
         </template>
         <Block title="Form Settings" description="Configure general from settings and metadata">
-            <div class="space-y-4">
-                <div class="flex gap-4">
+            <div class="grid gap-4">
+                <div class="grid lg:flex gap-4">
                     <UFormField label="Form Name" size="lg" class="w-full">
                         <UInput class="w-full" placeholder="Enter Form Name" />
                     </UFormField>
@@ -32,8 +32,8 @@
                 <UFormField label="Description" class="w-full">
                     <UTextarea :rows="4" placeholder="Description for new assessment form" class="w-full" />
                 </UFormField>
-                <div class="text-right">
-                    <UButton label="Save Form" icon="i-lucide-save" color="neutral" />
+                <div class="lg:text-right">
+                    <UButton label="Save Form" icon="i-lucide-save" color="neutral" size="lg" class="w-full justify-center lg:w-auto" />
                 </div>
             </div>
         </Block>

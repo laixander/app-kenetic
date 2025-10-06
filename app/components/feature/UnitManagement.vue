@@ -34,7 +34,7 @@ function handleSave(unit: Unit) {
         description="Manage preset unit measurement">
         <template #actions>
             <UButton label="Add New Unit" icon="i-lucide-plus" variant="outline" color="neutral" size="lg"
-                @click="openModalForCreate" />
+                @click="openModalForCreate" class="justify-center w-full" />
         </template>
 
         <Grid :lg="3" :gap="4">

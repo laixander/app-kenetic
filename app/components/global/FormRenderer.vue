@@ -16,7 +16,7 @@ defineProps<{
             </div>
 
             <!-- Rows -->
-            <div v-for="(row, rIndex) in section.rows" :key="rIndex" class="flex gap-4">
+            <div v-for="(row, rIndex) in section.rows" :key="rIndex" class="grid lg:flex gap-4">
                 <!-- Fields -->
                 <!-- <DynamicInput
                 v-for="(field, fIndex) in row.fields"

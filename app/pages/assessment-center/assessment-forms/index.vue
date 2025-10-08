@@ -1,6 +1,6 @@
 <template>
     <div class="relative overflow-y-auto">
-        <Banner />
+        <Banner image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
         <Page title="Assessments" description="Record and track raw athletic performance data" inverted>
 
             <Tabs :items="assessmentTabs" color="white" />

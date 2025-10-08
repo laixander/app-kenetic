@@ -7,21 +7,26 @@
             <UCard class="w-full">
                 <FormRenderer :form="newForm" />
             </UCard>
-            <UCard class="sticky top-0 lg:max-w-[390px] w-full">
-                <div class="font-semibold text-default">
-                    Assessment Progress
-                </div>
-                <UProgress v-model="value" color="success" status class="mb-6" />
-                <ul class="list-disc list-inside text-sm text-muted">
-                    <li class="text-success">Basic Information</li>
-                    <li class="text-success">Body Measurements</li>
-                    <li class="text-success">Skill Assessment</li>
-                    <li class="text-success">Additional Details</li>
-                    <li>Preferences</li>
-                    <li>Survey</li>
-                    <li>Upload Documents</li>
-                </ul>
-            </UCard>
+            <div class="sticky top-0 lg:max-w-[390px] w-full space-y-2">
+                <UCard>
+                    <div class="font-semibold text-default">
+                        Assessment Progress
+                    </div>
+                    <UProgress v-model="value" status class="mb-6" />
+                    <ul class="list-disc list-inside text-sm text-muted">
+                        <li class="text-primary">Basic Information</li>
+                        <li class="text-primary">Body Measurements</li>
+                        <li class="text-primary">Skill Assessment</li>
+                        <li class="text-primary">Additional Details</li>
+                        <li>Preferences</li>
+                        <li>Survey</li>
+                        <li>Upload Documents</li>
+                    </ul>
+                </UCard>
+                <!-- only show this button when sticky reach top-0 -->
+                <UButton label="Save Progress" icon="i-lucide-save" size="lg" variant="outline" block />
+                <UButton label="Submit Assessment" icon="i-lucide-check" size="lg" disabled block />
+            </div>
         </div>
     </Page>
 </template>

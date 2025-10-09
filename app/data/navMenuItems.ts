@@ -5,13 +5,13 @@ export const navigationMenuItemsByRole: Record<string, NavigationMenuItem[]> = {
         [
             { label: 'MAIN NAVIGATION', type: 'label' },
             { label: 'Dashboard', icon: 'i-lucide-pie-chart', to: '/dashboard' },
-            { label: 'Athlete Management', icon: 'i-lucide-git-branch',  },
-            { label: 'Talent Identification', icon: 'i-lucide-users',  },
-            { label: 'Campus Fitness', icon: 'i-lucide-file-text',  },
-            { label: 'Assessment Center', icon: 'i-lucide-folder-open', to: '/assessment-center' },
-            { label: 'Benchmarking', icon: 'i-lucide-clipboard-check',  },
-            { label: 'Team Management', icon: 'i-lucide-chart-column',  },
-            { label: 'Reports & Analytics', icon: 'i-lucide-user-plus',  },
+            { label: 'Athlete Management', icon: 'i-lucide-dribbble', to: '/athlete-management'  },
+            { label: 'Talent Identification', icon: 'i-lucide-sparkle', to: '/talent-identification'  },
+            { label: 'Campus Fitness', icon: 'i-lucide-dumbbell', to: '/campus-fitness' },
+            { label: 'Assessment Center', icon: 'i-lucide-clipboard-check', to: '/assessment-center' },
+            { label: 'Benchmarking', icon: 'i-lucide-activity', to: '/benchmarking'  },
+            { label: 'Team Management', icon: 'i-lucide-user-plus', to: '/team-management'  },
+            { label: 'Reports & Analytics', icon: 'i-lucide-chart-column', to: '/reports-analytics'  },
             { label: 'Inbox', icon: 'i-lucide-inbox', to: '/inbox'  }
         ]
     ],
@@ -64,5 +64,102 @@ export const assessmentTabs: TabItem[] = [
         label: 'Scheduled Assessments',
         icon: 'i-lucide-calendar',
         to: '/assessment-center/scheduled-assessments'
+    }
+]
+
+export const talentTabs: TabItem[] = [
+    {
+        label: 'Overview',
+        icon: 'i-lucide-file-chart-column',
+        to: '/talent-identification'
+    },
+    {
+        label: 'Data Import',
+        icon: 'i-lucide-hard-drive-upload',
+        to: '/talent-identification/data-import'
+    },
+    {
+        label: 'Benchmarking',
+        icon: 'i-lucide-activity',
+        to: '/talent-identification/benchmarking'
+    },
+    {
+        label: 'AI Prediction',
+        icon: 'i-lucide-sparkles',
+        to: '/talent-identification/ai-prediction'
+    },
+    {
+        label: 'Reports',
+        icon: 'i-lucide-clipboard-list',
+        to: '/talent-identification/reports'
+    }
+]
+
+export const campusFitnessTabs: TabItem[] = [
+    {
+        label: 'Population Overview',
+        icon: 'i-lucide-users',
+        to: '/campus-fitness'
+    },
+    {
+        label: 'Performance Rankings',
+        icon: 'i-lucide-bar-chart-3',
+        to: '/campus-fitness/performance-rankings'
+    },
+    {
+        label: 'Benchmarking',
+        icon: 'i-lucide-activity',
+        to: '/campus-fitness/benchmarking'
+    }
+]
+
+export const benchmarkingTabs: TabItem[] = [
+    {
+        label: 'Overview',
+        icon: 'i-lucide-file-chart-column',
+        to: '/benchmarking'
+    },
+    {
+        label: 'Norm Creation',
+        icon: 'i-lucide-clipboard-list',
+        to: '/benchmarking/norm-creation'
+    },
+    {
+        label: 'Demographics',
+        icon: 'i-lucide-user-check',
+        to: '/benchmarking/demographics'
+    },
+    {
+        label: 'Comparison',
+        icon: 'i-lucide-columns-2',
+        to: '/benchmarking/comparison'
+    },
+    {
+        label: 'Management',
+        icon: 'i-lucide-settings-2',
+        to: '/benchmarking/management'
+    }
+]
+
+export const teamManagementTabs: TabItem[] = [
+    {
+        label: 'Team Rosters',
+        icon: 'i-lucide-users',
+        to: '/team-management'
+    },
+    {
+        label: 'Performance',
+        icon: 'i-lucide-bar-chart-3',
+        to: '/team-management/performance'
+    },
+    {
+        label: 'Training',
+        icon: 'i-lucide-footprints',
+        to: '/team-management/training'
+    },
+    {
+        label: 'Schedule',
+        icon: 'i-lucide-calendar',
+        to: '/team-management/schedule'
     }
 ]

@@ -1,7 +1,11 @@
 import {
     navigationMenuItemsByRole,
     formBuilderTabs,
-    assessmentTabs
+    assessmentTabs,
+    talentTabs,
+    campusFitnessTabs,
+    benchmarkingTabs,
+    teamManagementTabs,
 } from './navMenuItems';
 
 import {
@@ -14,6 +18,7 @@ import {
     athletes,
     statCards,
     dataStatCards,
+    talentStatCards,
     formCards,
     inputCards,
     devices
@@ -45,9 +50,14 @@ export {
     analysis,
     athletes,
     dataStatCards,
+    talentStatCards,
     formCards,
     formBuilderTabs,
     assessmentTabs,
+    campusFitnessTabs,
+    benchmarkingTabs,
+    teamManagementTabs,
+    talentTabs,
     devices,
     inputCards,
     newForm

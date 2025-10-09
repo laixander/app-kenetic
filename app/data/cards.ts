@@ -169,6 +169,33 @@ export const dataStatCards: StatCardProps[] = [
   }
 ]
 
+export const talentStatCards: StatCardProps[] = [
+  {
+    label: 'Students Assessed',
+    count: 243,
+    icon: 'i-lucide-users',
+    color: 'primary',
+  },
+  {
+    label: 'Sports Analyzed',
+    count: 84,
+    icon: 'i-lucide-dribbble',
+    color: 'amber',
+  },
+  {
+    label: 'Prediction Accuracy',
+    count: '98%',
+    icon: 'i-lucide-sparkles',
+    color: 'success',
+  },
+  {
+    label: 'Avg. Performance',
+    count: '89%',
+    icon: 'i-lucide-target',
+    color: 'error',
+  }
+]
+
 import type { FormCardProps } from '~/types/features'
 
 export const formCards: FormCardProps[] = [

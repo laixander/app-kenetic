@@ -42,6 +42,7 @@ export interface BlockProps {
     noBodyPadding?: boolean      // Optional: removes body padding if true
     icon?: string
     iconColor?: ColorType
+    bgClass?: string
 }
 
 export interface StepperLayoutProps {
@@ -252,4 +253,32 @@ export interface UnitType extends ModelType {
     description?:string
     symbol?:string
     conversionFactor?:number
+}
+
+export enum InputTypeEnum {
+    TEXT='TEXT', 
+    NUMBER='NUMBER', 
+    TEXTAREA='TEXTAREA', 
+    SELECT='SELECT', 
+    CHECKBOX='CHECKBOX', 
+    SWITCH='SWITCH', 
+    RADIO='RADIO', 
+    FILE='FILE',
+    RANGE='RANGE'
+} 
+
+export interface ParameterType extends ModelType {
+    name?:string
+    description?:string
+    placeholder?:string
+    inputType?:InputTypeEnum
+    unitId?:number
+    unit?:UnitType
+    isRequired?:boolean
+    formula?:string
+    min?: number
+    max?: number
+    step?: number
+    options?:Array<string>
+    icon?:string
 }

@@ -68,6 +68,30 @@
                             AI Sports Predictions
                         </div>
                     </template>
+
+                    <div class="space-y-3"> 
+                        <UCard v-for="n in 3" :ui="{ body: 'sm:p-4 space-y-4' }">
+                            <div class="flex justify-between items-center gap-2">
+                                <span class="font-semibold text-default text-sm">
+                                    Basketball
+                                </span>
+                                <UIcon name="i-lucide-chevron-right" class="text-muted" />
+                            </div>
+                            <USeparator />
+                            <div class="flex flex-col items-start gap-2">
+                                <UBadge label="Top Performer" icon="i-lucide-chart-column-increasing" variant="soft" color="pink" />
+                                <div class="flex items-center gap-2">
+                                    <UAvatar src="https://randomuser.me/api/portraits/women/90.jpg" alt="Alex Johnson" size="lg" />
+                                    <span class="text-default text-sm">Alex Johnson</span>
+                                </div>
+                                <span class="text-xs text-dimmed">Key Attributes</span>
+                                <div class="flex gap-1">
+                                    <UBadge label="Movement Efficiency" variant="subtle" color="neutral" />
+                                    <UBadge label="+3" variant="subtle" color="neutral" />
+                                </div>
+                            </div>
+                        </UCard>
+                    </div>
                 </Block>
             </Grid>
         </Page>

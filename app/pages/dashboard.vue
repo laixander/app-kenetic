@@ -6,8 +6,8 @@ import { analysis, statCards } from '~/data'
 import { athletes } from '~/data'
 </script>
 <template>
-    <div class="relative min-h-screen">
-        <div class="absolute h-45 inset-0 bg-gradient-to-r from-indigo-400 to-blue-400 dark:from-indigo-900 dark:to-blue-900"></div>
+    <div class="relative overflow-y-auto">
+        <Banner heightClass="h-50 lg:h-45" image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
         <Page title="Dashboard" description="Advanced analytics for sports performance, talent identification, and fitness assessment" inverted>
             <Grid :lg="4" :gap="4">
                 <StatCard

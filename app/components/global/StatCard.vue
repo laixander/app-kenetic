@@ -18,7 +18,9 @@ const trendDirection = computed(() =>
         useGradient && color === 'error' && 'from-error/10',
         useGradient && color === 'purple' && 'from-purple/10',
         useGradient && color === 'pink' && 'from-pink/10',
-        useGradient && color === 'orange' && 'from-orange/10'
+        useGradient && color === 'orange' && 'from-orange/10',
+        useGradient && color === 'amber' && 'from-amber/10',
+        useGradient && color === 'rose' && 'from-rose/10'
     ]">
     <!-- <UCard> -->
         <!-- Adjust vertical alignment based on hasDetails -->
@@ -70,7 +72,9 @@ const trendDirection = computed(() =>
                     color === 'error' && 'bg-error dark:bg-error-950',
                     color === 'purple' && 'bg-purple dark:bg-purple-950',
                     color === 'pink' && 'bg-pink dark:bg-pink-950',
-                    color === 'orange' && 'bg-orange dark:bg-orange-950'
+                    color === 'orange' && 'bg-orange dark:bg-orange-950',
+                    color === 'amber' && 'bg-amber dark:bg-amber-950',
+                    color === 'rose' && 'bg-rose dark:bg-rose-950'
                 ]">
                 <!-- <UIcon :name="icon" :class="[
                     'shrink-0 flex',

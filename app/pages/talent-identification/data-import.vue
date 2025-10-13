@@ -1,6 +1,6 @@
 <template>
     <div class="relative overflow-y-auto">
-        <Banner image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
+        <Banner heightClass="h-101 sm:h-103 lg:h-54" image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
         <Page title="Talent Identification" description="AI-powered sport suitability prediction and student potential assessment" inverted>
             <Tabs :items="talentTabs" color="white" />
             <Grid :lg="4" :gap="4">
@@ -10,6 +10,7 @@
             <Grid :lg="2" :gap="4">
                 <Block title="Available Data Sources" description="Connect and manage your fitness data sources">
 
+                    <!-- component -->
                     <UCard v-for="n in 3" :ui="{ body: 'sm:p-4' }">
                         <div class="flex items-center gap-3">
                             <UAvatar icon="i-lucide-activity" size="3xl" />
@@ -41,7 +42,7 @@
                                 description="CSV/Excel (max. 2MB)"
                                 class="w-full"
                                 :ui="{
-                                    base: 'min-h-46'
+                                    base: 'min-h-50'
                                 }"
                             />
                         </template>
@@ -75,6 +76,8 @@
             </Grid>
 
             <Block title="Recent Imports" description="History of imported fitness data">
+
+                <!-- component -->
                 <UCard v-for="n in 3" :ui="{ body: 'sm:p-4 flex justify-between' }">
                     <div class="flex flex-col gap-1">
                         <span class="font-semibold text-default text-sm">KEISER Equipment - Station 3</span>
@@ -83,7 +86,7 @@
                             <li>2.4 MB</li>
                             <li>2024-01-15 14:30</li>
                         </ul>
-                        <div class="flex gap-1">
+                        <div class="flex gap-1 pt-1">
                             <UBadge label="Leg Press" variant="subtle" color="neutral" size="sm" />
                             <UBadge label="Chest" variant="subtle" color="neutral" size="sm" />
                             <UBadge label="Lat Pull" variant="subtle" color="neutral" size="sm" />
@@ -96,6 +99,7 @@
                         <UButton icon="i-lucide-trash-2" variant="outline" color="error" size="sm" />
                     </div>
                 </UCard>
+                
             </Block>
             
         </Page>

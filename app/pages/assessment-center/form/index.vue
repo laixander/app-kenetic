@@ -8,6 +8,23 @@
                 <FormRenderer :form="newForm" />
             </UCard>
             <div class="sticky top-0 lg:max-w-[390px] w-full space-y-2">
+                <UCard :ui="{body: 'sm:p-4', footer: 'p-0 sm:px-0 divide-x divide-default flex'}">
+                    <ListProfile
+                        profile-name="Rebecca Lim"
+                        profile-description="Student"
+                        profile-photo="https://randomuser.me/api/portraits/women/44.jpg"
+                    />
+                    <template #footer>
+                        <div class="py-4 w-full text-center flex items-center justify-center gap-2">
+                            <UIcon name="i-lucide-user" class="size-5 shrink-0 text-muted" />
+                            <span class="text-sm text-muted">Female</span>
+                        </div>
+                        <div class="py-4 w-full text-center flex items-center justify-center gap-2">
+                            <UIcon name="i-lucide-cake" class="size-5 shrink-0 text-muted" />
+                            <span class="text-sm text-muted">Jan 1, 1990</span>
+                        </div>
+                    </template>
+                </UCard>
                 <UCard>
                     <div class="font-semibold text-default">
                         Assessment Progress

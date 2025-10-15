@@ -46,9 +46,9 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <USwitch v-model="selected[index]" label="Set as default" size="sm" />
-                        <USeparator orientation="vertical" class="h-4" />
-                        <UButton label="View Details" trailing-icon="i-lucide-file-text" variant="link" size="sm"
+                        <USwitch v-model="selected[index]" label="Set as default" />
+                        <USeparator orientation="vertical" class="h-5" />
+                        <UButton label="View Details" trailing-icon="i-lucide-file-text" variant="link"
                             class="justify-center p-0" />
                     </div>
                 </UCard>

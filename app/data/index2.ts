@@ -19,7 +19,6 @@ import {
     statCards,
     dataStatCards,
     talentStatCards,
-    benchmarkStatCards,
     formCards,
     inputCards,
     devices
@@ -52,7 +51,6 @@ export {
     athletes,
     dataStatCards,
     talentStatCards,
-    benchmarkStatCards,
     formCards,
     formBuilderTabs,
     assessmentTabs,

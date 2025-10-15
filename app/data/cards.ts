@@ -196,6 +196,33 @@ export const talentStatCards: StatCardProps[] = [
   }
 ]
 
+export const benchmarkStatCards: StatCardProps[] = [
+  {
+    label: 'Active Benchmarks',
+    count: 24,
+    icon: 'i-lucide-target',
+    color: 'secondary',
+  },
+  {
+    label: 'Athletes Assessed',
+    count: '1,247',
+    icon: 'i-lucide-users',
+    color: 'success',
+  },
+  {
+    label: 'Performance Metrics',
+    count: '18',
+    icon: 'i-lucide-bar-chart-3',
+    color: 'amber',
+  },
+  {
+    label: 'Updated Norms',
+    count: '6',
+    icon: 'i-lucide-refresh-cw',
+    color: 'error',
+  }
+]
+
 import type { FormCardProps } from '~/types/features'
 
 export const formCards: FormCardProps[] = [

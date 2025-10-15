@@ -5,7 +5,7 @@
             <UButton label="Back to Norm Creation" icon="i-lucide-arrow-left" variant="ghost" to="../norm-creation" />
         </template>
         <template #actions>
-            <UButton label="Save Dataset" icon="i-lucide-check" size="lg" />
+            <UButton label="Save Dataset" icon="i-lucide-save" size="lg" />
         </template>
 
         <!-- Step 1 -->
@@ -33,14 +33,14 @@
                             </div>
 
                             <UTabs v-if="card.selectedField" color="primary" variant="link" :items="items"
-                                :ui="{ list: 'px-4', content: 'bg-muted/30 -mt-2', indicator: 'h-0.5' }" class="w-full">
+                                :ui="{ list: 'px-4', content: '-mt-2', indicator: 'h-0.5' }" class="w-full">
                                 <!-- OVERALL TAB -->
                                 <template #overall="{ item }">
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
                                             <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
-                                                <thead class="bg-muted text-left">
-                                                    <tr class="*:px-4 *:py-2">
+                                                <thead class="bg-primary/10 text-left">
+                                                    <tr class="*:px-4 *:py-2 *:font-semibold">
                                                         <th>Excellent</th>
                                                         <th>Good</th>
                                                         <th>Average</th>
@@ -73,8 +73,8 @@
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
                                             <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
-                                                <thead class="bg-muted text-left">
-                                                    <tr class="*:px-4 *:py-2">
+                                                <thead class="bg-primary/10 text-left">
+                                                    <tr class="*:px-4 *:py-2 *:font-semibold">
                                                         <th>Gender</th>
                                                         <th>Excellent</th>
                                                         <th>Good</th>
@@ -117,15 +117,15 @@
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
                                             <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
-                                                <thead class="bg-muted text-left">
-                                                    <tr>
-                                                        <th class="px-4 py-2">Age (Min-Max)</th>
-                                                        <th class="px-4 py-2">Excellent</th>
-                                                        <th class="px-4 py-2">Good</th>
-                                                        <th class="px-4 py-2">Average</th>
-                                                        <th class="px-4 py-2">Below Average</th>
-                                                        <th class="px-4 py-2">Poor</th>
-                                                        <th class="px-4 py-2 text-center">Action</th>
+                                                <thead class="bg-primary/10 text-left">
+                                                    <tr class="*:px-4 *:py-2 *:font-semibold">
+                                                        <th>Age (Min-Max)</th>
+                                                        <th>Excellent</th>
+                                                        <th>Good</th>
+                                                        <th>Average</th>
+                                                        <th>Below Average</th>
+                                                        <th>Poor</th>
+                                                        <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
 
@@ -167,8 +167,8 @@
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
                                             <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
-                                                <thead class="bg-muted text-left">
-                                                    <tr class="*:px-4 *:py-2">
+                                                <thead class="bg-primary/10 text-left">
+                                                    <tr class="*:px-4 *:py-2 *:font-semibold">
                                                         <th>Gender</th>
                                                         <th>Age (Min-Max)</th>
                                                         <th>Excellent</th>
@@ -235,7 +235,7 @@
         </Block>
 
         <div class="flex justify-end">
-            <UButton label="Save Dataset" icon="i-lucide-check" size="lg" />
+            <UButton label="Save Dataset" icon="i-lucide-save" size="lg" />
         </div>
     </Page>
 </template>
@@ -258,10 +258,10 @@ const fields = ref([
    TAB CONFIGURATION
 -------------------------- */
 const items = [
-    { label: 'Overall', slot: 'overall' as const },
-    { label: 'Gender', slot: 'gender' as const },
-    { label: 'Age Group', slot: 'age' as const },
-    { label: 'Gender and Age Group', slot: 'both' as const }
+    { label: 'Overall', icon:'i-lucide-clipboard-check', slot: 'overall' as const },
+    { label: 'Gender', icon:'i-lucide-users', slot: 'gender' as const },
+    { label: 'Age Group', icon:'i-lucide-calendar', slot: 'age' as const },
+    { label: 'Gender and Age Group', icon:'i-lucide-user-plus', slot: 'both' as const }
 ] satisfies TabsItem[]
 
 /* --------------------------

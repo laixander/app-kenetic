@@ -12,7 +12,7 @@
                     <div class="flex-1 flex flex-col gap-4">
                         <Block title="Athlete Directory" description="A summary of athletes, their scores, and suggested sports">
                             <div class="flex flex-col gap-6">
-                                <div class="flex gap-2">
+                                <div class="grid lg:flex gap-2">
                                     <UInput placeholder="Search by name, student ID, or email..." icon="i-lucide-search" size="lg" class="w-full" />
                                     <USelect default-value="All Sports" :items="['All Sports', 'Basketball', 'Volleyball', 'Baseball', 'Swimming', 'Archery']" size="lg" class="w-auto" />
                                     <UButton label="Search" icon="i-lucide-search" color="neutral" size="lg" />

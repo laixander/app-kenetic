@@ -4,7 +4,7 @@
         <Page title="Benchmarking" description="Establish and compare performance norms across athletes and demographics" inverted>
             <Tabs :items="benchmarkingTabs" color="white" />
             <Grid :lg="4" :gap="4">
-                <StatCard v-for="(card, i) in talentStatCards" :key="i" v-bind="card" countSize="text-xl" />
+                <StatCard v-for="(card, i) in benchmarkStatCards" :key="i" v-bind="card" countSize="text-xl" />
             </Grid>
 
             <Block>
@@ -14,5 +14,5 @@
     </div>
 </template>
 <script setup lang="ts">
-import { talentStatCards, benchmarkingTabs } from '~/data';
+import { benchmarkStatCards, benchmarkingTabs } from '~/data';
 </script>

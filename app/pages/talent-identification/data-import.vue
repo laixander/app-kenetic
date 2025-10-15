@@ -12,21 +12,25 @@
 
                     <!-- component -->
                     <UCard v-for="n in 3" :ui="{ body: 'sm:p-4' }">
-                        <div class="flex items-center gap-3">
-                            <UAvatar icon="i-lucide-activity" size="3xl" />
-                            <div class="flex flex-col gap-1 flex-1">
-                                <span class="font-semibold text-default text-sm">KEISER Strength Equipment</span>
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <UBadge label="Hardware" variant="soft" size="sm" color="amber" />
-                                    <span class=" text-xs text-dimmed">1247 records</span>
-                                    <div class="flex items-center gap-1 text-dimmed">
-                                        <UIcon name="i-lucide-refresh-cw" class="size-3 shrink-0" />
-                                        <span class="text-xs">2024-01-15 14:30</span>
+                        <div class="grid lg:flex items-center gap-2">
+                            <div class="flex items-center gap-3 flex-1">
+                                <UAvatar icon="i-lucide-activity" size="3xl" />
+                                <div class="flex flex-col gap-1">
+                                    <span class="font-semibold text-default text-sm">KEISER Strength Equipment</span>
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <UBadge label="Hardware" variant="soft" size="sm" color="amber" />
+                                        <span class=" text-xs text-dimmed">1247 records</span>
+                                        <div class="flex items-center gap-1 text-dimmed">
+                                            <UIcon name="i-lucide-refresh-cw" class="size-3 shrink-0" />
+                                            <span class="text-xs">2024-01-15 14:30</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <UBadge label="Connected" icon="i-lucide-plug-2" size="sm" color="success" />
-                            <UButton label="Sync" icon="i-lucide-refresh-cw" variant="outline" color="neutral" size="sm" />
+                            <div class="inline-block">
+                                <UBadge label="Connected" icon="i-lucide-plug-2" size="sm" color="success" />
+                            </div>
+                            <UButton label="Sync" icon="i-lucide-refresh-cw" variant="outline" color="neutral" size="sm" class="justify-center" />
                         </div>
                     </UCard>
 

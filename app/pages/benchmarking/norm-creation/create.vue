@@ -210,7 +210,7 @@
                                                     <tr v-for="(row, index) in card.rows" :key="index"
                                                         class="hover:bg-muted/30 transition-colors">
                                                         <td class="px-4 py-2">
-                                                            <USelect v-model="row.gender" :items="limitedGenderOptions"
+                                                            <USelect v-model="row.gender" :items="genderOptions"
                                                                 placeholder="Select Gender" size="sm"
                                                                 class="min-w-24 w-full" />
                                                         </td>
@@ -372,8 +372,7 @@ interface Card {
     rows: Row[]
 }
 
-const genderOptions = ['All', 'Male', 'Female']
-const limitedGenderOptions = ['Male', 'Female']
+const genderOptions = ['Male', 'Female']
 
 const defaultRow = (): Row => ({
     gender: undefined,

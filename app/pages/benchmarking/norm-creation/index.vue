@@ -54,7 +54,7 @@
                         <template v-if="dataset.status === 'saved'">
                             <USwitch v-model="selected[index]" label="Set as default" />
                             <USeparator orientation="vertical" class="h-5" />
-                            <UButton label="View Details" trailing-icon="i-lucide-file-text" variant="link" class="justify-center p-0" />
+                            <UButton label="View Details" trailing-icon="i-lucide-file-text" variant="link" class="justify-center p-0" to="norm-creation/details" />
                         </template>
                         <template v-else-if="dataset.status === 'draft'">
                             <UBadge label="Draft" icon="i-lucide-drafting-compass" variant="soft" color="success" />

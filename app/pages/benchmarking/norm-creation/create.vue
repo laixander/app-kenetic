@@ -4,18 +4,18 @@
         <template #toolbar>
             <UButton label="Back to Norm Creation" icon="i-lucide-arrow-left" variant="ghost" to="../norm-creation" />
         </template>
-        <template #actions>
+        <!-- <template #actions>
             <UButton label="Save Dataset" icon="i-lucide-save" size="lg" />
-        </template>
+        </template> -->
 
         <!-- Step 1 -->
         <Block title="Norm Details" description="Define the basic details of the performance norm">
             <UFormField label="Norm Title" size="lg" class="flex-1">
-                <UInput placeholder="Enter norm title" class="w-full" />
+                <UInput v-model="title" placeholder="Enter norm title" class="w-full" />
             </UFormField>
 
             <UFormField label="Description" size="lg" class="flex-1">
-                <UTextarea placeholder="Describe the purpose and characteristics of these norms" class="w-full" />
+                <UTextarea v-model="description" placeholder="Describe the purpose and characteristics of these norms" class="w-full" />
             </UFormField>
         </Block>
 
@@ -26,19 +26,37 @@
                     <div class="lg:flex divide-y divide-x-0 lg:divide-x lg:divide-y-0 divide-muted">
                         <!-- Table Area -->
                         <div class="flex-1 overflow-x-auto">
-                            <div class="grid lg:flex gap-4 p-4">
+                            <div class="grid lg:flex gap-2 p-4">
+                                <div class="flex justify-center items-center bg-primary-100 w-10 h-10 rounded-xl">
+                                    <UIcon name="i-lucide-activity" class="text-xl text-primary" />
+                                </div>
                                 <!-- each card now has its own selectedField -->
-                                <USelect v-model="card.selectedField" placeholder="Select field" size="lg" :items="fields"
-                                    class="w-full" />
+                                <USelect v-model="card.selectedField" placeholder="Select field" size="lg"
+                                    :items="fields" :ui="{placeholder: '-ml-6', value: 'opacity-0'}" class="w-full">
+                                    <template #item-trailing="{ item }">
+                                        <UBadge v-if="item.badge" :label="item.badge" size="sm" variant="subtle"
+                                            color="primary" />
+                                    </template>
+                                    <template #leading>
+                                        <span class="flex items-center space-x-2">
+                                            <span>{{ getFieldLabel(card.selectedField) }}</span>
+                                            <UBadge v-if="getBadge(card.selectedField)"
+                                                :label="getBadge(card.selectedField)" size="sm" variant="subtle"
+                                                color="primary" />
+                                        </span>
+                                    </template>
+                                </USelect>
                             </div>
 
                             <UTabs v-if="card.selectedField" color="primary" variant="link" :items="items"
-                                :ui="{ list: 'px-4', content: '-mt-2', indicator: 'h-0.5' }" class="w-full">
+                                :ui="{ list: 'px-4', content: '-mt-2', indicator: 'h-0.5' }" class="w-full pt-2"
+                                size="md">
                                 <!-- OVERALL TAB -->
                                 <template #overall="{ item }">
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
-                                            <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
+                                            <table
+                                                class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
                                                 <thead class="bg-primary/10 text-left">
                                                     <tr class="*:px-4 *:py-2 *:font-semibold">
                                                         <th>Excellent</th>
@@ -53,12 +71,13 @@
                                                     <tr v-for="(row, index) in card.rows" :key="index"
                                                         class="hover:bg-muted/30 transition-colors">
                                                         <td v-for="(score, i) in row.scores" :key="i" class="px-4 py-2">
-                                                            <UInput v-model.number="row.scores[i]" type="number" size="sm"
-                                                                class="min-w-24 w-full" placeholder="0" />
+                                                            <UInputNumber v-model.number="row.scores[i]"
+                                                                orientation="vertical" size="sm" class="min-w-24 w-full"
+                                                                placeholder="0" />
                                                         </td>
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
                                                             <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="success" @click="addRow(card)" />
+                                                                color="secondary" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -72,7 +91,8 @@
                                 <template #gender="{ item }">
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
-                                            <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
+                                            <table
+                                                class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
                                                 <thead class="bg-primary/10 text-left">
                                                     <tr class="*:px-4 *:py-2 *:font-semibold">
                                                         <th>Gender</th>
@@ -95,13 +115,14 @@
                                                         </td>
 
                                                         <td v-for="(score, i) in row.scores" :key="i" class="px-4 py-2">
-                                                            <UInput v-model.number="row.scores[i]" type="number" size="sm"
-                                                                class="min-w-24 w-full" placeholder="0" />
+                                                            <UInputNumber v-model.number="row.scores[i]"
+                                                                orientation="vertical" size="sm" class="min-w-24 w-full"
+                                                                placeholder="0" />
                                                         </td>
 
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
                                                             <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="success" @click="addRow(card)" />
+                                                                color="secondary" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -116,7 +137,8 @@
                                 <template #age="{ item }">
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
-                                            <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
+                                            <table
+                                                class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
                                                 <thead class="bg-primary/10 text-left">
                                                     <tr class="*:px-4 *:py-2 *:font-semibold">
                                                         <th>Age (Min-Max)</th>
@@ -134,24 +156,27 @@
                                                         class="hover:bg-muted/30 transition-colors">
                                                         <td class="px-4 py-2">
                                                             <div class="flex items-center gap-2">
-                                                                <UInput v-model.number="row.age.min" type="number" size="sm"
-                                                                    class="w-16 text-center" placeholder="Min"
+                                                                <UInputNumber v-model.number="row.age.min"
+                                                                    orientation="vertical" size="sm"
+                                                                    class="w-24 text-center" placeholder="Min"
                                                                     :min="0" />
-                                                                <span>-</span>
-                                                                <UInput v-model.number="row.age.max" type="number" size="sm"
-                                                                    class="w-16 text-center" placeholder="Max"
+                                                                <span class="text-dimmed">-</span>
+                                                                <UInputNumber v-model.number="row.age.max"
+                                                                    orientation="vertical" size="sm"
+                                                                    class="w-24 text-center" placeholder="Max"
                                                                     :min="0" />
                                                             </div>
                                                         </td>
 
                                                         <td v-for="(score, i) in row.scores" :key="i" class="px-4 py-2">
-                                                            <UInput v-model.number="row.scores[i]" type="number" size="sm"
-                                                                class="min-w-24 w-full" placeholder="0" :min="0" />
+                                                            <UInputNumber v-model.number="row.scores[i]"
+                                                                orientation="vertical" size="sm" class="min-w-24 w-full"
+                                                                placeholder="0" />
                                                         </td>
 
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
                                                             <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="success" @click="addRow(card)" />
+                                                                color="secondary" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -166,7 +191,8 @@
                                 <template #both="{ item }">
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
                                         <div class="overflow-x-auto">
-                                            <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
+                                            <table
+                                                class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-800">
                                                 <thead class="bg-primary/10 text-left">
                                                     <tr class="*:px-4 *:py-2 *:font-semibold">
                                                         <th>Gender</th>
@@ -184,31 +210,34 @@
                                                     <tr v-for="(row, index) in card.rows" :key="index"
                                                         class="hover:bg-muted/30 transition-colors">
                                                         <td class="px-4 py-2">
-                                                            <USelect v-model="row.gender" :items="genderOptions"
+                                                            <USelect v-model="row.gender" :items="limitedGenderOptions"
                                                                 placeholder="Select Gender" size="sm"
                                                                 class="min-w-24 w-full" />
                                                         </td>
 
                                                         <td class="px-4 py-2">
                                                             <div class="flex items-center gap-2">
-                                                                <UInput v-model.number="row.age.min" type="number" size="sm"
-                                                                    class="w-16 text-center" placeholder="Min"
+                                                                <UInputNumber v-model.number="row.age.min"
+                                                                    orientation="vertical" size="sm"
+                                                                    class="w-24 text-center" placeholder="Min"
                                                                     :min="0" />
-                                                                <span>-</span>
-                                                                <UInput v-model.number="row.age.max" type="number" size="sm"
-                                                                    class="w-16 text-center" placeholder="Max"
+                                                                <span class="text-dimmed">-</span>
+                                                                <UInputNumber v-model.number="row.age.max"
+                                                                    orientation="vertical" size="sm"
+                                                                    class="w-24 text-center" placeholder="Max"
                                                                     :min="0" />
                                                             </div>
                                                         </td>
 
                                                         <td v-for="(score, i) in row.scores" :key="i" class="px-4 py-2">
-                                                            <UInput v-model.number="row.scores[i]" type="number" size="sm"
-                                                                class="min-w-24 w-full" placeholder="0" :min="0" />
+                                                            <UInputNumber v-model.number="row.scores[i]"
+                                                                orientation="vertical" size="sm" class="min-w-24 w-full"
+                                                                placeholder="0" />
                                                         </td>
 
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
                                                             <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="success" @click="addRow(card)" />
+                                                                color="secondary" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -225,34 +254,98 @@
                         <div class="flex lg:flex-col justify-around lg:justify-center gap-4 p-4">
                             <UButton icon="i-lucide-trash-2" color="error" variant="ghost" size="sm"
                                 v-if="card.selectedField" @click="deleteCard(cardIndex)" />
-                            <UButton icon="i-lucide-copy" color="secondary" variant="ghost" size="sm"
+                            <UButton icon="i-lucide-copy" color="purple" variant="ghost" size="sm"
                                 v-if="card.selectedField" @click="duplicateCard(cardIndex)" />
-                            <UButton icon="i-lucide-plus" color="success" variant="ghost" size="sm" @click="addCard" />
+                            <UButton icon="i-lucide-plus" color="secondary" variant="ghost" size="sm" @click="addCard"
+                                :disabled="cards.length === 1 && !card.selectedField" />
                         </div>
                     </div>
                 </UCard>
             </div>
         </Block>
 
-        <div class="flex justify-end">
-            <UButton label="Save Dataset" icon="i-lucide-save" size="lg" />
-        </div>
+        <Block title="Save Dataset" description="Confirm selections and save dataset">
+            <div class="flex flex-col gap-4">
+                <UAlert variant="subtle" color="info">
+                    <template #description>
+                        <div class="text-sm text-highlighted">
+                            You have created this dataset with the following details and parameters:
+                        </div>
+                        <ul class="mt-2 space-y-1 text-sm text-highlighted">
+                            <li>Title: <span v-if="title" class="font-semibold">{{ title }}</span><span v-else class="text-muted">No title yet</span></li>
+                            <li>Description: <span v-if="description" class="font-semibold">{{ description }}</span><span v-else class="text-muted">No description yet</span></li>
+
+                            <!-- add selected field here -->
+                            <li class="flex flex-wrap items-center gap-1">
+                                <span class="mr-2">Fields:</span>
+
+                                <!-- if we have selected fields, show badges -->
+                                <template v-if="selectedFields.length">
+                                    <UBadge
+                                        v-for="(val) in selectedFields"
+                                        :key="val"
+                                        :label="getFieldLabel(val)"
+                                        variant="subtle"
+                                        color="neutral"
+                                        size="sm"
+                                    />
+                                    <!-- <UBadge
+                                        v-for="(val, i) in selectedFields"
+                                        :key="val + '-' + i"
+                                        :label="getFieldLabel(val) + (getBadge(val) ? ` — ${getBadge(val)}` : '')"
+                                        variant="subtle"
+                                        color="neutral"
+                                        size="sm"
+                                    /> -->
+                                </template>
+
+                                <!-- none selected -->
+                                <span v-else class="text-muted">None selected</span>
+                            </li>
+                        </ul>
+                    </template>
+                </UAlert>
+                <div class="space-x-2 self-end">
+                    <UButton label="Save as Draft" icon="i-lucide-drafting-compass" variant="outline" size="lg" class="self-end" />
+                    <UButton label="Save Dataset" icon="i-lucide-save" size="lg" class="self-end" />
+                </div>
+            </div>
+        </Block>
     </Page>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { TabsItem } from '@nuxt/ui'
+import { UIcon } from '#components'
+
+const title = ref('')
+const description = ref('')
+const selectedFields = computed(() =>
+  cards.value
+    .map(card => card.selectedField)
+    .filter((v): v is string => Boolean(v))
+)
+
 
 /* --------------------------
    FIELD OPTIONS
 -------------------------- */
 const fields = ref([
-    { label: 'Speed', value: 'speed', unit: 'm/s' },
-    { label: 'Strength', value: 'strength', unit: 'kg' },
-    { label: 'Endurance', value: 'endurance', unit: 'mins' },
-    { label: 'Agility', value: 'agility', unit: 'm/s' }
+    { label: 'Speed', value: 'speed', badge: 'm/s' },
+    { label: 'Strength', value: 'strength', badge: 'kg' },
+    { label: 'Endurance', value: 'endurance', badge: 'mins' },
+    { label: 'Agility', value: 'agility', badge: 'm/s' }
 ])
+
+
+/* helper functions to get label/badge from the fields list */
+function getFieldLabel(value: string | undefined) {
+  return fields.value.find((i: { value: any }) => i.value === value)?.label ?? ''
+}
+function getBadge(value: string | undefined) {
+  return fields.value.find((i: { value: any }) => i.value === value)?.badge
+}
 
 /* --------------------------
    TAB CONFIGURATION
@@ -280,6 +373,7 @@ interface Card {
 }
 
 const genderOptions = ['All', 'Male', 'Female']
+const limitedGenderOptions = ['Male', 'Female']
 
 const defaultRow = (): Row => ({
     gender: undefined,

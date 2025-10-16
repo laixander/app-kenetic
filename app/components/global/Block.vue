@@ -8,12 +8,12 @@ const props = withDefaults(defineProps<BlockProps>(), {
 const uiCardConfig = {
     root: `relative w-full ${props.showDivider ? '' : 'divide-none'}`.trim(),
     // root: props.showDivider ? undefined : 'divide-none',
-    header: '-mb-4',
+    header: `${props.noBodyPadding ? '' : '-mb-4'}`.trim(),
     body: `h-full space-y-2 ${props.noBodyPadding ? 'p-0 sm:p-0' : ''}`.trim(),
 }
 </script>
 <template>
-    <UCard :ui="uiCardConfig" :class="props.bgClass">
+    <UCard :ui="uiCardConfig" :class="bgClass">
         <template #header v-if="title || description || icon || $slots.actions || $slots.title || $slots.description">
             <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center">
                 <div class="flex items-center gap-4 w-full">

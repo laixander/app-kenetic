@@ -28,12 +28,13 @@
 
                 <!-- component -->
                 <UCard v-for="(dataset, index) in [
-                    { title: 'Endurance Test', description: 'Benchmark for long-distance running performance', inputs: ['VO2 Max', 'Heart Rate', 'Stamina'], status: 'saved' },
-                    { title: 'Strength Assessment', description: 'Benchmark for overall muscular strength', inputs: ['Bench Press', 'Squat', 'Deadlift'], status: 'saved' },
-                    { title: 'Flexibility Measure', description: 'Benchmark for joint flexibility and range of motion', inputs: ['Sit and Reach', 'Shoulder Flexibility'], status: 'draft' },
-                    { title: 'Agility Drill', description: 'Benchmark for quickness and change of direction', inputs: ['T-Test', 'Pro Agility Shuttle'], status: 'saved' },
-                    { title: 'Speed Test', description: 'Benchmark for sprinting speed', inputs: ['40-Yard Dash', '100-Meter Sprint'], status: 'draft' }
-                ]" :key="index" :ui="{ body: 'sm:p-4 grid md:flex justify-between gap-8' }" :class="[
+                        { title: 'Endurance Test', description: 'Benchmark for long-distance running performance', inputs: ['VO2 Max', 'Heart Rate', 'Stamina'], status: 'saved' },
+                        { title: 'Strength Assessment', description: 'Benchmark for overall muscular strength', inputs: ['Bench Press', 'Squat', 'Deadlift'], status: 'saved' },
+                        { title: 'Flexibility Measure', description: 'Benchmark for joint flexibility and range of motion', inputs: ['Sit and Reach', 'Shoulder Flexibility'], status: 'draft' },
+                        { title: 'Agility Drill', description: 'Benchmark for quickness and change of direction', inputs: ['T-Test', 'Pro Agility Shuttle'], status: 'saved' },
+                        { title: 'Speed Test', description: 'Benchmark for sprinting speed', inputs: ['40-Yard Dash', '100-Meter Sprint'], status: 'draft' }
+                    ]"
+                    :key="index" :ui="{ body: 'sm:p-4 grid md:flex justify-between gap-8' }" :class="[
                     'transition-all duration-300 border-l-8',
                     selected[index] ? 'border-l-primary bg-primary/5' : 'border-l-transparent'
                 ]">
@@ -72,7 +73,6 @@
 <script setup lang="ts">
 import { talentStatCards, benchmarkingTabs, athletes } from '~/data';
 import { ref } from 'vue'
-import { UIcon } from '#components';
 const selected = ref<boolean[]>([])
 const page = ref(1)
 </script>

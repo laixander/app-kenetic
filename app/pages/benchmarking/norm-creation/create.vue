@@ -50,7 +50,7 @@
 
                             <UTabs v-if="card.selectedField" color="primary" variant="link" :items="items"
                                 :ui="{ list: 'px-4', content: '-mt-2', indicator: 'h-0.5' }" class="w-full pt-2"
-                                size="md">
+                                size="sm">
                                 <!-- OVERALL TAB -->
                                 <template #overall="{ item }">
                                     <UCard :ui="{ body: 'p-0 sm:p-0' }" class="m-4">
@@ -317,7 +317,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import type { TabsItem } from '@nuxt/ui'
-import { UIcon } from '#components'
 
 const title = ref('')
 const description = ref('')

@@ -39,8 +39,8 @@
                     selected[index] ? 'border-l-primary bg-primary/5' : 'border-l-transparent'
                 ]">
                     <div class="flex items-center gap-4 -ml-1">
-                        <div class="flex justify-center items-center bg-primary-100 w-10 h-10 rounded-xl">
-                            <UIcon name="i-lucide-activity" class="text-xl text-primary" />
+                        <div class="flex justify-center items-center bg-primary/10 text-primary w-10 h-10 rounded-xl">
+                            <UIcon name="i-lucide-activity" class="text-xl" />
                         </div>
                         <div class="flex flex-col gap-1">
                             <span class="font-semibold text-default text-sm">{{ dataset.title }}</span>

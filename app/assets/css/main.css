@@ -11,3 +11,58 @@
     mask-position: center;
     mask-repeat: no-repeat;
 }
+
+/* ========== Fade animations ========== */
+.fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ========== Slide directions ========== */
+.slide-up { animation: slideUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
+.slide-down { animation: slideDown 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
+.slide-left { animation: slideLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
+.slide-right { animation: slideRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideLeft {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideRight {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ========== Zoom (optional extras) ========== */
+.zoom-in { animation: zoomIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
+.zoom-out { animation: zoomOut 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
+
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes zoomOut {
+  from { transform: scale(1.05); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

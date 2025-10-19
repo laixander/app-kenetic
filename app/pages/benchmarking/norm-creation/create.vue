@@ -27,8 +27,8 @@
                         <!-- Table Area -->
                         <div class="flex-1 overflow-x-auto">
                             <div class="grid lg:flex gap-2 p-4">
-                                <div class="flex justify-center items-center bg-primary-100 w-10 h-10 rounded-xl">
-                                    <UIcon name="i-lucide-activity" class="text-xl text-primary" />
+                                <div class="flex justify-center items-center bg-primary/10 text-primary w-10 h-10 rounded-xl">
+                                    <UIcon name="i-lucide-activity" class="text-xl" />
                                 </div>
                                 <!-- each card now has its own selectedField -->
                                 <USelect v-model="card.selectedField" placeholder="Select field" size="lg"

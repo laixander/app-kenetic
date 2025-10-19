@@ -20,7 +20,7 @@ definePageMeta({
                 <UFormField label="User Role">
                     <USelect placeholder="Select your role" :items="['Admin', 'User', 'Guest']" variant="soft" size="lg" class="w-full" />
                 </UFormField>
-                <UButton label="Login" size="lg" class="justify-center" block to="/dashboard" />
+                <UButton label="Login" size="lg" class="justify-center" block to="/authentication" />
             </main>
             <footer class="text-center mt-8">
                 <ULink as="button" class="text-sm">Forgot Password?</ULink>

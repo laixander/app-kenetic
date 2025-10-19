@@ -18,9 +18,10 @@ const uiNavConfig = {
                 alt: 'Human Kenetics',
                 size: 'lg',
                 ui: {
-                    root: 'rounded-xl bg-primary',
-                    fallback: 'text-white'
-                }
+                    root: 'rounded-xl bg-primary size-10',
+                    fallback: 'text-white text-sm'
+                },
+                class: 'rounded-none squircle'
             }" 
             :class="collapsed ? '' : 'w-full'" 
         >

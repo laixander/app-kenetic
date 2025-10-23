@@ -27,7 +27,8 @@ const trendDirection = computed(() =>
         <!-- <div :class="['flex justify-between', hasDetails ? 'items-center' : 'items-start']"> -->
             <div class="flex justify-between items-center">
                 <div>
-                    <h4 :class="['text-toned', hasDetails ? 'font-semibold' : 'text-sm']">{{ label }}</h4>
+                    <!-- <h4 :class="['text-toned', hasDetails ? 'font-semibold' : 'text-sm']">{{ label }}</h4> -->
+                    <h4 class="text-toned text-sm">{{ label }}</h4>
 
                     <!-- Increase top margin if hasDetails -->
                     <p :class="[

@@ -5,12 +5,12 @@ export const navigationMenuItemsByRole: Record<string, NavigationMenuItem[]> = {
         [
             { label: 'MAIN NAVIGATION', type: 'label' },
             { label: 'Dashboard', icon: 'i-lucide-pie-chart', to: '/dashboard' },
-            { label: 'Athlete Management', icon: 'i-lucide-dribbble', to: '/athlete-management'  },
+            { label: 'Profile Management', icon: 'i-lucide-circle-user-round', to: '/profile-management'  },
             { label: 'Talent Identification', icon: 'i-lucide-sparkle', to: '/talent-identification'  },
             { label: 'Campus Fitness', icon: 'i-lucide-dumbbell', to: '/campus-fitness' },
             { label: 'Assessment Center', icon: 'i-lucide-clipboard-check', to: '/assessment-center' },
             { label: 'Benchmarking', icon: 'i-lucide-activity', to: '/benchmarking'  },
-            { label: 'Team Management', icon: 'i-lucide-user-plus', to: '/team-management'  },
+            { label: 'Team Management', icon: 'i-lucide-dribbble', to: '/team-management'  },
             { label: 'Reports & Analytics', icon: 'i-lucide-chart-column', to: '/reports-analytics'  },
             { label: 'Inbox', icon: 'i-lucide-inbox', to: '/inbox'  }
         ]

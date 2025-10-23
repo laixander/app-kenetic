@@ -47,7 +47,7 @@
             </template>
             <template #gender>
                 <UCard :ui="{body:'py-2 sm:py-1 sm:px-4'}">
-                    <UAccordion :items="gender" :ui="{ content: 'p-1 space-y-4 overflow-visible' }">
+                    <UAccordion :items="gender" trailing-icon="i-lucide-plus" :ui="{ content: 'p-1 space-y-4 overflow-visible', leadingIcon: 'text-primary' }">
                         <template #content="{ item }">
                             <UCard v-for="(detail, dIndex) in item.details" :key="dIndex"
                                 :ui="{ header: 'flex items-center gap-2', body: 'p-0 sm:p-0' }" class="overflow-x-auto mb-4">
@@ -84,7 +84,7 @@
             </template>
             <template #age>
                 <UCard :ui="{body:'py-2 sm:py-1 sm:px-4'}">
-                    <UAccordion :items="age" :ui="{ content: 'p-1 space-y-4 overflow-visible' }">
+                    <UAccordion :items="age" trailing-icon="i-lucide-plus" :ui="{ content: 'p-1 space-y-4 overflow-visible', leadingIcon: 'text-primary' }">
                         <template #content="{ item }">
                             <UCard v-for="(detail, dIndex) in item.details" :key="dIndex"
                                 :ui="{ header: 'flex items-center gap-2', body: 'p-0 sm:p-0' }" class="overflow-x-auto mb-4">
@@ -121,7 +121,7 @@
             </template>
             <template #both>
                 <UCard :ui="{body:'py-2 sm:py-1 sm:px-4'}">
-                    <UAccordion :items="both" :ui="{ content: 'p-1 space-y-4 overflow-visible' }">
+                    <UAccordion :items="both" trailing-icon="i-lucide-plus" :ui="{ content: 'p-1 space-y-4 overflow-visible', leadingIcon: 'text-primary' }">
                         <template #content="{ item }">
                             <UCard v-for="(detail, dIndex) in item.details" :key="dIndex"
                                 :ui="{ header: 'flex items-center gap-2', body: 'p-0 sm:p-0' }" class="overflow-x-auto mb-4">

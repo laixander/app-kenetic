@@ -196,6 +196,37 @@ export const talentStatCards: StatCardProps[] = [
   }
 ]
 
+export const profileManagementStatCards: StatCardProps[] = [
+  {
+    label: 'Total Athletes',
+    count: 24,
+    icon: 'i-lucide-users',
+    color: 'primary',
+    trendValue: '+12%',
+  },
+  {
+    label: 'Top Performers',
+    count: 18,
+    icon: 'i-lucide-medal',
+    color: 'success',
+    trendDescription: 'Above 90% fitness',
+  },
+  {
+    label: 'Need Attention',
+    count: 5,
+    icon: 'i-lucide-clipboard-pen-line',
+    color: 'amber',
+    trendValue: '-2%',
+  },
+  {
+    label: 'Avg Fitness Level',
+    count: '89%',
+    icon: 'i-lucide-target',
+    color: 'error',
+    trendValue: '+3.1%',
+  }
+]
+
 export const benchmarkStatCards: StatCardProps[] = [
   {
     label: 'Active Benchmarks',

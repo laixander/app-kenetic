@@ -20,6 +20,7 @@ import {
     dataStatCards,
     talentStatCards,
     benchmarkStatCards,
+    profileManagementStatCards,
     formCards,
     inputCards,
     devices
@@ -53,6 +54,7 @@ export {
     dataStatCards,
     talentStatCards,
     benchmarkStatCards,
+    profileManagementStatCards,
     formCards,
     formBuilderTabs,
     assessmentTabs,

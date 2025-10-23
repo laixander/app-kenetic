@@ -66,3 +66,10 @@
   from { transform: scale(1.05); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+/* ========== Spin ========== */
+.animate-spin-smooth { animation: spin-smooth 1s linear infinite; }
+@keyframes spin-smooth {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

@@ -74,7 +74,7 @@
 
             <section class="relative isolate">
                 <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
-                    <div class="relative bg-indigo-700 dark:bg-indigo-950 rounded-xl shadow-xl overflow-hidden">
+                    <div class="relative bg-indigo-700 dark:bg-indigo-900 rounded-xl shadow-xl overflow-hidden">
                         <!-- overlay image -->
                         <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" alt="Athlete" class="absolute right-0 w-1/2 h-full object-cover 
                             [mask-image:linear-gradient(to_left,black,transparent)] 

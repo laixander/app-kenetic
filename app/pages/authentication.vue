@@ -93,7 +93,7 @@ onMounted(() => {
 // })
 </script>
 
-<style scoped>
+<!-- <style scoped>
 @keyframes fade-in {
     0% {
         opacity: 0;
@@ -169,4 +169,4 @@ onMounted(() => {
 .animate-spin-smooth {
     animation: spin-smooth 1s linear infinite;
 }
-</style>
+</style> -->

@@ -46,6 +46,11 @@
                                         </span>
                                     </template>
                                 </USelect>
+
+                                <div class="flex items-center gap-1">
+                                    <UButton icon="i-lucide-copy" variant="ghost" size="sm" @click="duplicateCard(cardIndex)" />
+                                    <UButton icon="i-lucide-trash-2" color="error" variant="ghost" size="sm" @click="deleteCard(cardIndex)" />
+                                </div>
                             </div>
 
                             <UTabs v-if="card.selectedField" color="primary" variant="link" :items="items"
@@ -76,8 +81,7 @@
                                                                 placeholder="0" />
                                                         </td>
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
-                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="secondary" @click="addRow(card)" />
+                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -121,8 +125,7 @@
                                                         </td>
 
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
-                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="secondary" @click="addRow(card)" />
+                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -175,8 +178,7 @@
                                                         </td>
 
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
-                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="secondary" @click="addRow(card)" />
+                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -236,8 +238,7 @@
                                                         </td>
 
                                                         <td class="px-4 py-2 text-center flex justify-center gap-2">
-                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost"
-                                                                color="secondary" @click="addRow(card)" />
+                                                            <UButton icon="i-lucide-plus" size="xs" variant="ghost" @click="addRow(card)" />
                                                             <UButton icon="i-lucide-trash-2" size="xs" variant="ghost"
                                                                 color="error" @click="deleteRow(card, index)" />
                                                         </td>
@@ -251,16 +252,18 @@
                         </div>
 
                         <!-- Card Action Buttons -->
-                        <div class="flex lg:flex-col justify-around lg:justify-center gap-4 p-4">
+                        <!-- <div class="flex lg:flex-col justify-around lg:justify-center gap-4 p-4">
                             <UButton icon="i-lucide-trash-2" color="error" variant="ghost" size="sm"
                                 v-if="card.selectedField" @click="deleteCard(cardIndex)" />
                             <UButton icon="i-lucide-copy" color="purple" variant="ghost" size="sm"
                                 v-if="card.selectedField" @click="duplicateCard(cardIndex)" />
                             <UButton icon="i-lucide-plus" color="secondary" variant="ghost" size="sm" @click="addCard"
                                 :disabled="cards.length === 1 && !card.selectedField" />
-                        </div>
+                        </div> -->
                     </div>
                 </UCard>
+
+                <UButton icon="i-lucide-plus" label="Add Norm Parameter" color="secondary" variant="ghost" class="border border-dashed p-4 rounded-lg" block @click="addCard" />
             </div>
         </Block>
 

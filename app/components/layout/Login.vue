@@ -3,7 +3,7 @@
         <template v-if="splitDiagonalRight">
             <!-- Left background -->
             <div
-                class="bg-gray-200 dark:bg-gray-800 lg:absolute left-0 top-0 w-full lg:w-2/3 h-44 lg:min-h-screen bg-cover bg-right bg-no-repeat"
+                class="bg-gray-200 dark:bg-gray-800 lg:absolute left-0 top-0 w-full lg:w-2/3 h-44 lg:min-h-screen bg-cover bg-center bg-no-repeat"
                 :style="{ backgroundImage: `url(${backgroundImage})` }"
             >
             </div>
@@ -49,7 +49,7 @@
         <template v-if="splitDiagonalLeft">
             <!-- Left background -->
             <div
-                class="bg-gray-200 dark:bg-gray-800 lg:absolute right-0 top-0 w-full lg:w-[calc(50%+120px)] h-44 lg:min-h-screen bg-cover bg-left bg-no-repeat z-50 clip-diagonal-right"
+                class="bg-gray-200 dark:bg-gray-800 lg:absolute right-0 top-0 w-full lg:w-[calc(50%+120px)] h-44 lg:min-h-screen bg-cover bg-center bg-no-repeat z-50 clip-diagonal-right"
                 :style="{ backgroundImage: `url(${backgroundImage})` }"
             >
             </div>
@@ -57,6 +57,98 @@
             <!-- Right content -->
             <div
                 class="w-full lg:w-[calc(50%+120px)] lg:pr-[180px] bg-default min-h-screen flex justify-center lg:items-center">
+                <div class="max-w-sm w-full space-y-12 -mt-12 mx-4 lg:mx-0">
+                    <div class="grid gap-1 justify-center text-center">
+                        <NuxtImg :src="logo" class="size-24 lg:size-28 mx-auto mb-6" />
+                        <span class="font-bold text-2xl text-default">{{ title }}</span>
+                        <span class="text-sm text-muted">{{ description }}</span>
+                    </div>
+
+                    <!-- FORM FIELDS -->
+                    <div class="space-y-6">
+                        <UFormField label="Username" size="xl">
+                            <UInput
+                                placeholder="Enter your username"
+                                variant="soft"
+                                class="w-full"
+                                v-model="username"
+                                @input="emit('update:username', username)"
+                            />
+                        </UFormField>
+                        <UFormField label="Password" size="xl">
+                            <UInput
+                                type="password"
+                                placeholder="Enter your password"
+                                variant="soft"
+                                class="w-full"
+                                v-model="password"
+                                @input="emit('update:password', password)"
+                            />
+                        </UFormField>
+                    </div>
+
+                    <!-- BUTTON -->
+                    <UButton label="Login" type="submit" size="xl" block @click="onLogin" />
+                </div>
+            </div>
+        </template>
+        <template v-if="splitRight">
+            <!-- Left background -->
+            <div
+                class="bg-gray-200 dark:bg-gray-800 w-full lg:w-1/2 h-44 lg:min-h-screen bg-cover bg-center bg-no-repeat"
+                :style="{ backgroundImage: `url(${backgroundImage})` }"
+            >
+            </div>
+
+            <!-- Right content -->
+            <div
+                class="w-full lg:w-1/2 bg-default min-h-screen flex justify-center lg:items-center">
+                <div class="max-w-sm w-full space-y-12 -mt-12 mx-4 lg:mx-0">
+                    <div class="grid gap-1 justify-center text-center">
+                        <NuxtImg :src="logo" class="size-24 lg:size-28 mx-auto mb-6" />
+                        <span class="font-bold text-2xl text-default">{{ title }}</span>
+                        <span class="text-sm text-muted">{{ description }}</span>
+                    </div>
+
+                    <!-- FORM FIELDS -->
+                    <div class="space-y-6">
+                        <UFormField label="Username" size="xl">
+                            <UInput
+                                placeholder="Enter your username"
+                                variant="soft"
+                                class="w-full"
+                                v-model="username"
+                                @input="emit('update:username', username)"
+                            />
+                        </UFormField>
+                        <UFormField label="Password" size="xl">
+                            <UInput
+                                type="password"
+                                placeholder="Enter your password"
+                                variant="soft"
+                                class="w-full"
+                                v-model="password"
+                                @input="emit('update:password', password)"
+                            />
+                        </UFormField>
+                    </div>
+
+                    <!-- BUTTON -->
+                    <UButton label="Login" type="submit" size="xl" block @click="onLogin" />
+                </div>
+            </div>
+        </template>
+        <template v-if="splitLeft">
+            <!-- Left background -->
+            <div
+                class="bg-gray-200 dark:bg-gray-800 w-full lg:w-1/2 h-44 lg:min-h-screen bg-cover bg-center bg-no-repeat lg:order-1"
+                :style="{ backgroundImage: `url(${backgroundImage})` }"
+            >
+            </div>
+
+            <!-- Right content -->
+            <div
+                class="w-full lg:w-1/2 bg-default min-h-screen flex justify-center lg:items-center">
                 <div class="max-w-sm w-full space-y-12 -mt-12 mx-4 lg:mx-0">
                     <div class="grid gap-1 justify-center text-center">
                         <NuxtImg :src="logo" class="size-24 lg:size-28 mx-auto mb-6" />
@@ -106,6 +198,14 @@ const props = defineProps({
         default: false
     },
     splitDiagonalLeft: {
+        type: Boolean,
+        default: false
+    },
+    splitRight: {
+        type: Boolean,
+        default: false
+    },
+    splitLeft: {
         type: Boolean,
         default: false
     }

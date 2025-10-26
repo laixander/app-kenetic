@@ -1,6 +1,6 @@
 <template>
     <LayoutLogin
-        split-diagonal-left
+        split-left
         title="Human Kinetics Login"
         description="Enter your credentials to access your account"
         logo="/logo.png"

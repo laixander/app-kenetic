@@ -1,7 +1,7 @@
 <template>
     <div class="relative overflow-y-auto">
         <Banner heightClass="h-38 sm:h-44 lg:h-50" image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
-        <Page toolbarClass="border-white/10">
+        <Page toolbarClass="border-white/20">
             <template #toolbar>
                 <UButton label="Back to Norm Creation" icon="i-lucide-arrow-left" variant="ghost" class="text-white" to="/profile-management" />
             </template>
@@ -28,7 +28,7 @@
                                 color="#22D3EE"
                                 labelColor="#fff"
                                 :labelSize="24"
-                                size="54" stroke="6"
+                                :size="54" :stroke="6"
                             />
                         </div>
                         <div class="flex gap-2 items-center">
@@ -38,7 +38,7 @@
                                 color="#A3E635"
                                 labelColor="#fff"
                                 :labelSize="24"
-                                size="54" stroke="6"
+                                :size="54" :stroke="6"
                             />
                         </div>
                     </div>

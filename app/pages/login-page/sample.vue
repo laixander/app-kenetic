@@ -1,14 +1,16 @@
 <template>
     <LayoutLogin
-        split-left
-        title="Human Kinetics Login"
-        description="Enter your credentials to access your account"
+        variant="fullCenter"
+        app="Human Kinetics"
+        title="Welcome Back!"
+        description="Sign in to your Human Kinetics account"
         logo="/logo.png"
         background-image="https://images.unsplash.com/photo-1521804906057-1df8fdb718b7"
         @update:username="username = $event"
         @update:password="password = $event"
         @login="handleLogin"
-    />
+    >
+    </LayoutLogin>
 </template>
 
 <script setup lang="ts">

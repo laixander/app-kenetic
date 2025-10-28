@@ -1,6 +1,6 @@
 <template>
     <LayoutLogin
-        variant="fullCenter"
+        variant="floatRight"
         app="Human Kinetics"
         title="Welcome Back!"
         description="Sign in to your Human Kinetics account"

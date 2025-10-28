@@ -111,6 +111,18 @@ const LAYOUTS = {
         content: 'justify-center px-4',
         footer: 'text-white',
         card: 'bg-default py-8 rounded-2xl drop-shadow-xl',
+    },
+    floatRight: {
+        bg: 'absolute right-0 top-0 w-full min-h-screen',
+        content: 'lg:w-1/2 lg:ml-auto px-4',
+        card: 'bg-default py-8 mt-42 lg:mt-0 rounded-2xl drop-shadow-xl',
+        footer: 'text-white'
+    },
+    floatLeft: {
+        bg: 'absolute right-0 top-0 w-full min-h-screen',
+        content: 'lg:w-1/2 px-4',
+        card: 'bg-default py-8 mt-42 lg:mt-0 rounded-2xl drop-shadow-xl',
+        footer: 'text-white'
     }
 }
 

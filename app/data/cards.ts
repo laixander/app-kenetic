@@ -227,6 +227,31 @@ export const profileManagementStatCards: StatCardProps[] = [
   }
 ]
 
+
+export const teamStatCards: StatCardProps[] = [
+  {
+    label: 'Total Teams',
+    count: 12,
+    icon: 'i-lucide-users',
+    color: 'primary',
+    trendValue: '+2%',
+  },
+  {
+    label: 'Active Members',
+    count: 284,
+    icon: 'i-lucide-user',
+    color: 'success',
+    trendValue: '+12%',
+  },
+  {
+    label: 'Scheduled Trainings',
+    count: 10,
+    icon: 'i-lucide-dumbbell',
+    color: 'amber',
+    trendDescription: 'Across all teams',
+  }
+]
+
 export const benchmarkStatCards: StatCardProps[] = [
   {
     label: 'Active Benchmarks',

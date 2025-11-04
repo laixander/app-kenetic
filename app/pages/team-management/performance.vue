@@ -1,11 +1,23 @@
 <template>
     <div class="relative overflow-y-auto">
-        <Banner image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
+        <Banner heightClass="h-98 lg:h-51" image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
         <Page title="Campus Fitness" description="Comprehensive fitness analysis across the student population" inverted>
             <Tabs :items="teamManagementTabs" color="white" />
+
+            <Block title="Performance Analytics" description="Track athlete progress through fitness tests, training sessions, and competition results." noBodyPadding>
+                <template #actions>
+                    <USelect default-value="Youth Basketball" :items="['All Teams', 'Youth Basketball', 'Team B', 'Team C']" size="lg" class="w-full lg:w-58" />
+                    <USelect default-value="All Athletes" :items="['All Athletes', 'Athlete A', 'Athlete B', 'Athlete C']" size="lg" class="w-full lg:w-58" />
+                </template>
+            </Block>
+
             <Grid :lg="4" :gap="4">
-                <StatCard v-for="(card, i) in talentStatCards" :key="i" v-bind="card" countSize="text-xl" />
+                <StatCard v-for="(card, i) in performanceStatCards" :key="i" v-bind="card" countSize="text-2xl" hasDetails />
             </Grid>
+
+            <Block title="Performance Trends" description="Track improvement across different fitness metrics over time.">
+                <FeatureColumnChart />
+            </Block>
 
             <Block title="Individual Performance" description="Detailed performance metrics and recent test results for each athlete.">
                 <div class="pb-4 space-y-4">
@@ -36,7 +48,8 @@
     </div>
 </template>
 <script setup lang="ts">
-import { talentStatCards, teamManagementTabs } from '~/data';
+import { FeatureColumnChart } from '#components';
+import { performanceStatCards, teamManagementTabs } from '~/data';
 
 // Workout Logs
 const workouts = [

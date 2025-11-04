@@ -279,6 +279,37 @@ export const benchmarkStatCards: StatCardProps[] = [
   }
 ]
 
+export const performanceStatCards: StatCardProps[] = [
+  {
+    label: 'Avg Fitness Score',
+    count: 85.7,
+    icon: 'i-lucide-target',
+    color: 'primary',
+    trendValue: '+12%',
+  },
+  {
+    label: 'Performance Goals',
+    count: "12/15",
+    icon: 'i-lucide-users',
+    color: 'success',
+    trendDescription: 'Goals achieved this month',
+  },
+  {
+    label: 'Top Performers',
+    count: 8,
+    icon: 'i-lucide-bar-chart-3',
+    color: 'amber',
+    trendDescription: 'Above benchmark',
+  },
+  {
+    label: 'Recent Tests',
+    count: 24,
+    icon: 'i-lucide-refresh-cw',
+    color: 'error',
+    trendDescription: 'Tests completed this week',
+  }
+]
+
 import type { FormCardProps } from '~/types/features'
 
 export const formCards: FormCardProps[] = [

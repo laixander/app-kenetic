@@ -22,6 +22,7 @@ import {
     benchmarkStatCards,
     profileManagementStatCards,
     teamStatCards,
+    performanceStatCards,
     formCards,
     inputCards,
     devices
@@ -57,6 +58,7 @@ export {
     benchmarkStatCards,
     profileManagementStatCards,
     teamStatCards,
+    performanceStatCards,
     formCards,
     formBuilderTabs,
     assessmentTabs,

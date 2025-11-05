@@ -258,24 +258,28 @@ export const benchmarkStatCards: StatCardProps[] = [
     count: 24,
     icon: 'i-lucide-target',
     color: 'secondary',
+    trendValue: '+2.1%',
   },
   {
     label: 'Athletes Assessed',
     count: '1,247',
     icon: 'i-lucide-users',
     color: 'success',
+    trendValue: '+18',
   },
   {
     label: 'Performance Metrics',
     count: '18',
     icon: 'i-lucide-bar-chart-3',
     color: 'amber',
+    trendDescription: 'Tracking across sports'
   },
   {
     label: 'Updated Norms',
     count: '6',
     icon: 'i-lucide-refresh-cw',
     color: 'error',
+    trendDescription: 'Last 30 days'
   }
 ]
 

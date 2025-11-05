@@ -83,7 +83,7 @@
                                 </div>
                             </UCard>
                         </div>
-                        <UPagination v-model:page="page" :total="100" class="flex justify-center" />
+                        <UPagination :total="100" class="flex justify-center" />
                     </Block>
                 </template>
 
@@ -176,7 +176,7 @@
                                 </div>
                             </UCard>
                         </div>
-                        <UPagination v-model:page="page" :total="100" class="flex justify-center" />
+                        <UPagination :total="100" class="flex justify-center" />
                     </Block>
                 </template>
 
@@ -205,7 +205,7 @@
                                 </template>
                             </UCard>
                         </Grid>
-                        <UPagination v-model:page="page" :total="100" class="flex justify-center" />
+                        <UPagination :total="100" class="flex justify-center" />
                     </Block>
                 </template>
 
@@ -220,7 +220,7 @@
                                 </div>
                             </UCard>
                         </div>
-                        <UPagination v-model:page="page" :total="100" class="flex justify-center" />
+                        <UPagination :total="100" class="flex justify-center" />
                     </Block>
                 </template>
             </UTabs>

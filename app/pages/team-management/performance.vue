@@ -1,7 +1,7 @@
 <template>
     <div class="relative overflow-y-auto">
         <Banner heightClass="h-98 lg:h-51" image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
-        <Page title="Campus Fitness" description="Comprehensive fitness analysis across the student population" inverted>
+        <Page title="Team Management" description="Create and manage teams, assign members, and configure roles for your sports analytics platform." inverted>
             <Tabs :items="teamManagementTabs" color="white" />
 
             <Block title="Performance Analytics" description="Track athlete progress through fitness tests, training sessions, and competition results." noBodyPadding>
@@ -35,14 +35,14 @@
                                     </div>
                                     <div class="grid mt-4">
                                         <span class="text-xs text-muted">Benchmark: 5.8s</span>
-                                        <UProgress model-value="60" />
+                                        <UProgress :model-value="60" />
                                     </div>
                                 </UCard>
                             </Grid>
                         </div>
                     </UCard>
                 </div>
-                <UPagination v-model:page="page" :total="100" class="flex justify-center" />
+                <UPagination :total="100" class="flex justify-center" />
             </Block>
         </Page>
     </div>

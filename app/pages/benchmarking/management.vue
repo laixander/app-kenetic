@@ -7,12 +7,164 @@
                 <StatCard v-for="(card, i) in talentStatCards" :key="i" v-bind="card" countSize="text-xl" />
             </Grid>
 
-            <Block>
-                <ComingSoon />
+            <Block title="Demographic Analysis & Segmentation" description="Analyze performance norms across different demographic groups" icon="i-lucide-settings-2" noBodyPadding>
+                <template #actions>
+                    <UButton label="Export All" icon="i-lucide-download" size="lg" color="neutral" variant="outline" />
+                    <UButton label="Batch Update" icon="i-lucide-refresh-cw" size="lg" color="neutral" variant="outline" />
+                    <UButton label="Import Benchmark" icon="i-lucide-upload" size="lg" color="neutral" />
+                </template>
             </Block>
+
+            <UTabs :items="sections" color="indigo" :ui="{ trigger: 'grow w-full', content: 'space-y-6' }" class="gap-4 w-full">
+                <template #overview>
+                    <UCard v-for="n in 2" :ui="{ body: 'sm:p-4 space-y-6' }">
+                        <header>
+                            <div class="flex justify-between items-start">
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-semibold">Elite Basketball 2024</h4>
+                                        <UBadge label="active" color="success" size="sm" />
+                                    </div>
+                                    <div class="text-xs text-muted border-l-2 border-orange pl-2">Basketball</div>
+                                    <div>
+                                        <UBadge v-for="benchmark in [
+                                            { label: 'Vertical Jump' },
+                                            { label: 'Sprint Speed' },
+                                            { label: 'Agility' },
+                                            { label: 'Strength' }
+                                        ]" variant="subtle" color="neutral" size="sm" class="ml-1 first:ml-0">{{ benchmark.label }}</UBadge>
+                                    </div>
+                                </div>
+                                <UDropdownMenu :items="actions" size="sm" :content="{ align: 'end', sideOffset: 4 }">
+                                    <UButton color="neutral" variant="ghost" icon="i-lucide-ellipsis" size="sm" />
+                                </UDropdownMenu>
+                            </div>
+                        </header>
+                        <UCard variant="soft" :ui="{ body: '!px-0 sm:p-4' }">
+                            <Grid :cols="4" :gap="0" class="divide-x divide-muted *:flex *:flex-col *:items-center *:space-y-1">
+                                <div>
+                                    <span class="text-dimmed text-xs">Accuracy</span>
+                                    <span class="font-semibold text-default">94.2%</span>
+                                </div>
+                                <div>
+                                    <span class="text-dimmed text-xs">Athletes</span>
+                                    <span class="font-semibold text-default">245</span>
+                                </div>
+                                <div>
+                                    <span class="text-dimmed text-xs">Metrics</span>
+                                    <span class="font-semibold text-default">4</span>
+                                </div>
+                                <div>
+                                    <span class="text-dimmed text-xs">Updates</span>
+                                    <span class="font-semibold text-default">Monthly</span>
+                                </div>
+                            </Grid>
+                        </UCard>
+                        <footer class="flex justify-between items-center">
+                            <List :items="[
+                                { icon: 'i-lucide-refresh-cw', text: '2024-01-15 12:15' }
+                            ]" :ui="{ item: 'text-xs' }" />
+                            <div class="text-xs text-muted">
+                                v1.0
+                            </div>
+                        </footer>
+                    </UCard>
+                </template>
+                <template #edit>
+                    <UCard :ui="{ body: 'sm:p-4 space-y-2' }">
+                        <h4 class="font-semibold">Select Benchmark to Edit</h4>
+                        <USelect placeholder="Select benchmark" :items="[ 'Benchmark 1', 'Benchmark 2', 'Benchmark 3' ]" size="lg" class="w-full" />
+                    </UCard>
+                    <div class="flex justify-end">
+                        <USwitch v-model="isEditable" label="Enable Edit" />
+                    </div>
+                    <UCard :ui="{ body: 'sm:p-4 space-y-4' }">
+                        <h4 class="font-semibold">Basic Information</h4>
+                        <Grid :lg="2" :gap="4">
+                            <UFormField label="Benchmark Name" size="lg">
+                                <UInput default-value="Elite Basketball 2024" class="w-full" :disabled="!isEditable" />
+                            </UFormField>
+                            <UFormField label="Sport" size="lg">
+                                <UInput class="w-full" :disabled="!isEditable" />
+                            </UFormField>
+                            <UFormField label="Version" size="lg">
+                                <UInput class="w-full" :disabled="!isEditable" />
+                            </UFormField>
+                            <UFormField label="Update Frequency" size="lg">
+                                <USelect default-value="Weekly" :items="[ 'Daily', 'Weekly', 'Monthly', 'Quarterly', 'Annually' ]" class="w-full" :disabled="!isEditable" />
+                            </UFormField>
+                        </Grid>
+                        <UFormField label="Description">
+                            <UTextarea placeholder="Describe the benchmark purpose and methodology..." class="w-full" :disabled="!isEditable" />
+                        </UFormField>
+                    </UCard>
+                    <UCard :ui="{ body: 'sm:p-4 space-y-4' }">
+                        <h4 class="font-semibold">Performance Metrics</h4>
+                        <UCard v-for="metric in [
+                            { label: 'Vertical Jump', weight: 25, min: 20, max: 60 },
+                            { label: 'Sprint Speed', weight: 25, min: 20, max: 60 },
+                            { label: 'Agility', weight: 25, min: 20, max: 60 },
+                        ]" :ui="{ body: 'sm:p-4 flex items-center justify-between' }">
+                            <USwitch :label="metric.label" :disabled="!isEditable" />
+                            <div class="flex items-center gap-4">
+                                <ul class="text-xs text-muted flex gap-3">
+                                    <li>Weight: {{ metric.weight }}%</li>
+                                    <li>Min: {{ metric.min }}</li>
+                                    <li>Max: {{ metric.max }}</li>
+                                </ul>
+                                <UButton label="Configure" variant="outline" color="neutral" :disabled="!isEditable" />
+                            </div>
+                        </UCard>
+                        <UButton label="Add New Metric" icon="i-lucide-plus" variant="ghost" color="neutral" size="lg" block class="border border-dashed border-muted" :disabled="!isEditable" />
+                    </UCard>
+                </template>
+            </UTabs>
         </Page>
     </div>
 </template>
 <script setup lang="ts">
 import { talentStatCards, benchmarkingTabs } from '~/data';
+import type { TabsItem } from '@nuxt/ui'
+import { UButton, UFormField, USwitch, UTextarea } from '#components';
+
+const isEditable = ref(false)
+
+const sections = [
+  {
+    label: 'Benchmark Overview',
+    icon: 'i-lucide-chart-column',
+    slot: 'overview' as const
+  },
+  {
+    label: 'Edit & Configure',
+    icon: 'i-lucide-pencil-line',
+    slot: 'edit' as const
+  },
+  {
+    label: 'Update History',
+    icon: 'i-lucide-calendar-arrow-up',
+    slot: 'history' as const
+  },
+  {
+    label: 'Global Settings',
+    icon: 'i-lucide-settings',
+    slot: 'settings' as const
+  }
+] satisfies TabsItem[]
+
+const actions = [
+    {
+      label: 'Edit',
+      icon: 'i-lucide-pencil'
+    },
+    {
+      label: 'Copy',
+      icon: 'i-lucide-copy'
+    },
+    {
+      label: 'Delete',
+      color: 'error',
+      icon: 'i-lucide-trash-2'
+    }
+]
 </script>

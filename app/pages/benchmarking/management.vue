@@ -117,6 +117,15 @@
                         </UCard>
                         <UButton label="Add New Metric" icon="i-lucide-plus" variant="ghost" color="neutral" size="lg" block class="border border-dashed border-muted" :disabled="!isEditable" />
                     </UCard>
+                    <UCard :ui="{ body: 'sm:p-4 space-y-4' }">
+                        <h4 class="font-semibold">Data Sources</h4>
+                        <UCard v-for="source in [
+                            { label: 'Historical Performance Data', description: '245 athletes, 2,940 records', icon: 'i-lucide-database', iconColor: 'text-blue-500' },
+                            { label: 'Real-time Collection System', description: 'Live data feed from devices', icon: 'i-lucide-database', iconColor: 'text-green-500' }
+                        ]" :ui="{ body: 'sm:p-4' }">
+                            <ListIcon :label="source.label" :description="source.description" :icon="source.icon" :iconColor="source.iconColor" />
+                        </UCard>
+                    </UCard>
                 </template>
             </UTabs>
         </Page>

@@ -7,12 +7,12 @@ export const navigationMenuItemsByRole: Record<string, NavigationMenuItem[]> = {
             { label: 'Dashboard', icon: 'i-lucide-pie-chart', to: '/dashboard' },
             { label: 'Profile Management', icon: 'i-lucide-circle-user-round', to: '/profile-management'  },
             { label: 'Talent Identification', icon: 'i-lucide-sparkle', to: '/talent-identification'  },
-            { label: 'Campus Fitness', icon: 'i-lucide-dumbbell', to: '/campus-fitness' },
+            // { label: 'Campus Fitness', icon: 'i-lucide-dumbbell', to: '/campus-fitness' },
             { label: 'Assessment Center', icon: 'i-lucide-clipboard-check', to: '/assessment-center' },
             { label: 'Benchmarking', icon: 'i-lucide-activity', to: '/benchmarking'  },
             { label: 'Team Management', icon: 'i-lucide-dribbble', to: '/team-management'  },
             { label: 'Reports & Analytics', icon: 'i-lucide-chart-column', to: '/reports-analytics'  },
-            { label: 'Inbox', icon: 'i-lucide-inbox', to: '/inbox'  }
+            // { label: 'Inbox', icon: 'i-lucide-inbox', to: '/inbox'  }
         ]
     ],
     'Head': [
@@ -161,5 +161,28 @@ export const teamManagementTabs: TabItem[] = [
         label: 'Schedule',
         icon: 'i-lucide-calendar',
         to: '/team-management/schedule'
+    }
+]
+
+export const reportsAnalyticsTabs: TabItem[] = [
+    {
+        label: 'Population Overview',
+        icon: 'i-lucide-users',
+        to: '/reports-analytics'
+    },
+    {
+        label: 'Performance Rankings',
+        icon: 'i-lucide-chart-candlestick',
+        to: '/reports-analytics/perfomance-rankings'
+    },
+    {
+        label: 'Department Summary',
+        icon: 'i-lucide-pie-chart',
+        to: '/reports-analytics/department-summary'
+    },
+    {
+        label: 'Detailed Reports',
+        icon: 'i-lucide-file-chart-column',
+        to: '/reports-analytics/detailed-reports'
     }
 ]

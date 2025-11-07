@@ -314,6 +314,37 @@ export const performanceStatCards: StatCardProps[] = [
   }
 ]
 
+export const analyticStatCards: StatCardProps[] = [
+  {
+    label: 'Total Students',
+    count: '1,412',
+    icon: 'i-lucide-users',
+    color: 'primary',
+    trendDescription: 'Complete Population',
+  },
+  {
+    label: 'Campus Average Score',
+    count: "73.2",
+    icon: 'i-lucide-map-pinned',
+    color: 'success',
+    trendValue: '+2.1',
+  },
+  {
+    label: 'Fitness Categories',
+    count: 5,
+    icon: 'i-lucide-dumbbell',
+    color: 'amber',
+    trendDescription: 'Percentile-based',
+  },
+  {
+    label: 'Improvement Rate',
+    count: '78%',
+    icon: 'i-lucide-target',
+    color: 'error',
+    trendDescription: 'Students improving',
+  }
+]
+
 import type { FormCardProps } from '~/types/features'
 
 export const formCards: FormCardProps[] = [

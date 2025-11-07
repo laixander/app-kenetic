@@ -6,6 +6,7 @@ import {
     campusFitnessTabs,
     benchmarkingTabs,
     teamManagementTabs,
+    reportsAnalyticsTabs
 } from './navMenuItems';
 
 import {
@@ -23,6 +24,7 @@ import {
     profileManagementStatCards,
     teamStatCards,
     performanceStatCards,
+    analyticStatCards,
     formCards,
     inputCards,
     devices
@@ -59,6 +61,7 @@ export {
     profileManagementStatCards,
     teamStatCards,
     performanceStatCards,
+    analyticStatCards,
     formCards,
     formBuilderTabs,
     assessmentTabs,
@@ -66,6 +69,7 @@ export {
     benchmarkingTabs,
     teamManagementTabs,
     talentTabs,
+    reportsAnalyticsTabs,
     devices,
     inputCards,
     newForm

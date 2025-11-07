@@ -58,7 +58,17 @@
             <UPagination :total="100" class="flex justify-center" />
         </Page>
     </div>
+    <UModal v-model:open="open" title="Create Team" description="Description goes here" :ui="{ footer: 'flex justify-end gap-2' }" class="min-w-2xl">
+        <template #body>
+            ...
+        </template>
+        <template #footer="{close}">
+            <UButton label="Cancel" variant="ghost" color="neutral" size="lg" @click="close" />
+            <UButton label="Save Team" icon="i-lucide-save" size="lg" @click="close" />
+        </template>
+    </UModal>
 </template>
 <script setup lang="ts">
 import { teamStatCards, teamManagementTabs } from '~/data';
+const open = ref(false)
 </script>

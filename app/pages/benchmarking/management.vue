@@ -120,12 +120,61 @@
                     <UCard :ui="{ body: 'sm:p-4 space-y-4' }">
                         <h4 class="font-semibold">Data Sources</h4>
                         <UCard v-for="source in [
-                            { label: 'Historical Performance Data', description: '245 athletes, 2,940 records', icon: 'i-lucide-database', iconColor: 'text-blue-500' },
-                            { label: 'Real-time Collection System', description: 'Live data feed from devices', icon: 'i-lucide-database', iconColor: 'text-green-500' }
-                        ]" :ui="{ body: 'sm:p-4' }">
+                            { label: 'Historical Performance Data', description: '245 athletes, 2,940 records', icon: 'i-lucide-database', iconColor: 'text-blue-500', status: 'Connected' },
+                            { label: 'Real-time Collection System', description: 'Live data feed from devices', icon: 'i-lucide-database', iconColor: 'text-green-500', status: 'Active' }
+                        ]" :ui="{ body: 'sm:p-4 flex justify-between items-center' }">
                             <ListIcon :label="source.label" :description="source.description" :icon="source.icon" :iconColor="source.iconColor" />
+                            <UBadge :label="source.status" variant="outline" color="neutral" />
                         </UCard>
                     </UCard>
+                    <div class="flex justify-end gap-2">
+                        <UButton label="Cancel" variant="ghost" color="neutral" size="lg" />
+                        <UButton label="Save Assessment" icon="i-lucide-save" size="lg" :disabled="!isEditable" />
+                    </div>
+                </template>
+                <template #history>
+                    <Block title="Update History" description="Track all changes made to benchmarks">
+                        <UTimeline reverse v-model="value" orientation="vertical" :items="items" size="xs" class="w-full">
+                            <template #description="{ item }">
+                                <div class="mb-1.5">{{ item.detail }}</div>
+                                <UBadge :label="item.author" variant="outline" color="neutral" />
+                            </template>
+                        </UTimeline>
+                    </Block>
+                </template>
+                <template #settings>
+                    <Block title="Global Benchmark Settings" description="Configure system-wide benchmark parameters">
+                        <section class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-sm">Auto-update Benchmarks</h4>
+                                <p class="text-sm text-muted">Automatically update benchmarks when new data is available</p>
+                            </div>
+                            <USwitch />
+                        </section>
+                        <USeparator class="py-2" />
+                        <section class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-sm">Outlier Detection</h4>
+                                <p class="text-sm text-muted">Automatically identify and handle statistical outliers</p>
+                            </div>
+                            <USwitch />
+                        </section>
+                        <USeparator class="py-2" />
+                        <section class="space-y-4">
+                            <UFormField label="Default Statistical Model" size="lg">
+                                <USelect placeholder="Select model" class="w-full" />
+                            </UFormField>
+                            <UFormField label="Minimum Sample Size" help="Minimum number of athletes required to create a benchmark" size="lg">
+                                <UInputNumber :default-value="5" class="w-full" />
+                            </UFormField>
+                            <UFormField label="Confidence Level" size="lg">
+                                <UInput default-value="95%" class="w-full" />
+                            </UFormField>
+                        </section>
+                    </Block>
+                    <div class="flex justify-end gap-2 mt-4">
+                        <UButton label="Save Global Settings" icon="i-lucide-save" size="lg" />
+                    </div>
                 </template>
             </UTabs>
         </Page>
@@ -133,8 +182,8 @@
 </template>
 <script setup lang="ts">
 import { talentStatCards, benchmarkingTabs } from '~/data';
-import type { TabsItem } from '@nuxt/ui'
-import { UButton, UFormField, USwitch, UTextarea } from '#components';
+import type { TabsItem, DropdownMenuItem } from '@nuxt/ui'
+import { UButton, UFormField, UInputNumber, USwitch, UTextarea } from '#components';
 
 const isEditable = ref(false)
 
@@ -161,7 +210,7 @@ const sections = [
   }
 ] satisfies TabsItem[]
 
-const actions = [
+const actions = ref<DropdownMenuItem[]>([
     {
       label: 'Edit',
       icon: 'i-lucide-pencil'
@@ -175,5 +224,40 @@ const actions = [
       color: 'error',
       icon: 'i-lucide-trash-2'
     }
-]
+])
+
+import type { TimelineItem } from '@nuxt/ui'
+
+const value = ref(2)
+
+const items = ref<TimelineItem[]>([
+  {
+    date: 'Apr 5 2025',
+    title: 'Updated Elite Basketball 2024',
+    detail: 'Added 23 new athlete records, recalibrated percentiles',
+    icon: 'i-lucide-clock',
+    author: 'Dr. Sarah Wilson'
+  },
+  {
+    date: 'Jun 12 2025',
+    title: 'Performance Metrics Overhaul',
+    detail: 'Introduced advanced agility and endurance tracking metrics for all athletes',
+    icon: 'i-lucide-activity',
+    author: 'Dr. Sarah Wilson'
+  },
+  {
+    date: 'Sep 28 2025',
+    title: 'Mid-Season Data Review',
+    detail: 'Validated player stats and integrated video analysis insights into reports',
+    icon: 'i-lucide-bar-chart',
+    author: 'Dr. Sarah Wilson'
+  },
+  {
+    date: 'Nov 1 2025',
+    title: 'System Optimization',
+    detail: 'Improved data synchronization speed and updated UI for better timeline filtering',
+    icon: 'i-lucide-rocket',
+    author: 'Dr. Sarah Wilson'
+  }
+])
 </script>

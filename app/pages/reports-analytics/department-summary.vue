@@ -8,11 +8,26 @@
             </Grid>
 
             <Block title="Department Score Distribution" description="Distribution of fitness scores across all 1,412 students">
-                <ComingSoon />
+                <template #actions>
+                    <USelect size="lg" :items="[
+                        { label: 'All Benchmark', value: 'all' },
+                        { label: 'Vertical Jump', value: 'vertical-jump' },
+                        { label: '40 Yard Dash', value: '40-yard-dash' },
+                        { label: 'Pro Agility', value: 'pro-agility' },
+                        { label: 'Broad Jump', value: 'broad-jump' },
+                        { label: 'Push Ups', value: 'push-ups' },
+                        { label: 'Sit Ups', value: 'sit-ups' },
+                        { label: 'Mile Run', value: 'mile-run' }
+                    ]" defaultValue="vertical-jump" />
+                </template>
+                <DeptScoreChart />
+                
+                <UAlert title="Department Insights" description="Health Sciences leads with the highest average fitness score (82.1), while Education shows the lowest average (67.3). Engineering shows strong improvement with a +3.2% trend." color="info" class="mt-4" />
             </Block>
         </Page>
     </div>
 </template>
 <script setup lang="ts">
 import { analyticStatCards, reportsAnalyticsTabs } from '~/data';
+import DeptScoreChart from '~/components/feature/DeptScoreChart.vue';
 </script>

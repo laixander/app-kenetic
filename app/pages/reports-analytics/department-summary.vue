@@ -7,7 +7,7 @@
                 <StatCard v-for="(card, i) in analyticStatCards" :key="i" v-bind="card" countSize="text-xl" hasDetails />
             </Grid>
 
-            <Block>
+            <Block title="Department Score Distribution" description="Distribution of fitness scores across all 1,412 students">
                 <ComingSoon />
             </Block>
         </Page>

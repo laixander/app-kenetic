@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { UIcon, USwitch, UChip, UButton } from '#components';
-import { dataStatCards, dataCollectionTabs, devices } from '~/data';
+import { dataStatCards, devices } from '~/data';
 import type { CardProps } from '~/types/models'
 
 const props = defineProps<{

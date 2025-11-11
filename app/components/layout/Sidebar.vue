@@ -15,13 +15,15 @@ const uiNavConfig = {
     <div class="h-16 shrink-0 flex justify-center items-center gap-1.5 px-2 lg:border-b lg:border-default">
         <UButton color="neutral" variant="link"
             :avatar="{
+                icon: 'i-lucide-activity',
                 alt: 'Human Kenetics',
                 size: 'lg',
                 ui: {
-                    root: 'rounded-xl bg-primary size-10',
-                    fallback: 'text-white text-sm'
+                    root: 'rounded-xl bg-primary size-9',
+                    fallback: 'text-white text-sm',
+                    icon: 'text-white',
                 },
-                class: 'rounded-none squircle'
+                class: 'rounded-none squircle',
             }" 
             :class="collapsed ? '' : 'w-full'" 
         >

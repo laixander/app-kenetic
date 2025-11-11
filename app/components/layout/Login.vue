@@ -14,7 +14,10 @@
             <div class="max-w-sm w-full space-y-12 px-6" :class="layout.card">
                 <!-- Header -->
                 <div class="grid gap-1 justify-center text-center">
-                    <NuxtImg :src="logo" class="size-16 lg:size-20 mx-auto mb-6" />
+                    <slot name="logo">
+                        <!-- Default logo (used if no slot provided) -->
+                        <NuxtImg :src="logo" class="size-16 lg:size-20 mx-auto mb-6" />
+                    </slot>
                     <span class="font-bold text-2xl text-default">{{ title }}</span>
                     <span class="text-sm text-muted">{{ description }}</span>
                 </div>
@@ -58,7 +61,7 @@ const props = defineProps({
     hasContent: Boolean,
     overlay: {
         type: String,
-        default: 'bg-linear-to-br from-purple to-primary-600'
+        default: 'bg-linear-to-br from-purple to-primary-600 dark:from-purple-600 dark:to-primary-900'
     },
     variant: {
         type: String,

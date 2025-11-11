@@ -2,7 +2,8 @@
     <!-- <div>
         Loading ...
     </div> -->
-    <div class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="relative min-h-screen flex items-center justify-center overflow-hidden bg-cover" style="background-image: url('https://images.unsplash.com/photo-1521804906057-1df8fdb718b7')">
+        <div class="absolute w-full h-full opacity-90 bg-linear-to-br from-purple to-primary-600 dark:from-purple-600 dark:to-primary-900" />
         <!-- Indigo Mesh Background -->
         <div class="absolute inset-0 -z-10 flex items-center justify-center">
             <div class="w-[180vmin] h-[180vmin] rounded-full
@@ -21,22 +22,22 @@
                 </div>
 
                 <h1
-                    class="text-gray-900 dark:text-gray-100 font-bold mb-2 slide-up opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]">
+                    class="text-white text-2xl font-bold mb-2 slide-up opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]">
                     HKAS
                 </h1>
                 <p
-                    class="text-gray-600 dark:text-gray-400 slide-up opacity-0 [animation-delay:800ms] [animation-fill-mode:forwards]">
+                    class="text-white slide-up opacity-0 [animation-delay:800ms] [animation-fill-mode:forwards]">
                     Human Kinetics Application System
                 </p>
             </div>
 
             <div class="space-y-4 slide-up opacity-0 [animation-delay:1000ms] [animation-fill-mode:forwards]">
-                <UProgress v-model="progress" color="indigo" class="rounded-full h-2 transition-all duration-700" />
+                <UProgress v-model="progress" color="green" :ui="{ base: 'bg-white' }" class="rounded-full h-2 transition-all duration-700" />
                 <div class="flex items-center justify-center gap-2">
                     <div
-                        class="w-4 h-4 border-2 border-indigo-600 dark:border-indigo-400 border-t-transparent dark:border-t-transparent rounded-full animate-spin-smooth">
+                        class="w-4 h-4 border-2 border-white border-t-transparent dark:border-t-transparent rounded-full animate-spin-smooth">
                     </div>
-                    <p class="text-gray-600 dark:text-gray-300">
+                    <p class="text-white">
                         Loading application... {{ progress }}%
                     </p>
                 </div>

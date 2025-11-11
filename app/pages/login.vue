@@ -1,30 +1,37 @@
+<template>
+    <LayoutLogin
+        variant="floatRight"
+        app="Human Kinetics"
+        title="Welcome Back!"
+        description="Sign in to your Human Kinetics account"
+        background-image="https://images.unsplash.com/photo-1521804906057-1df8fdb718b7"
+        @update:username="username = $event"
+        @update:password="password = $event"
+        @login="handleLogin"
+    >
+        <template #logo>
+            <div class="flex items-center justify-center mx-auto w-20 h-20 rounded-2xl
+                 bg-gradient-to-br from-indigo-600 to-indigo-700
+                 dark:from-indigo-500 dark:to-indigo-600
+                 mb-6 shadow-lg squircle">
+                <UIcon name="i-lucide-activity" class="shrink-0 size-10 text-white" />
+            </div>
+        </template>
+    </LayoutLogin>
+</template>
+
 <script setup lang="ts">
 definePageMeta({
-  layout: 'landing'
+    layout: 'landing'
 })
+
+const username = ref('')
+const password = ref('')
+
+const handleLogin = ({ username, password }: { username: string; password: string }) => {
+    console.log('Username:', username)
+    console.log('Password:', password)
+    // You can now trigger API login or redirect logic here
+    navigateTo('/authentication')
+}
 </script>
-<template>
-    <div class="fixed inset-0 flex justify-center items-center bg-gray-50 dark:bg-gray-950">
-        <UCard>
-            <header class="space-y-2">
-                <div class="font-semibold text-xl text-highlighted text-center">HKAS Login</div>
-                <div class="text-sm text-muted text-center">Enter your credentials to access your account</div>
-            </header>
-            <main class="space-y-4 mt-10">
-                <UFormField label="Username">
-                    <UInput placeholder="Enter your username" variant="soft" size="lg" class="w-full" />
-                </UFormField>
-                <UFormField label="Password">
-                    <UInput placeholder="Enter your password" variant="soft" size="lg" type="password" class="w-full" />
-                </UFormField>
-                <UFormField label="User Role">
-                    <USelect placeholder="Select your role" :items="['Admin', 'User', 'Guest']" variant="soft" size="lg" class="w-full" />
-                </UFormField>
-                <UButton label="Login" size="lg" class="justify-center" block to="/authentication" />
-            </main>
-            <footer class="text-center mt-8">
-                <ULink as="button" class="text-sm">Forgot Password?</ULink>
-            </footer>
-        </UCard>
-    </div>
-</template>

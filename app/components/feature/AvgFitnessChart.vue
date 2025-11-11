@@ -5,84 +5,113 @@ import { useColorMode } from '#imports'
 const colorMode = useColorMode()
 
 const series = ref([
-{
-    name: 'Students',
-    data: [15, 25, 60, 95, 85],
-  }
+    { name: 'Cardio', data: [31, 40, 28, 51] },
+    { name: 'Strength', data: [11, 32, 45, 32] },
+    { name: 'Flexibility', data: [15, 25, 20, 40] },
+    { name: 'Overall Score', data: [20, 30, 35, 25] }
 ])
 
 const chartOptions = computed(() => {
     const isDark = colorMode.value === 'dark'
+
+    // Core palette (light vs dark mode)
+    const colors = isDark
+        ? [
+            'var(--ui-color-green-400)',
+            'var(--ui-color-pink-400)',
+            'var(--ui-color-violet-400)',
+            'var(--ui-color-amber-400)'
+        ]
+        : [
+            'var(--ui-color-green-500)',
+            'var(--ui-color-pink-500)',
+            'var(--ui-color-violet-500)',
+            'var(--ui-color-amber-500)'
+        ]
+
+    // Softer fill tints for each color
+    const fillColors = isDark
+        ? [
+            'var(--ui-color-green-900)',
+            'var(--ui-color-pink-900)',
+            'var(--ui-color-violet-900)',
+            'var(--ui-color-amber-900)'
+        ]
+        : [
+            'var(--ui-color-green-100)',
+            'var(--ui-color-pink-100)',
+            'var(--ui-color-violet-100)',
+            'var(--ui-color-amber-100)'
+        ]
+
     return {
         chart: {
-            type: 'bar',
-            stacked: false,
+            type: 'area',
+            stacked: true,
             background: 'transparent',
-            toolbar: {
-                show: false
-            },
+            toolbar: { show: false },
             fontFamily: `'Public Sans', sans-serif`
         },
-        xaxis: {
-            categories: ['0-20', '21-40', '41-60', '61-80', '81-100'],
-            labels: {
-                style: { colors: 'var(--ui-text-toned)' },
-            },
 
-            axisBorder: {
-                show: true,
-                color: 'var(--ui-border)'
-            },
-            axisTicks: {
-                show: true,
-                color: 'var(--ui-border)'
-            },
+        xaxis: {
+            categories: ['Freshman', 'Sophomore', 'Junior', 'Senior'],
+            labels: { style: { colors: 'var(--ui-text-toned)' } },
+            axisBorder: { show: true, color: 'var(--ui-border)' },
+            axisTicks: { show: true, color: 'var(--ui-border)' }
         },
+
         legend: {
             position: 'top',
-            labels: {
-                colors: 'var(--ui-text-toned)'
-            },
+            labels: { colors: 'var(--ui-text-toned)' },
             markers: {
                 strokeWidth: 0,
                 offsetX: -6,
-                customHTML: () => {
-                    return `<div style="
-                    width: 12px;
-                    height: 12px;
-                    border-radius: 4px;
-                    background-color: currentColor;
-                    display: inline-block;
-                "></div>`
-                }
+                customHTML: () => `
+          <div style="
+            width: 12px;
+            height: 12px;
+            border-radius: 4px;
+            background-color: currentColor;
+            display: inline-block;
+          "></div>
+        `
             },
-            itemMargin: {
-                horizontal: 12
-            },
+            itemMargin: { horizontal: 12 }
         },
+
         tooltip: {
             theme: isDark ? 'dark' : 'light'
         },
+
+        // Series line colors
+        colors,
+
+        // Fill colors with smooth transparency
         fill: {
-            opacity: 1,
-            colors: 'var(--ui-color-green-500)',
+            type: 'solid',
+            colors: fillColors,
+            opacity: 0.4
         },
-        plotOptions: {
-            bar: {
-                columnWidth: '40%',
-            }
+
+        stroke: {
+            curve: 'smooth',
+            width: 3
         },
+
         dataLabels: {
             enabled: false
         },
+
         grid: {
-            borderColor: 'var(--ui-border)'
-        },
+            borderColor: 'var(--ui-border)',
+            strokeDashArray: 3
+        }
     }
 })
 </script>
+
 <template>
     <ClientOnly>
-        <ApexChart type="bar" height="360" :options="chartOptions" :series="series" />
+        <ApexChart type="area" height="360" :options="chartOptions" :series="series" />
     </ClientOnly>
 </template>

@@ -17,7 +17,7 @@ import { athletes } from '~/data'
                 />
             </Grid>
 
-            <Block
+            <!-- <Block
                 icon="i-lucide-activity"
                 iconColor="blue"
                 title="Performance Metrics Overview"
@@ -26,9 +26,9 @@ import { athletes } from '~/data'
                 <Grid :lg="3" :gap="1" class="rounded-lg overflow-hidden">
                     <AnalysisCard :analysis="analysis" />
                 </Grid>
-            </Block>
+            </Block> -->
 
-            <!-- <div class="flex gap-4">
+            <div class="flex gap-4">
                 <Block
                     icon="i-lucide-activity"
                     iconColor="blue"
@@ -50,7 +50,7 @@ import { athletes } from '~/data'
                     </Block>
                 </div>
                 
-            </div> -->
+            </div>
         </Page>
     </div>
 </template>

@@ -109,8 +109,32 @@ export const athletes: Athlete[] = [
     statusColor: "neutral",
     lastAssessment: "2024-06-03",
     avatar: "https://i.pravatar.cc/40?u=athlete-3"
+  },
+  {
+    id: 4,
+    name: "Liam Bennett",
+    sport: "Soccer",
+    fitnessScore: 8.2,
+    vo2: 63.4,
+    trend: "up",
+    status: "Good",
+    statusColor: "warning",
+    lastAssessment: "2024-06-04",
+    avatar: "https://i.pravatar.cc/40?u=athlete-4"
+  },
+  {
+    id: 5,
+    name: "Ava Kim",
+    sport: "Track and Field",
+    fitnessScore: 9.1,
+    vo2: 70.2,
+    trend: "up",
+    status: "Excellent",
+    statusColor: "success",
+    lastAssessment: "2024-06-05",
+    avatar: "https://i.pravatar.cc/40?u=athlete-5"
   }
-]
+];
 
 import type { StatCardProps } from '~/types/models'
 export const statCards: StatCardProps[] = [

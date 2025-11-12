@@ -72,11 +72,11 @@ const chartOptions = computed(() => {
                 columnWidth: '40%',
             }
         },
-        stroke: {
-            show: true,
-            width: 4,
-            colors: ['transparent']
-        },
+        // stroke: {
+        //     show: true,
+        //     width: 4,
+        //     colors: ['transparent']
+        // },
         dataLabels: {
             enabled: false
         },

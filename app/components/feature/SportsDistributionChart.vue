@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useColorMode } from '#imports'
-import { tooltip } from '#build/ui'
 
 const colorMode = useColorMode()
 
@@ -15,6 +14,7 @@ const chartOptions = computed(() => {
         labels,
         colors: customColors,
         chart: {
+            type: 'donut',
             background: 'transparent',
             toolbar: {
                 show: false
@@ -23,6 +23,7 @@ const chartOptions = computed(() => {
         },
         legend: {
             position: 'right',
+            offsetY: 38,
             labels: {
                 colors: isDark ? 'dark' : 'light'
             },
@@ -56,9 +57,9 @@ const chartOptions = computed(() => {
 })
 </script>
 <template>
-    <client-only>
-        <div class="w-full max-w-md mx-auto">
+    <div class="w-full max-w-md mx-auto">
+        <client-only>
             <ApexChart type="donut" :options="chartOptions" :series="series" width="370" />
-        </div>
-    </client-only>
+        </client-only>
+    </div>
 </template>

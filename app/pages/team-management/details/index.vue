@@ -117,7 +117,7 @@
                                             <span class="text-sm text-default font-semibold">Speed & Agility Training</span>
                                         </div>
                                     </div>
-                                    <div class="bg-gradient-to-l to-gray-200 h-[1px]"></div>
+                                    <div class="bg-gradient-to-l to-gray-200 dark:to-gray-700 h-[1px]"></div>
                                     <div class="space-y-2">
                                         <div class="font-semibold text-sm text-default">
                                             Drills & Exercises
@@ -190,7 +190,7 @@
                         </div>
                         <Grid :lg="4" :gap="4" class="py-4">
                             <UCard v-for="n in 4" :ui="{ body: 'p-0 sm:p-0', footer: 'space-y-4 p-4 sm:p-4' }">
-                                <div class="bg-gray-800 text-center p-8">
+                                <div class="bg-gray-800 dark:bg-gray-950 text-center p-8">
                                     <UIcon name="i-ic-round-play-circle" class="size-16 text-white/20" />
                                 </div>
                                 <template #footer>

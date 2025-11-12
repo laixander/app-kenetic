@@ -33,7 +33,7 @@
                                         }"
                                     />
                                 </header>
-                                <div class="bg-gradient-to-r from-gray-200 h-[1px]" />
+                                <div class="bg-gradient-to-r from-gray-200 dark:from-gray-700 h-[1px]" />
                                 <main class="space-y-1.5">
                                     <Grid :lg="4">
                                         <div class="grid">

@@ -34,7 +34,7 @@
                             { icon: 'i-lucide-users', text: '10/12 completed' }
                         ]"
                         :ui="{
-                            wrapper: 'bg-gradient-to-l from-slate-100 py-2 px-3 rounded-md',
+                            wrapper: 'bg-gradient-to-l from-slate-100 dark:from-slate-800 py-2 px-3 rounded-md',
                             icon: 'size-3',
                             text: 'text-xs'
                         }"

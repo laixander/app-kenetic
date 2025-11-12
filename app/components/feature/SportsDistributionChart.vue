@@ -50,7 +50,7 @@ const chartOptions = computed(() => {
         stroke: {
             show: true,
             width: 2,
-            colors: ['transparent']
+            colors: isDark ? 'var(--ui-border)' : 'var(--ui-border)'
         }
     }
     

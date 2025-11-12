@@ -5,8 +5,8 @@ export const navigationMenuItemsByRole: Record<string, NavigationMenuItem[]> = {
         [
             { label: 'MAIN NAVIGATION', type: 'label' },
             { label: 'Dashboard', icon: 'i-lucide-pie-chart', to: '/dashboard' },
-            { label: 'Profile Management', icon: 'i-lucide-circle-user-round', to: '/profile-management'  },
-            { label: 'Talent Identification', icon: 'i-lucide-sparkle', to: '/talent-identification'  },
+            { label: 'Profile Management', icon: 'i-lucide-star', to: '/profile-management'  },
+            { label: 'Talent Identification', icon: 'i-lucide-bot', to: '/talent-identification'  },
             // { label: 'Campus Fitness', icon: 'i-lucide-dumbbell', to: '/campus-fitness' },
             { label: 'Assessment Center', icon: 'i-lucide-clipboard-check', to: '/assessment-center' },
             { label: 'Benchmarking', icon: 'i-lucide-activity', to: '/benchmarking'  },

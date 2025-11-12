@@ -27,14 +27,14 @@ const trendDirection = computed(() =>
         <!-- <div :class="['flex justify-between', hasDetails ? 'items-center' : 'items-start']"> -->
             <div class="flex justify-between items-center">
                 <div>
-                    <!-- <h4 :class="['text-toned', hasDetails ? 'font-semibold' : 'text-sm']">{{ label }}</h4> -->
-                    <h4 class="text-toned text-sm">{{ label }}</h4>
+                    <h4 :class="['text-default text-sm', hasDetails ? 'font-medium' : '']">{{ label }}</h4>
+                    <!-- <h4 class="text-toned text-sm">{{ label }}</h4> -->
 
                     <!-- Increase top margin if hasDetails -->
                     <p :class="[
-                    countSize || 'text-3xl',
-                    'text-highlighted font-bold',
-                    hasDetails ? 'my-3' : 'mt-1'
+                        'text-highlighted font-bold',
+                        countSize || 'text-3xl',
+                        hasDetails ? 'my-3' : 'mt-1'
                     ]">{{ count }}</p>
 
                     <!-- Optional trend section -->
@@ -48,7 +48,7 @@ const trendDirection = computed(() =>
                             <span :class="trendDirection === 'up' ? 'text-success' : 'text-error'">
                                 {{ trendValue }}
                             </span>
-                            <span class="text-muted">this month</span>
+                            <span class="text-muted">{{ trendFrom || 'this month' }}</span>
                         </div>
                         <p v-if="trendDescription" class="text-xs text-muted">{{ trendDescription }}</p>
                     </div>

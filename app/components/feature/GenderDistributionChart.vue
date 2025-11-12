@@ -4,9 +4,9 @@ import { useColorMode } from '#imports'
 
 const colorMode = useColorMode()
 
-const series = [67, 22, 80, 20, 25]
-const labels = ['Swimming', 'Basketball', 'Soccer', 'Tennis', 'Running']
-const customColors = ['var(--ui-pink)', 'var(--ui-blue)', 'var(--ui-violet)', 'var(--ui-yellow)', 'var(--ui-green)' ]
+const series = [80, 20]
+const labels = ['Male', 'Female']
+const customColors = [ 'var(--ui-blue)', 'var(--ui-pink)' ]
 
 const chartOptions = computed(() => {
     const isDark = colorMode.value === 'dark'
@@ -23,7 +23,7 @@ const chartOptions = computed(() => {
         },
         legend: {
             position: 'right',
-            offsetY: 38,
+            offsetY: 72,
             labels: {
                 colors: isDark ? 'dark' : 'light'
             },
@@ -59,7 +59,7 @@ const chartOptions = computed(() => {
 <template>
     <div class="w-full max-w-md mx-auto">
         <ClientOnly>
-            <ApexChart type="donut" :options="chartOptions" :series="series" width="370" />
+            <ApexChart type="donut" :options="chartOptions" :series="series" width="350" />
         </ClientOnly>
     </div>
 </template>

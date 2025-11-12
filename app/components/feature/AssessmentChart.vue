@@ -88,6 +88,6 @@ const chartOptions = computed(() => {
 </script>
 <template>
     <ClientOnly>
-        <ApexChart type="bar" height="400" :options="chartOptions" :series="series" />
+        <ApexChart type="bar" height="300" :options="chartOptions" :series="series" />
     </ClientOnly>
 </template>

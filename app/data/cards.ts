@@ -141,34 +141,36 @@ export const statCards: StatCardProps[] = [
   {
     label: 'Total Athletes',
     count: 24,
-    icon: 'i-lucide-users',
+    icon: 'i-lucide-star',
     color: 'secondary',
     hasDetails: true,
     trendValue: '+12%',
   },
   {
-    label: 'Top Performers',
+    label: 'Total Assessments',
     count: 18,
-    icon: 'i-lucide-medal',
+    icon: 'i-lucide-clipboard-check',
     color: 'success',
     hasDetails: true,
-    trendDescription: 'Above 90% fitness',
+    trendValue: '+12%',
+    trendFrom: 'from last week'
   },
   {
-    label: 'Need Attention',
-    count: 5,
-    icon: 'i-lucide-clipboard-signature',
-    color: 'warning',
+    label: 'Active Benchmarks',
+    count: 24,
+    icon: 'i-lucide-activity',
+    color: 'error',
     hasDetails: true,
     trendValue: '-2%',
   },
   {
-    label: 'Avg Fitness Level',
-    count: '89%',
-    icon: 'i-lucide-target',
-    color: 'error',
+    label: 'Total Teams',
+    count: 12,
+    icon: 'i-lucide-dribbble',
+    color: 'warning',
     hasDetails: true,
     trendValue: '+3.1%',
+    trendFrom: 'from last month'
   },
 ]
 

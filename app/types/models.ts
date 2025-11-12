@@ -58,7 +58,8 @@ export interface StatCardProps {
     color: ColorType
     icon: string
     hasDetails?: boolean
-    trendValue?: string           // e.g. "2%" or "-4%"
+    trendFrom?: string  
+    trendValue?: string         // e.g. "2%" or "-4%"
     trendDescription?: string     // optional sublabel
     useGradient?: boolean         // grdiet option
     countSize?: string

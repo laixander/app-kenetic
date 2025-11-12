@@ -18,7 +18,7 @@ import { statCards } from '~/data'
             </Grid>
 
             <Grid :lg="3" :gap="4">
-                <GridSpan :span="2">
+                <GridSpan :lg="2">
                     <Block title="Assessment Trends" description="Completed assessments over the last 8 months">
                         <AssessmentChart />
                     </Block>

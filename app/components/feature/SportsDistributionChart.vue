@@ -50,7 +50,7 @@ const chartOptions = computed(() => {
         stroke: {
             show: true,
             width: 2,
-            colors: isDark ? 'dark' : 'light'
+            colors: ['transparent']
         }
     }
     
@@ -58,8 +58,8 @@ const chartOptions = computed(() => {
 </script>
 <template>
     <div class="w-full max-w-md mx-auto">
-        <client-only>
+        <ClientOnly>
             <ApexChart type="donut" :options="chartOptions" :series="series" width="370" />
-        </client-only>
+        </ClientOnly>
     </div>
 </template>

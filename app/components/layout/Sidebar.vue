@@ -19,7 +19,7 @@ const uiNavConfig = {
                 alt: 'Human Kenetics',
                 size: 'lg',
                 ui: {
-                    root: 'rounded-xl bg-primary size-9',
+                    root: 'rounded-xl bg-primary dark:bg-primary-800 size-9',
                     fallback: 'text-white text-sm',
                     icon: 'text-white',
                 },

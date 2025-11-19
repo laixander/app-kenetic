@@ -43,7 +43,7 @@
                     <GenderDistributionChart />
                 </Block>
                 <Block title="Quick Actions" description="Frequently used features" icon="i-lucide-zap" iconColor="yellow">
-                    <UButton :key="action" :label="action.label" :icon="action.icon" trailing-icon="i-lucide-arrow-right" size="lg" :color="action.color" :ui="{ label: 'flex-1 text-left' }" class="w-full py-4"
+                    <UButton :key="action" :label="action.label" :icon="action.icon" trailing-icon="i-lucide-arrow-right" variant="soft" size="lg" :color="action.color" :ui="{ label: 'flex-1 text-left' }" class="w-full py-4"
                         v-for="action in [
                             { label: 'Create Assessment Form', icon: 'i-lucide-file-text', color: 'green', click: () => console.log('Create Assessment Form') },
                             { label: 'Create Norm Dataset', icon: 'i-lucide-activity', color: 'indigo', click: () => console.log('Create Norm Dataset') },

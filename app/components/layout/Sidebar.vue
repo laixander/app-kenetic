@@ -16,7 +16,7 @@ const uiNavConfig = {
         <UButton color="neutral" variant="link"
             :avatar="{
                 icon: 'i-lucide-activity',
-                alt: 'Human Kenetics',
+                alt: 'Human Kinetics',
                 size: 'lg',
                 ui: {
                     root: 'rounded-xl bg-primary dark:bg-primary-800 size-9',

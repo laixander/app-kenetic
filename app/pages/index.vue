@@ -3,7 +3,7 @@
         <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-full">
             <div class="lg:flex-1 flex items-center gap-1.5 slide-right opacity-0 [animation-delay:400ms]">
                 <UAvatar alt="Human Kenetics" :ui="{root: 'bg-indigo-700 dark:bg-indigo-500 size-10', fallback: 'text-white text-sm'}" class="rounded-none squircle" />
-                <span class="font-semibold text-default">Human Kenetics</span>
+                <span class="font-semibold text-default">Human Kinetics</span>
             </div>
             <div class="flex items-center justify-end lg:flex-1 gap-1.5 slide-left opacity-0 [animation-delay:400ms]">
                     <UButton

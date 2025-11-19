@@ -1,7 +1,7 @@
 <template>
     <div class="relative overflow-y-auto">
         <Banner heightClass="h-38 sm:h-44 lg:h-50" image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
-        <Page toolbarClass="border-white/20">
+        <Page toolbarClass="border-white/10">
             <template #toolbar>
                 <UButton label="Back to Profile Management" icon="i-lucide-arrow-left" variant="ghost" class="text-white" to="/profile-management" />
             </template>

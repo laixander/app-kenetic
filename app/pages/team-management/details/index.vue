@@ -1,7 +1,7 @@
 <template>
     <div class="relative overflow-y-auto">
         <Banner heightClass="h-100 lg:h-70" image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd" />
-        <Page toolbarClass="border-white/20">
+        <Page toolbarClass="border-white/10">
             <template #toolbar>
                 <UButton label="Back to Team Management" icon="i-lucide-arrow-left" variant="ghost" class="text-white" to="/team-management" />
             </template>

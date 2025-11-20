@@ -30,14 +30,14 @@ withDefaults(defineProps<CardProps>(), {
             </slot>
         </template>
 
-        <div class="py-4 sm:py-6">
+        <div class="py-4 sm:py-6 space-y-4">
             <!-- MAIN HEADER -->
             <div class="flex items-center gap-3 px-4 sm:px-6" :class="ui.header">
                 <UAvatar v-if="icon || avatar" :icon="icon" :src="avatar" size="2xl" :class="ui.icon" />
                 <div class="flex-1">
                     <div class="font-semibold line-clamp-1">{{ title }}</div>
                     <slot name="subtitle">
-                        <div v-if="subtitle" class="text-sm text-muted">
+                        <div v-if="subtitle" class="text-xs text-muted mt-0.5">
                             {{ subtitle }}
                         </div>
                     </slot>
@@ -56,13 +56,13 @@ withDefaults(defineProps<CardProps>(), {
             </div>
 
             <!-- BODY -->
-            <div class="px-4 sm:px-6" :class="ui.body">
+            <div class="px-4 sm:px-6 space-y-4" :class="ui.body">
                 <template v-for="section in layout" :key="section">
 
                     <!-- Description -->
                     <template v-if="section === 'description'">
                         <slot name="description">
-                            <div v-if="description" class="text-muted text-sm line-clamp-2 mt-4">
+                            <div v-if="description" class="text-muted text-sm line-clamp-2">
                                 {{ description }}
                             </div>
                         </slot>
@@ -76,7 +76,7 @@ withDefaults(defineProps<CardProps>(), {
                     <!-- Tags -->
                     <template v-else-if="section === 'tags'">
                         <slot name="tags">
-                            <div v-if="tags?.length" class="flex flex-wrap gap-2 mt-4">
+                            <div v-if="tags?.length" class="flex flex-wrap gap-2">
                                 <UBadge
                                     v-for="(tag, index) in tags.slice(0, 2)"
                                     :key="index"

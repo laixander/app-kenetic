@@ -144,7 +144,7 @@
                             </Card>
 
                             <Card
-                                :ui="{ wrapper: 'flex', image: 'max-w-40 h-full object-center' }"
+                                :ui="{ image: 'h-32 object-center' }"
                                 :img="{ src: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd' }"
                                 title="Reordered card"
                                 description="The order of sections is controlled via the layout prop."

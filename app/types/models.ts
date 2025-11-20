@@ -143,16 +143,31 @@ export type WorkflowBoardType = {
 }
 
 import type { DropdownMenuItem } from '@nuxt/ui'
-export type CardLayoutSection = 'description' | 'highlights' | 'tags'
+export type CardLayoutSection = 'description' | 'custom' | 'tags'
+export interface CardImageDetails {
+  src: string
+  height?: string | number // Tailwind class
+}
+export interface CardUi {
+  wrapper?: string
+  header?: string
+  body?: string
+  footer?: string
+  image?: string
+  icon?: string
+}
 export interface CardProps {
+    img?: CardImageDetails
     title?: string
     subtitle?: string
     description?: string
     tags?: string[]
     icon?: string
+    avatar?: string
     actions?: DropdownMenuItem[]
     /** Controls the order of body sections */
     layout?: CardLayoutSection[]
+    ui?: CardUi
 }
 
 

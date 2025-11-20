@@ -65,6 +65,7 @@
                         <Block title="Recommended Sports" description="Your top matches based on performance analysis" icon="i-lucide-sparkles" icon-color="violet"  bgClass="bg-[radial-gradient(circle_at_0%_100%,rgba(142,81,255,0.15),transparent_40%)]">
                             <Grid :lg="3" :gap="4">
                                 <div class="flex items-center gap-2 border border-cyan-200 bg-cyan-50 dark:border-cyan-600/50 dark:bg-cyan-900/20 rounded-lg p-4 overflow-hidden relative">
+                                    <UIcon name="i-lucide-lab-sneaker" class="text-cyan-100 dark:text-cyan-500/40 size-20 shrink-0 absolute right-2 -bottom-2" />
                                     <div class="relative grid grid-cols-1 grid-rows-1">
                                         <div class="col-start-1 row-start-1 size-13 rounded-full border-6 border-white dark:border-gray-800"></div>
                                         <div class="col-start-1 row-start-1 size-13 rounded-full border-6 border-cyan-400 dark:border-cyan-300 mask-conic-from-98% mask-conic-to-98%"></div>
@@ -72,11 +73,11 @@
                                             98%
                                         </div>
                                     </div>
-                                    <span class="text-sm font-bold dark:text-gray-100">Running</span>
-                                    <UIcon name="i-lucide-lab-sneaker" class="text-cyan-100 dark:text-cyan-500/40 size-20 shrink-0 absolute right-2 -bottom-2" />
+                                    <span class="text-sm font-bold dark:text-gray-100 relative">Running</span>
                                 </div>
 
                                 <div class="flex items-center gap-2 border border-amber-200 bg-amber-50 dark:border-amber-600/50 dark:bg-amber-900/20 rounded-lg p-4 overflow-hidden relative">
+                                    <UIcon name="i-lucide-lab-tennis-racket" class="text-amber-100 dark:text-amber-500/40 size-20 shrink-0 absolute right-2 -bottom-2" />
                                     <div class="relative grid grid-cols-1 grid-rows-1">
                                         <div class="col-start-1 row-start-1 size-13 rounded-full border-6 border-white dark:border-gray-800"></div>
                                         <div class="col-start-1 row-start-1 size-13 rounded-full border-6 border-amber-400 dark:border-amber-300 mask-conic-from-71% mask-conic-to-71%"></div>
@@ -84,11 +85,11 @@
                                             71%
                                         </div>
                                     </div>
-                                    <span class="text-sm font-bold dark:text-gray-100">Table Tennis</span>
-                                    <UIcon name="i-lucide-lab-tennis-racket" class="text-amber-100 dark:text-amber-500/40 size-20 shrink-0 absolute right-2 -bottom-2" />
+                                    <span class="text-sm font-bold dark:text-gray-100 relative">Table Tennis</span>
                                 </div>
 
                                 <div class="flex items-center gap-2 border border-pink-200 bg-pink-50 dark:border-pink-600/50 dark:bg-pink-900/20 rounded-lg p-4 overflow-hidden relative">
+                                    <UIcon name="i-lucide-crown" class="text-pink-100 dark:text-pink-500/40 size-20 shrink-0 absolute right-2 -bottom-2" />
                                     <div class="relative grid grid-cols-1 grid-rows-1">
                                         <div class="col-start-1 row-start-1 size-13 rounded-full border-6 border-white dark:border-gray-800"></div>
                                         <div class="col-start-1 row-start-1 size-13 rounded-full border-6 border-pink-400 dark:border-pink-300 mask-conic-from-41% mask-conic-to-41%"></div>
@@ -96,14 +97,66 @@
                                             41%
                                         </div>
                                     </div>
-                                    <span class="text-sm font-bold dark:text-gray-100">Chess</span>
-                                    <UIcon name="i-lucide-crown" class="text-pink-100 dark:text-pink-500/40 size-20 shrink-0 absolute right-2 -bottom-2" />
+                                    <span class="text-sm font-bold dark:text-gray-100 relative">Chess</span>
                                 </div>
 
                             </Grid>
                         </Block>
                         <Block>
-                            <ComingSoon />
+
+                            <Card
+                                title="Ava Martinez"
+                                avatar="https://randomuser.me/api/portraits/women/21.jpg"
+                                description="A clean and flexible card component."
+                                :tags="['nuxt', 'ui', 'vue']"
+                            >
+                                <template #subtitle>
+                                    <UBadge
+                                        color="violet"
+                                        variant="soft"
+                                        size="sm"
+                                    >Faculty</UBadge>
+                                </template>
+                            </Card>
+
+                            <Card
+                                title="Analytics"
+                                subtitle="Updated today"
+                                icon="i-lucide-bar-chart"
+                                :actions="[
+                                    { label: 'Edit', icon: 'i-lucide-pencil' },
+                                    { label: 'Delete', icon: 'i-lucide-trash' }
+                                ]"
+                                :tags="['dashboard', 'stats', 'daily']"
+                            >
+                                <template #highlights>
+                                    <div class="mt-4 grid grid-cols-2 gap-4">
+                                    <div>
+                                        <div class="text-2xl font-bold">28k</div>
+                                        <div class="text-xs text-muted">Visitors</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold">1.2k</div>
+                                        <div class="text-xs text-muted">Signups</div>
+                                    </div>
+                                    </div>
+                                </template>
+                            </Card>
+
+                            <Card
+                                :ui="{ wrapper: 'flex', image: 'max-w-40 h-full object-center' }"
+                                :img="{ src: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd' }"
+                                title="Reordered card"
+                                description="The order of sections is controlled via the layout prop."
+                                :tags="['alpha', 'beta', 'gamma']"
+                                :layout="['description', 'tags', 'custom']"
+                            >
+                                <template #custom>
+                                    <div class="text-xs text-dimmed italic mt-4">"Some custom content!"</div>
+                                </template>
+                            </Card>
+
+
                         </Block>
                     </div>
                 </GridSpan>
@@ -112,6 +165,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import { UBadge } from '#components';
 import ComingSoon from '~/components/global/ComingSoon.vue';
 import Grid from '~/components/global/Grid.vue';
 import GridSpan from '~/components/global/GridSpan.vue';
